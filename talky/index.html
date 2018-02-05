@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<head>
+	<link rel="icon" href="../ptrk2.gif" type="image/gif">
+	<title>sadness.online |  talky</title>
+</head>
+<body>
+
+	<div class="container">
+		<div class="text">
+			<input name="words" type="textbox" placeholder="type..."> </input>
+		</div>
+	</div>
+
+  <audio data-key="65" src="sounds/a.wav"></audio>
+  <audio data-key="66" src="sounds/b.wav"></audio>
+  <audio data-key="67" src="sounds/c.wav"></audio>
+  <audio data-key="68" src="sounds/d.wav"></audio>
+  <audio data-key="69" src="sounds/e.wav"></audio>
+  <audio data-key="70" src="sounds/f.wav"></audio>
+  <audio data-key="71" src="sounds/g.wav"></audio>
+  <audio data-key="72" src="sounds/h.wav"></audio>
+  <audio data-key="73" src="sounds/i.wav"></audio>
+  <audio data-key="74" src="sounds/j.wav"></audio>
+  <audio data-key="75" src="sounds/k.wav"></audio>
+  <audio data-key="76" src="sounds/l.wav"></audio>
+  <audio data-key="77" src="sounds/m.wav"></audio>
+  <audio data-key="78" src="sounds/n.wav"></audio>
+  <audio data-key="79" src="sounds/o.wav"></audio>
+  <audio data-key="80" src="sounds/p.wav"></audio>
+  <audio data-key="81" src="sounds/q.wav"></audio>
+  <audio data-key="82" src="sounds/r.wav"></audio>
+  <audio data-key="83" src="sounds/s.wav"></audio>
+  <audio data-key="84" src="sounds/t.wav"></audio>
+  <audio data-key="85" src="sounds/u.wav"></audio>
+  <audio data-key="86" src="sounds/v.wav"></audio>
+  <audio data-key="87" src="sounds/w.wav"></audio>
+  <audio data-key="88" src="sounds/x.wav"></audio>
+  <audio data-key="89" src="sounds/y.wav"></audio>
+  <audio data-key="90" src="sounds/z.wav"></audio>
+
+	<style>
+
+		:root {
+			font-size: calc(4vw + 4vh + 1vmin);
+		}
+	
+		html, body {
+			background: hsl(0, 0%, 0%);
+			height: 100vh;
+			width: 100vw;
+			margin: 0;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.container {
+			text-align: center;
+			width: 50%;
+			height: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 2%;
+		}
+
+		.text {
+			color: white;
+		}
+
+		p {
+			font-size: .5rem;
+		}
+
+		input {
+			font-family: 'Times New Roman';
+			height: 70px;
+			font-size: 50px;
+			padding: 5px;
+			background: none;
+			color: white;
+			box-shadow: none;
+			border: none;
+		}
+		
+		textarea:focus, input:focus{
+    	outline: none;
+		}
+
+	</style>
+
+	<script>
+
+		const words = document.querySelector('input[name="words"]');
+
+		function handleKey(e) {
+			const key = e.keyCode;
+
+			if (key == 32) {
+				// set background to random gray
+				const hue = Math.random() * 100;
+				document.body.style.background = `hsl(0, 0%, ${hue}%)`;
+
+				// set text color in contract to background color
+			 hue >= 50 ? words.style.color = "black" : words.style.color = "white";
+
+			}
+
+			if (key == 13) {
+				// reset
+				words.value = "";
+				document.getElementsByName('words')[0].placeholder = "";
+				document.body.style.background = 'black';
+				words.style.color = 'white';
+			}
+
+			const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+			if(!audio) return; // stop function from running
+			audio.currentTime = 0;
+			audio.play();
+		}
+
+
+		document.addEventListener('keyup', handleKey);
+
+	</script>
+
+</body>

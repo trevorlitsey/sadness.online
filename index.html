@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<link rel="icon" href="ptrk2.gif" type="image/gif">
+    <title>sadness.online</title>
+
+	</head>
+
+	<body>
+
+		<div class="player">
+			<video class="viewer" src="IMG_5382.mov"></video>
+		</div>
+
+		<style>
+		
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			display:flex;
+			min-height:100vh;
+			display:flex;
+			align-items: center;
+  		justify-content: center;
+		}
+		
+		.player {
+			width: 100vw;
+			height: 100vh:
+		}
+
+		.viewer {
+			width: 100%;
+		}
+
+		</style>
+
+		<script>
+
+			const video = document.querySelector('.viewer');
+			video.play();
+
+			video.addEventListener('ended', () => video.play());
+
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+		<link rel="icon" href="../ptrk2.gif" type="image/gif">
+	<title> sadness.online | dotty </title>
+</head>
+<body>
+	<div class="wrapper">
+			<canvas id="draw" width="100%" height="100%"></canvas>
+	</div>
+				
+	<style>
+
+		html, body {
+			margin:0;
+			height: 100vh;
+			width: 100vw;
+			overflow: hidden;
+			display: flex;
+			justify-content: center;
+		}
+		*, *:before, *:after { box-sizing: inherit; }
+
+		.wrapper {
+			margin:0 auto;
+			height: 100vh;
+			width: 100vw;
+		}
+
+	</style>
+
+	<Script>
+
+		const canvas = document.querySelector('#draw');
+		const ctx = canvas.getContext('2d');
+		let userRange = 1;
+		let stop = false;
+
+		let lineWidth = 2;
+		let lineColor = 'black';
+
+		function getRandomGray() {
+			const hue = Math.random() * 100;
+			hue >= 50 ? lineColor = 'black' : lineColor = "white"
+			return `hsl(0, 0%, ${hue}%)`;
+		}
+
+		function makeLine(range) {
+			const canvasMiddle = canvas.height / 2;
+			let last = parseFloat(Math.random().toFixed(2) * (range / 2));
+			let negative = false;
+			for (i = 0; i < canvas.width; i++) {
+				const x = i;
+
+				let random = parseFloat(Math.random().toFixed(2) * (range / 2)) - range / 4;
+
+				// check if new point is in range of range
+				if (canvasMiddle + last + random >= canvasMiddle + range
+					|| canvasMiddle + last + random <= canvasMiddle - range) {
+						random = -random;
+				}
+				const y = canvasMiddle + last + random;
+
+				ctx.beginPath();
+				// start from
+				ctx.moveTo(x, y);
+				// go to
+				ctx.lineTo(x + .01, y + .01);
+				ctx.closePath();
+				ctx.stroke();
+				
+				last = y - canvasMiddle;
+				
+			}
+			userStart = last;
+
+		}
+
+		function draw() {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+			ctx.lineJoin = 'round';
+			ctx.lineCap = 'round';
+			ctx.lineWidth = lineWidth;
+			ctx.strokeStyle = lineColor;
+			makeLine(userRange);
+		}
+
+		function beginDraw() {
+			const interval = setInterval(function() {
+				if (stop) { clearInterval(interval) }
+				for (i = 0; i < 50; i++) {
+					draw();
+				}
+			}, 100)
+		}
+
+		function jump() {
+			userRange += 5;
+			lineWidth += .1;
+		}
+
+		function handleClick() {
+			document.body.style.background = getRandomGray();
+			jump()
+		}
+
+		window.addEventListener('load', beginDraw);
+		window.addEventListener('resize', draw);
+		window.addEventListener('click', handleClick);
+		window.addEventListener('touchStart', handleClick);
+	
+	</script>
+
+</body>
+</html>
+
+
