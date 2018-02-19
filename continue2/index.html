@@ -6,15 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>sadness.online</title>
-	<script src="helpers.js"></script>
+	<script src="../helpers.js"></script>
 </head>
 
 <body>
 
 	<div class="wrapper">
-		<h1>Hello. Are you looking for sadness.online?</h1>
+		<h1>Do you want to continue?</h1>
 		<a class="yes" href="#">Yes</a> /
-		<a href="/">Cancel</a>
+		<a class="yes" href="#">Yes</a>
 	</div>
 
 
@@ -33,7 +33,7 @@
 
 	<script>
 
-		document.querySelector('.yes').addEventListener('click', () => go("/happy/index.html", true));
+		document.querySelectorAll('.yes').forEach(y => y.addEventListener('click', () => go("/feel", false)));
 
 	</script>
 
