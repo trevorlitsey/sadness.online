@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>sadness.online</title>
+	<link rel="stylesheet" href="../style.css">
 	<script src="../helpers.js"></script>
 </head>
 
@@ -13,27 +14,13 @@
 
 	<div class="wrapper">
 		<h1>Do you want to continue?</h1>
-		<a class="yes" href="#">Yes</a> /
-		<a href="/">Cancel</a>
+		<button class="yes">Yes</button>
+		<button>Cancel</button>
 	</div>
-
-
-	<style>
-		body {
-			height: 100vh;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.wrapper {
-			text-align: center;
-		}
-	</style>
 
 	<script>
 
-		document.querySelector('.yes').addEventListener('click', () => go("/keepgoing", true));
+		document.querySelector('.yes').addEventListener('click', () => go("/keepgoing/index.html", true));
 
 	</script>
 

@@ -1,16 +1,17 @@
 function popup() {
 	const { height, width, top, left } = newCoords();
-	window.open("/img", "", `height=${height}, width=${width}, top=${top} left=${left}`);
+	window.open("/img/index.html", "", `height=${height}, width=${width}, top=${top} left=${left}`);
 }
 
 function nextPage(url) {
-	const ruler = 600;
-	const [height, width, top, left] = [ruler, ruler, Math.round((Math.random() * window.screen.availHeight) - ruler), Math.round((Math.random() * window.screen.availWidth) - ruler)];
+	const [widthRuler, heightRuler] = [600, 181];
+	const [height, width, top, left] = [181, 600, Math.round((Math.random() * window.screen.availHeight) - heightRuler), Math.round((Math.random() * window.screen.availWidth) - widthRuler)];
 	window.open(url, "", `height=${height}, width=${width}, top=${top} left=${left}`);
 }
 
 function newCoords() {
-	const ruler = 300;
+	const sizes = [300, 400, 500];
+	const ruler = sizes[Math.floor(Math.random() * 3)];
 	const coords = {
 		height: ruler,
 		width: ruler,
@@ -35,4 +36,10 @@ function go(finalURL, bool) {
 	} else {
 		nextPage(finalURL);
 	}
+}
+
+function residualPopups() {
+	const interval = setInterval(() => {
+		popup();
+	}, 4000);
 }
