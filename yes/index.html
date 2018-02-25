@@ -12,19 +12,19 @@
 
 <body>
 
-	<div class="wrapper">
-		<h1>Yes</h1>
-		<a class="yes" href="#">
-			<button>Yes</button>
-		</a>
-		<a class="yes" href="#">
-			<button>Yes</button>
-		</a>
+	<div class="window--sucess">
+		<h1 class="msg">Yes</h1>
+		<div class="buttons">
+			<button class="yes">Yes</button>
+			<button class="yes">Yes</button>
+		</div>
 	</div>
 
 	<script>
 
-		document.querySelectorAll('.yes').forEach(y => y.addEventListener('click', () => go("/yes/index.html", true)));
+		document.querySelectorAll('.yes').forEach(y =>
+			y.addEventListener('click', () =>
+				go("/yes/index.html", true)));
 
 	</script>
 

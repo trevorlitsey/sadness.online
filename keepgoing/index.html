@@ -12,19 +12,17 @@
 
 <body>
 
-	<div class="wrapper">
-		<h1>All you have to do is keep going</h1>
-		<a class="yes" href="#">
-			<button>Yes</button>
-		</a>
-		<a href="/">
-			<button>Cancel</button>
-		</a>
+	<div class="window--sucess">
+		<h1 class="msg">Keep going?</h1>
+		<div class="buttons">
+			<button class="yes">Yes</button>
+			<button class="no">Cancel</button>
+		</div>
 	</div>
 
 	<script>
 
-		document.querySelector('.yes').addEventListener('click', () => go("/looking/index.html", true));
+		document.querySelector('.yes').addEventListener('click', () => go("/answers/index.html", true));
 
 	</script>
 

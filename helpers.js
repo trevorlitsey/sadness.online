@@ -4,8 +4,8 @@ function popup() {
 }
 
 function nextPage(url) {
-	const [widthRuler, heightRuler] = [600, 181];
-	const [height, width, top, left] = [181, 600, Math.round((Math.random() * window.screen.availHeight) - heightRuler), Math.round((Math.random() * window.screen.availWidth) - widthRuler)];
+	const [widthRuler, heightRuler] = [611, 196];
+	const [height, width, top, left] = [heightRuler, widthRuler, Math.round((Math.random() * window.screen.availHeight) - heightRuler), Math.round((Math.random() * window.screen.availWidth) - widthRuler)];
 	window.open(url, "", `height=${height}, width=${width}, top=${top} left=${left}`);
 }
 

@@ -11,20 +11,17 @@
 </head>
 
 <body>
-
-	<div class="wrapper">
-		<h1>How do you feel?</h1>
-		<a class="yes" href="#">
-			<button>Yes</button>
-		</a>
-		<a class="yes" href="#">
-			<button>Yes</button>
-		</a>
+	<div class="window--error">
+		<h1 class="msg--small">How do you feel?</h1>
+		<div class="buttons">
+			<button class="yes">Yes</button>
+			<button class="yes">Yes?</button>
+		</div>
 	</div>
 
 	<script>
 
-		document.querySelectorAll('.yes').forEach(y => y.addEventListener('click', () => go("/yes/index.html", true)));
+		document.querySelectorAll('.yes').forEach(y => y.addEventListener('click', () => go("/err-in-fact/index.html", true)));
 
 	</script>
 

@@ -6,25 +6,77 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>sadness.online</title>
-	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="style.css">
 	<script src="helpers.js"></script>
 </head>
 
 <body>
 
-	<div class="wrapper">
-		<h1>Hello. Are you looking for sadness.online?</h1>
+	<h1 class="sad">
+		<span>S</span>
+		<span>a</span>
+		<span>d</span>
+		<span>n</span>
+		<span>e</span>
+		<span>s</span>
+		<span>s</span>
+		<span>.</span>
+		<span>o</span>
+		<span>n</span>
+		<span>l</span>
+		<span>i</span>
+		<span>n</span>
+		<span>e</span>
+	</h1>
 
-		<button class="yes">Yes</button>
-		<button>Cancel</button>
+	<style>
+		.sad {
+			height: 50px;
+			display: flex;
+			align-content: flex-end;
+			cursor: pointer;
+		}
 
-	</div>
+		span {
+			transition: all .4s;
+		}
+
+		.up {
+			display: absolute;
+			transform: translateY(-5px);
+			opacity: .5;
+		}
+	</style>
 
 	<script>
 
-		const yes = document.querySelector('.yes')
+		const letters = document.querySelectorAll('span');
 
-		yes.addEventListener('click', () => go("/happy/index.html", true));
+		document.querySelector('.sad').addEventListener('click', () => go("/hello/index.html", false));
+
+		setInterval(() => {
+			wave(letters);
+		}, 1400)
+
+		function wave(letters) {
+
+			function remove() {
+				this.classList.remove('up');
+			}
+
+			let i = 0;
+			const interval = setInterval(() => {
+
+				letters[i].classList.add('up')
+				letters[i].addEventListener('transitionend', remove);
+				i++
+				if (i === letters.length) clearInterval(interval);
+
+
+			}, 100)
+		}
+
+		wave(letters);
 
 	</script>
 

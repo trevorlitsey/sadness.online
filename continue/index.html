@@ -12,15 +12,17 @@
 
 <body>
 
-	<div class="wrapper">
-		<h1>Do you want to continue?</h1>
-		<button class="yes">Yes</button>
-		<button>Cancel</button>
+	<div class="window--sucess">
+		<h1 class="msg">Continue?</h1>
+		<div class="buttons">
+			<button class="yes">Yes</button>
+			<button class="no">Cancel</button>
+		</div>
 	</div>
 
 	<script>
 
-		document.querySelector('.yes').addEventListener('click', () => go("/keepgoing/index.html", true));
+		document.querySelector('.yes').addEventListener('click', () => go("/error-busy/index.html", true));
 
 	</script>
 

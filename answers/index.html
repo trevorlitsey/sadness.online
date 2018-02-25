@@ -12,15 +12,17 @@
 
 <body>
 
-	<div class="wrapper">
-		<h1>Are you looking for answers?</h1>
-		<button class="yes">Yes</button>
-		<button>Cancel</button>
+	<div class="window--error">
+		<h1 class="msg--small">Unfortunately TheAnswers.online is also unavailable.</h1>
+		<div class="buttons">
+			<button class="yes">Really?</button>
+			<button class="yes">Cancel</button>
+		</div>
 	</div>
 
 	<script>
 
-		document.querySelector('.yes').addEventListener('click', () => go("/answers2/index.html", false));
+		document.querySelector('.yes').addEventListener('click', () => go("/continue2/index.html", false));
 
 	</script>
 
