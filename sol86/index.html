@@ -1,0 +1,108 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="canvas.js"></script>
+	<script src="../pressure.js"></script>
+	<title>sadness.online/sol 86</title>
+</head>
+
+<body>
+
+	<canvas class="iphoneFix"></canvas>
+
+	<style>
+		body {
+			margin: 0;
+			overflow: hidden;
+			height: 100vh;
+		}
+
+		canvas {
+			height: 100%;
+			width: 100%;
+			background: rgb(230, 230, 230);
+		}
+	</style>
+
+
+	<script>
+
+		const canvas = document.querySelector('canvas');
+		const ctx = canvas.getContext('2d');
+
+		let currentPicture = [];
+
+		const handleResize = () =>
+			resetCanvas(canvas, ctx);
+
+		const getNewRadius = () => Math.random() * 2 + 9;
+
+		const getRandomRelativePoints = () => {
+			const radius = Math.random() * 20 + 90;
+			const angle = Math.round(Math.random() * 360);
+			const x = radius * Math.cos(angle)
+			const y = radius * Math.sin(angle)
+			return [x, y];
+		}
+
+		const getRandomPoints = () => {
+			const x = Math.random() * canvas.width;
+			const y = Math.random() * canvas.height;
+			return [x, y];
+		}
+
+		const getNewPoints = () => {
+			const from = getRandomPoints();
+			const newRelPoints = getRandomRelativePoints();
+			const to = [from[0] + newRelPoints[0], from[1] + newRelPoints[1]];
+			return [from, to];
+		}
+
+		const handleDraw = () => {
+			const curSize = currentPicture.length;
+			if (curSize <= howMany) {
+				for (i = 0; i < howMany - curSize; i++) {
+					const newPoints = getNewPoints();
+					currentPicture.push(newPoints);
+					drawLine(newPoints);
+				}
+			}
+			else if (howMany < curSize) {
+				const delCount = curSize - howMany
+				currentPicture.splice(howMany, delCount);
+				redraw();
+			}
+		}
+
+		const redraw = () => {
+			handleResize();
+			if (!currentPicture) return;
+			currentPicture.forEach(points => {
+				drawLine(points);
+			})
+		}
+
+		Pressure.set('canvas', {
+			change: function (force) {
+				if (force === 1 && currentPicture.length >= 10000) return;
+				howMany = Math.floor(force * 10000);
+				console.log(currentPicture.length);
+
+				handleDraw();
+			}
+		});
+
+		window.addEventListener('load', handleResize);
+		window.addEventListener('resize', handleResize);
+		window.addEventListener('touchend', handleResize);
+		window.addEventListener('mouseup', handleResize);
+		window.addEventListener('touchstart', e => e.preventDefault());
+
+	</script>
+
+</body>
+
+</html>
