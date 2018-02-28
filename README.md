@@ -10,8 +10,6 @@ other non-popup-insive treats can be found at...
 
 [sadness.online/talky](http://sadness.online/talky)
 
-[sadness.online/thisisnotasadboy](http://sadness.online/thisisnotasadboy)
-
 [sadness.online/youmakemelaughbutitsnotfunny](http://sadness.online/youmakemelaughbutitsnotfunny)
 
 [sadness.online/gray](http://sadness.online/gray)
