@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>sadness.online</title>
+	<script src="scripts.js"></script>
+</head>
+
+<body>
+
+	<div class="text"></div>
+
+	<style>
+		html {
+			font-size: calc(3vh + 3vw);
+		}
+
+		body {
+			--text-color: white;
+			--background-color: rgba(255, 255, 255, .2);
+			background: black;
+			margin: 0;
+			padding: 10px;
+			height: 100vh;
+		}
+
+		.text {
+			color: var(--text-color);
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-content: center;
+			text-align: center;
+			word-break: break-word
+		}
+
+		h2 {
+			white-space: nowrap;
+		}
+
+		span {
+			background: var(--background-color);
+		}
+	</style>
+
+	<script>
+
+		const screenText = document.querySelector('.text')
+		startSpeechDetection(screenText);
+
+	</script>
+
+</body>
+
+</html>

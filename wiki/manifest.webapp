@@ -1,0 +1,14 @@
+{
+	"name": "speaky",
+	"description": "a speaky app",
+	"icons": "favicon.ico",
+	"permissions": {
+		"audio-capture" : {
+			"description" : "Audio capture"
+		},
+		"speech-recognition" : {
+			"description" : "Speech recognition"
+		}
+	},
+	"type": "privileged"
+}
