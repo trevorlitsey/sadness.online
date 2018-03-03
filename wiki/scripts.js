@@ -157,9 +157,16 @@ Heuristics in judgment and decision - making
 
 const searchText = masterText.toLowerCase();
 
+let lastWord = '';
+let interval;
+const go = (wordsNode, stopBool = false) => {
 
-const handleStart = (wordsNode) => {
-
+	if (stopBool === true) {
+		clearInterval(interval);
+		wordsNode.innerHTML = ``;
+		document.body.style.background = `black`;
+		return;
+	}
 
 	const setPageGray = () => {
 		const hue = Math.round(Math.random() * 100);
@@ -179,11 +186,7 @@ const handleStart = (wordsNode) => {
 		wordsNode.innerHTML = `<h2>${text}</h2>`;
 	}
 
-	let interval;
-	let lastIndex = 0;
 	const handleWordChange = (newWord) => {
-		console.log(newWord);
-
 		if (interval) clearInterval(interval);
 		first = true;
 		interval = setInterval(() => {
@@ -195,33 +198,73 @@ const handleStart = (wordsNode) => {
 				}
 			}
 			findSnippetAndSetToPage(newWord);
+
 		}, 250)
 	}
 
-	let lastWord = '';
 	const getNewWord = () => {
 		const num = Math.floor(Math.random() * searchWords.length);
 		const newWord = searchWords[num];
-		if (newWord === lastWord) {
-			return getNewWord();
-		}
+		if (lastWord === newWord) return getNewWord();
 		lastWord = newWord;
-		return newWord;
-	}
-
-	const go = () => {
-		const newWord = getNewWord()
 		handleWordChange(newWord);
 	}
 
-	go();
-
-	masterInterval = setInterval(() => {
-		go()
-	}, 5000)
-
-
+	getNewWord();
 }
+
+const startSpeechDetection = (wordsNode) => {
+
+	let started = false;
+	let interval;
+
+	// too remember last words on page
+	let lastWordsTimestamp = 0;
+
+	// initiate speech recoginiation
+	window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+	const recognition = new SpeechRecognition();
+	recognition.interimResults = true;
+
+	// listen for incoming speech
+	recognition.addEventListener('result', e => {
+
+		const transcript = Array.from(e.results)
+			.map(result => {
+				if (result[0].isFinal = true) return result[0];
+			})
+			.map(result => result.transcript)
+			.join('')
+			.toLowerCase();
+
+		console.log(transcript);
+
+		// stop if currently running
+		if (started && transcript === 'stop') {
+			started = false;
+			return go(wordsNode, true);
+		}
+
+		// stop function from running is text if text !== next or it has been less than 2 seconds
+		if (started && (transcript !== 'next' || lastWordsTimestamp >= Date.now() - 2000)) return;
+
+		// return if we haven't started yet and transcript does not equal 'begin' or 'now'
+		if (!started && ['start', 'begin', 'again'].indexOf(transcript) === -1) return;
+
+		go(wordsNode);
+		lastWordsTimestamp = Date.now();
+		started = true;
+
+	});
+
+	// start over at end
+	recognition.addEventListener('end', recognition.start);
+
+	// rollin'
+	recognition.start();
+}
+
+/* bonus reel */
 
 const findMostFrequestWords = () => {
 	const wordCount = {};
