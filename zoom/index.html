@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="../js/iphoneFix.js"></script>
+	<script src="../js/paper-core.js"></script>
+	<title>__ zoom</title>
+</head>
+
+<body>
+
+	<canvas id="canvas"></canvas>
+
+	<style>
+		body {
+			margin: 0;
+		}
+
+		#canvas {
+			height: 100vh;
+			width: 100vw;
+			background: rgb(45, 101, 255);
+		}
+	</style>
+
+	<script>
+
+		const canvas = document.querySelector('canvas');
+		fixHeightForIphoneScreen(canvas);
+
+		paper.setup(canvas);
+		let widthInc = canvas.width / 10;
+		let heightInc = canvas.height / 10;
+		const centerPoint = new paper.Point(paper.view.center)
+		const squares = new paper.Group();
+
+		const getRandomGray = () => {
+			const hue = Math.floor(Math.random() * 100);
+			return `hsl(0, 0%, ${hue}%)`;
+		}
+
+		populateSquares = () => {
+
+			for (let i = canvas.width; i > 10; i = i * .6) {
+				const [width, height] = [Math.floor(i), Math.floor(i)];
+				const size = new paper.Size(width, height);
+				const center = new paper.Point(centerPoint.x - width / 2, centerPoint.y - height / 2)
+				const rectangle = new paper.Rectangle(center, size);
+				const path = new paper.Path.Rectangle(rectangle);
+				path.fillColor = getRandomGray();
+				squares.addChild(path);
+			}
+		}
+
+		populateSquares();
+
+		paper.view.onFrame = () => {
+			squares.children.forEach(square => {
+				square.scale(1.1);
+				if (square.bounds.width > canvas.width * 2) {
+					square.bounds.size.set(10, 10);
+					square.bounds.center.set(centerPoint.x, centerPoint.y);
+					square.fillColor = getRandomBlue();
+					square.bringToFront();
+				}
+			})
+		}
+
+	</script>
+
+
+</body>
+
+</html>
