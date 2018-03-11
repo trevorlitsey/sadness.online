@@ -7,67 +7,53 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<script src="../js/iphoneFix.js"></script>
 	<script src="../js/paper-core.js"></script>
+	<!-- <script src="one.js"></script> -->
+	<script src="scripts.js"></script>
+	<!-- <script src="three.js"></script>
+	<script src="four.js"></script> -->
 	<title>__ zoom</title>
 </head>
 
 <body>
 
-	<canvas id="canvas"></canvas>
+	<canvas id="canvas1"></canvas>
+	<canvas id="canvas2"></canvas>
+	<canvas id="canvas3"></canvas>
+	<canvas id="canvas4"></canvas>
 
 	<style>
 		body {
 			margin: 0;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
 		}
 
-		#canvas {
-			height: 100vh;
-			width: 100vw;
-			background: rgb(45, 101, 255);
+		canvas {
+			border: 5px solid black;
+			height: 50vh;
+			width: 50vw;
+			background: black;
 		}
 	</style>
 
 	<script>
 
-		const canvas = document.querySelector('canvas');
-		fixHeightForIphoneScreen(canvas);
+		const canvas1 = document.querySelector('#canvas1')
+		const canvas2 = document.querySelector('#canvas2')
+		const canvas3 = document.querySelector('#canvas3')
+		const canvas4 = document.querySelector('#canvas4')
 
-		paper.setup(canvas);
-		let widthInc = canvas.width / 10;
-		let heightInc = canvas.height / 10;
-		const centerPoint = new paper.Point(paper.view.center)
-		const squares = new paper.Group();
+		let rand = 100;
 
-		const getRandomGray = () => {
-			const hue = Math.floor(Math.random() * 100);
-			return `hsl(0, 0%, ${hue}%)`;
-		}
+		setInterval(() => {
+			rand += rand + Math.round(Math.random() * 20 - 10)
+		}, 4000)
 
-		populateSquares = () => {
-
-			for (let i = canvas.width; i > 10; i = i * .6) {
-				const [width, height] = [Math.floor(i), Math.floor(i)];
-				const size = new paper.Size(width, height);
-				const center = new paper.Point(centerPoint.x - width / 2, centerPoint.y - height / 2)
-				const rectangle = new paper.Rectangle(center, size);
-				const path = new paper.Path.Rectangle(rectangle);
-				path.fillColor = getRandomGray();
-				squares.addChild(path);
-			}
-		}
-
-		populateSquares();
-
-		paper.view.onFrame = () => {
-			squares.children.forEach(square => {
-				square.scale(1.1);
-				if (square.bounds.width > canvas.width * 2) {
-					square.bounds.size.set(10, 10);
-					square.bounds.center.set(centerPoint.x, centerPoint.y);
-					square.fillColor = getRandomBlue();
-					square.bringToFront();
-				}
-			})
-		}
+		setCanvas(canvas1, 200, rand)
+		setCanvas(canvas2, 140, 120)
+		setCanvas(canvas3, 400, 300)
+		setCanvas(canvas4, 120, rand)
 
 	</script>
 
