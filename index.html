@@ -6,79 +6,119 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>sadness.online</title>
-	<link rel="stylesheet" href="style.css">
-	<script src="helpers.js"></script>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+	<scroll-container>
+		<scroll-page id="sadnessDotOnline">
+			<div class="page welcome">
+				<a href="#hello-are-you-looking-for-sadness">
+					<h1 class="welcome--sadnessDotOnline">
+						<span>S</span>
+						<span>a</span>
+						<span>d</span>
+						<span>n</span>
+						<span>e</span>
+						<span>s</span>
+						<span>s</span>
+						<span>.</span>
+						<span>o</span>
+						<span>n</span>
+						<span>l</span>
+						<span>i</span>
+						<span>n</span>
+						<span>e</span>
+					</h1>
+				</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="hello-are-you-looking-for-sadness" class="trigger" data-pop="20">
+			<h1>Hello. Are you looking for sadness.online?</h1>
+			<div>
+				<a href="#sorry-that-happineess-was-unavailable" class="bttn">Yes</a>
+				<a href="#sadnessDotOnline" class="bttn">No</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="sorry-that-happineess-was-unavailable" class="trigger" data-pop="20">
+			<h1>Sorry that happiness.online was unavailable</h1>
+			<div>
+				<a href="#continue" class="bttn">Yes, me too</a>
+				<a href="#sadnessDotOnline" class="bttn">No</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="continue">
+			<h1>Continue?</h1>
+			<div>
+				<a href="#error-busy" class="bttn">Yes</a>
+				<a href="#sadnessDotOnline" class="bttn">No</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="error-busy">
+			<h1>ERROR_BUSY</h1>
+			<div>
+				<a href="#this-seems-impracticle" class="bttn">Really?</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="this-seems-impracticle">
+			<h1>This seems impractical</h1>
+			<div>
+				<a href="#keep-going" class="bttn">Yes</a>
+				<a href="#sadnessDotOnline" class="bttn">No</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="keep-going">
+			<h1>Keep going?</h1>
+			<div>
+				<a href="#the-answers-is-unavailable" class="bttn">Yes</a>
+				<a href="#sadnessDotOnline" class="bttn">No</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="the-answers-is-unavailable">
+			<h1>(Unfortunately https://TheAnswers.online is unavailable)</h1>
+			<div>
+				<a href="#still-continue" class="bttn">Yes</a>
+				<a href="#sadnessDotOnline" class="bttn">No</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="still-continue">
+			<h1>Do you want to continue?</h1>
+			<div>
+				<a href="#how-do-you-feel" class="bttn">Yes</a>
+				<a href="#how-do-you-feel" class="bttn">Yes</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="how-do-you-feel">
+			<h1>How do you feel?</h1>
+			<div>
+				<a href="#error-being-in-fact-the-thing" class="bttn">Yes</a>
+				<a href="#error-being-in-fact-the-thing" class="bttn">Yes</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="error-being-in-fact-the-thing">
+			<h1>ERROR_BEING_IN_FACT_THE_THING</h1>
+			<div>
+				<a href="#yes" class="bttn">True</a>
+				<a href="#sadnessDotOnline" class="bttn">False</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="yes">
+			<h1>Yes</h1>
+			<div>
+				<a href="#yes" class="bttn bttn--yes">Yes</a>
+				<a href="#yes" class="bttn bttn--yes">Yes</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="webcam--page">
+			<canvas id="webcam"></canvas>
+		</scroll-page>
 
-	<h1 class="sad">
-		<span>S</span>
-		<span>a</span>
-		<span>d</span>
-		<span>n</span>
-		<span>e</span>
-		<span>s</span>
-		<span>s</span>
-		<span>.</span>
-		<span>o</span>
-		<span>n</span>
-		<span>l</span>
-		<span>i</span>
-		<span>n</span>
-		<span>e</span>
-	</h1>
+	</scroll-container>
 
-	<style>
-		.sad {
-			height: 50px;
-			display: flex;
-			align-content: flex-end;
-			cursor: pointer;
-		}
-
-		span {
-			transition: all .4s;
-		}
-
-		.up {
-			display: absolute;
-			transform: translateY(-5px);
-			opacity: .5;
-		}
-	</style>
-
-	<script>
-
-		const letters = document.querySelectorAll('span');
-
-		document.querySelector('.sad').addEventListener('click', () => go("/hello/index.html", false));
-
-		setInterval(() => {
-			wave(letters);
-		}, 1400)
-
-		function wave(letters) {
-
-			function remove() {
-				this.classList.remove('up');
-			}
-
-			let i = 0;
-			const interval = setInterval(() => {
-
-				letters[i].classList.add('up')
-				letters[i].addEventListener('transitionend', remove);
-				i++
-				if (i === letters.length) clearInterval(interval);
-
-
-			}, 100)
-		}
-
-		wave(letters);
-
-	</script>
+	<script src="js/gradient.js"></script>
+	<script src="js/welcomePage.js"></script>
+	<script src="js/popup.js"></script>
+	<script src="js/webcam.js"></script>
 
 </body>
 

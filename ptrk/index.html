@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+
 <head>
-    <link rel="icon" href="../ptrk2.gif" type="image/gif">
+    <link rel="icon" href="ptrk2.gif" type="image/gif">
     <title>sadness.online | ptrk</title>
-    
+
 </head>
+
 <body>
 
     <div class="orig">
@@ -43,19 +45,18 @@
         height: 50%;
         width: 50%;
     }
-
 </style>
 
 <script>
-    
+
     // const img = document.querySelectorAll('.patrick');
     const img = document.querySelector('.orig');
-    
+
     function handleClick(e) {
         started = true;
         e.stopPropagation();
         this.classList.add('flex');
-        this.innerHTML =    `<div class="patrick one">
+        this.innerHTML = `<div class="patrick one">
                                 <img src="ptrk2.gif">
                             </div>
                             <div class="patrick one">
@@ -67,11 +68,10 @@
                             <div class="patrick one">
                                 <img src="ptrk2.gif">
                             </div>`;
-    
-        document.querySelectorAll('.patrick').forEach(i =>  i.addEventListener('click', handleClick));
+
+        document.querySelectorAll('.patrick').forEach(i => i.addEventListener('click', handleClick));
     }
 
     img.addEventListener('click', handleClick);
 
 </script>
-

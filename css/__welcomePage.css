@@ -1,0 +1,31 @@
+.welcome {
+	font-weight: normal;
+}
+
+.welcome--sadnessDotOnline {
+	height: 50px;
+	display: flex;
+	align-content: flex-end;
+	cursor: pointer;
+	transition: all .2s;
+	color: rgba(0,0,0,0);
+}
+
+.welcome--sadnessDotOnline:hover {
+	filter: blur(2px);
+}
+
+.welcome--sadnessDotOnline span {
+	margin: 1px;
+	transition: all .4s;
+}
+
+.welcome--sadnessDotOnline span.on {
+	color: #eee;
+}
+
+.welcome--sadnessDotOnline span.up {
+	display: absolute;
+	transform: translateY(-5px);
+	opacity: .5;
+}
