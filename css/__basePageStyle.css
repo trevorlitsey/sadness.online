@@ -2,6 +2,7 @@
 
 :root {
 	--transition: all .2s;
+	--danger: rgb(255, 146, 146);
 }
 
 html {
@@ -54,6 +55,16 @@ h1:hover {
 
 h2 {
 	font-size: 1.2rem;
+}
+
+#error-busy {
+	background: rgba(228, 0, 0, 0.2);
+	color: var(--danger);
+}
+
+a.bttn.danger {
+	color: var(--danger);
+	border-color: var(--danger);
 }
 
 /* pop-up window styles */

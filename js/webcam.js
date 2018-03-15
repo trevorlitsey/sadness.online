@@ -43,7 +43,7 @@ function renderWebCam(canvas) {
 		return pixels;
 	}
 
-	getVideo();
+	// getVideo();
 
 	video.addEventListener('canplay', paintToCanvas);
 
