@@ -1,4 +1,140 @@
-@import url('__basePageStyle.css');
-@import url('__welcomePage.css');
-@import url('__webcamCanvas.css');
-@import url('__yes.css');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,600');
+
+:root {
+	--transition: all .2s;
+	--danger: rgb(255, 146, 146);
+}
+
+html {
+	font-size: calc(1.8vh + 1.8vw);
+}
+
+body {
+	margin: 0px;
+	font-family: 'Crimson Text', serif;
+	color: #eee;
+	scroll-behavior: smooth;
+	overflow-y: scroll;
+}
+
+scroll-container {
+  display: block;
+	height: 100vh;
+	padding: 10px;
+  overflow-y: scroll;
+	scroll-behavior: smooth;
+	transition: background-image 5s;
+	background-image: linear-gradient(#333, #111);
+}
+
+scroll-page {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	overflow: hidden;
+}
+
+a {
+	color: #eee;
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 2rem;
+	transition: var(--transition);
+}
+
+h1:hover {
+	cursor: pointer;
+	filter: blur(1px);
+}
+
+h2 {
+	font-size: 1.2rem;
+}
+
+.error {
+	background: rgba(228, 0, 0, 0.2);
+	color: var(--danger);
+}
+
+a.bttn.danger {
+	color: var(--danger);
+	border-color: var(--danger);
+}
+
+/* pop-up window styles */
+
+a.bttn {
+	display: inline-block;
+	min-width: 2rem;
+	font-size: .6rem;
+	border: 1px solid #eee;
+	border-radius: 12px;
+	padding: 2px 12px;
+	margin: 5px;
+	transition: var(--transition);
+}
+
+a.bttn:hover {
+	filter: blur(1px);
+}
+
+#error-being-in-fact-the-thing {
+	word-break: break-all;
+}
+
+
+/* ------ pages ------- */
+/* welcome */
+.welcome {
+	font-weight: normal;
+}
+
+.welcome--sadnessDotOnline {
+	height: 50px;
+	display: flex;
+	align-content: flex-end;
+	cursor: pointer;
+	transition: all .2s;
+	color: rgba(0,0,0,0);
+}
+
+.welcome--sadnessDotOnline:hover {
+	filter: blur(2px);
+}
+
+.welcome--sadnessDotOnline span {
+	margin: 1px;
+	transition: all .4s;
+}
+
+.welcome--sadnessDotOnline span.on {
+	color: #eee;
+}
+
+.welcome--sadnessDotOnline span.up {
+	display: absolute;
+	transform: translateY(-5px);
+	opacity: .5;
+}
+
+/* yes */
+#yes {
+	transition: all 5s;
+}
+
+/* webcam */
+#webcam {
+	width: 100vw;
+	max-width: 133vh;
+}
+
+#webcam--page {
+	background: #000;
+}
