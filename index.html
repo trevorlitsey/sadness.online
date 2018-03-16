@@ -36,7 +36,7 @@
 		<scroll-page id="hello-are-you-looking-for-sadness" class="trigger--picture-frame">
 			<h1>Hello. Are you looking for sadness.online?</h1>
 			<div>
-				<a href="#sorry-that-happiness-was-unavailable" class="bttn">Yes</a>
+				<a href="#sorry-that-happiness-was-unavailable" class="bttn" name="trigger">Yes</a>
 				<a href="#sadnessDotOnline" class="bttn">No</a>
 			</div>
 		</scroll-page>
@@ -47,7 +47,7 @@
 				<a href="#sadnessDotOnline" class="bttn">No</a>
 			</div>
 		</scroll-page>
-		<scroll-page id="continue" class="trigger--random" data-pop="30">
+		<scroll-page id="continue" class="trigger--circle-frame">
 			<h1>Continue?</h1>
 			<div>
 				<a href="#error-busy" class="bttn">Yes</a>
@@ -57,7 +57,13 @@
 		<scroll-page id="error-busy">
 			<h1>ERROR_BUSY</h1>
 			<div>
-				<a href="#this-seems-impracticle" class="bttn danger">Really?</a>
+				<a href="#no-oh" class="bttn danger">Really?</a>
+			</div>
+		</scroll-page>
+		<scroll-page id="no-oh">
+			<h1>no</h1>
+			<div>
+				<a href="#this-seems-impracticle" class="bttn">oh.</a>
 			</div>
 		</scroll-page>
 		<scroll-page id="this-seems-impracticle">

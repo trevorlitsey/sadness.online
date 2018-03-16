@@ -1,6 +1,7 @@
 const randomTriggers = document.querySelectorAll('.trigger--random');
 const fullCoverTriggers = document.querySelectorAll('.trigger--full-cover');
 const pictureFrameTriggers = document.querySelectorAll('.trigger--picture-frame');
+const circleFrameTriggers = document.querySelectorAll('.trigger--circle-frame');
 
 function scrollToNextPage(hash) {
 	return document.querySelector(hash).scrollIntoView();
@@ -42,20 +43,21 @@ function paintPopups(container, popups, scrollTarget) {
 			clearInterval(interval);
 			setTimeout(() => {
 				scrollToNextPage(scrollTarget);
-			}, 2000)
+			}, 1600)
 		}
 		insertPlacedPopup(container, popups[index]);
 		index++;
 	}, 50)
 }
 
-function fullPagePop(node) {
-	const width = node.getBoundingClientRect().width - 20;
-	const height = node.getBoundingClientRect().height - 20;
-	const top = 10;
-	const left = 10;
-	const img = `<img src="${getImgSrc()}" style="position: absolute; left: ${left}px; top: ${top}px; width: ${width}px; height: ${height}px"></img>`;
-	node.innerHTML += img
+function getFullPagePop() {
+	return {
+		width: '100%',
+		height: '100%',
+		top: '0',
+		left: '0',
+		right: 'auto',
+	}
 }
 
 function generateRandomPopups(e) {
@@ -108,6 +110,11 @@ function fullCoverPopups(e) {
 }
 
 function pictureFramePopups(e) {
+
+	// abort if link not clicked
+	if (e.target.name !== 'trigger') return;
+	this.disabled = true;
+
 	e.preventDefault();
 
 	const container = this;
@@ -166,9 +173,44 @@ function pictureFramePopups(e) {
 	paintPopups(container, popups, scrollTarget);
 }
 
+
+function circleFramePopups(e) {
+
+	// abort if link not clicked
+	if (e.target.tagName.toLowerCase() !== 'a' || e.target.href === 'sadnessDotOnline') return;
+
+	e.preventDefault();
+
+	const container = this;
+	const scrollTarget = e.target.hash;
+
+	const popups = [];
+	const radius = 40;
+
+	for (let i = 0; i < 2; i += .05) {
+		const x = 40 + Math.round(radius * Math.cos(i * Math.PI));
+		const y = 40 + Math.round(radius * Math.sin(i * Math.PI));
+
+		const popOptions = {
+			width: '20%',
+			height: 'auto',
+			top: `${y}%`,
+			left: `${x}%`,
+			right: 'auto',
+		}
+		popups.push(popOptions);
+	}
+
+	popups.push(getFullPagePop());
+
+	paintPopups(container, popups, scrollTarget);
+
+}
+
 randomTriggers.forEach(trigger => trigger.addEventListener('click', generateRandomPopups));
 fullCoverTriggers.forEach(trigger => trigger.addEventListener('click', fullCoverPopups));
 pictureFrameTriggers.forEach(trigger => trigger.addEventListener('click', pictureFramePopups));
+circleFrameTriggers.forEach(trigger => trigger.addEventListener('click', circleFramePopups));
 
 // where to scroll on default
 // setTimeout(() => {
