@@ -2,6 +2,8 @@ const randomTriggers = document.querySelectorAll('.trigger--random');
 const fullCoverTriggers = document.querySelectorAll('.trigger--full-cover');
 const pictureFrameTriggers = document.querySelectorAll('.trigger--picture-frame');
 const circleFrameTriggers = document.querySelectorAll('.trigger--circle-frame');
+const xFrameTriggers = document.querySelectorAll('.trigger--x-frame');
+const squiggleTriggers = document.querySelectorAll('.trigger--squiggle');
 
 function scrollToNextPage(hash) {
 	return document.querySelector(hash).scrollIntoView();
@@ -61,6 +63,10 @@ function getFullPagePop() {
 }
 
 function generateRandomPopups(e) {
+
+	// abort if link not clicked
+	if (e.target.name !== 'trigger') return;
+
 	e.preventDefault();
 
 	const container = this;
@@ -177,7 +183,7 @@ function pictureFramePopups(e) {
 function circleFramePopups(e) {
 
 	// abort if link not clicked
-	if (e.target.tagName.toLowerCase() !== 'a' || e.target.href === 'sadnessDotOnline') return;
+	if (e.target.name !== 'trigger') return;
 
 	e.preventDefault();
 
@@ -207,12 +213,110 @@ function circleFramePopups(e) {
 
 }
 
+function xFramePopups(e) {
+
+	// abort if link not clicked
+	if (e.target.name !== 'trigger') return;
+
+	e.preventDefault();
+
+	const container = this;
+	const scrollTarget = e.target.hash;
+
+	const popups = [];
+
+	for (let i = 0; i < 100; i += 5) {
+		const popOptions = {
+			width: '20%',
+			height: 'auto',
+			top: `${i}%`,
+			left: `${i}%`,
+			right: 'auto',
+		}
+		popups.push(popOptions);
+	}
+
+	for (let i = 100; i > 0; i -= 5) {
+		const popOptions = {
+			width: '20%',
+			height: 'auto',
+			top: `${100 - i}%`,
+			left: `auto`,
+			right: `${100 - i}%`,
+		}
+		popups.push(popOptions);
+	}
+
+	paintPopups(container, popups, scrollTarget);
+
+}
+
+function squigglePopups(e) {
+
+	// abort if link not clicked
+	if (e.target.name !== 'trigger') return;
+
+	e.preventDefault();
+
+	const container = this;
+	const scrollTarget = e.target.hash;
+
+	const popups = [];
+
+	let direction = true;
+	let j = 50;
+	for (let i = 0; i < 100; i += 2) {
+		const popOptions = {
+			width: '20%',
+			height: 'auto',
+			top: `${j}%`,
+			left: `${i}%`,
+			right: 'auto',
+		}
+		popups.push(popOptions);
+		direction ? j -= 3 : j += 3;
+		if (j > 60) {
+			direction = true;
+		}
+		if (j < 40) {
+			direction = false;
+		}
+	}
+
+	for (let i = 0; i < 100; i += 4) {
+		const popOptions = {
+			width: '20%',
+			height: 'auto',
+			top: `10%`,
+			left: 'auto',
+			right: `${i}%`,
+		}
+		popups.push(popOptions);
+	}
+
+	for (let i = 0; i < 100; i += 4) {
+		const popOptions = {
+			width: '20%',
+			height: 'auto',
+			top: `80%`,
+			left: `${i}%`,
+			right: `auto`,
+		}
+		popups.push(popOptions);
+	}
+
+	paintPopups(container, popups, scrollTarget);
+
+}
+
 randomTriggers.forEach(trigger => trigger.addEventListener('click', generateRandomPopups));
 fullCoverTriggers.forEach(trigger => trigger.addEventListener('click', fullCoverPopups));
 pictureFrameTriggers.forEach(trigger => trigger.addEventListener('click', pictureFramePopups));
 circleFrameTriggers.forEach(trigger => trigger.addEventListener('click', circleFramePopups));
+xFrameTriggers.forEach(trigger => trigger.addEventListener('click', xFramePopups));
+squiggleTriggers.forEach(trigger => trigger.addEventListener('click', squigglePopups));
 
 // where to scroll on default
 // setTimeout(() => {
-// 	document.getElementById('continue').scrollIntoView();
+// 	document.getElementById('keep-going').scrollIntoView();
 // }, 300)

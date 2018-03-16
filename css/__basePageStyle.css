@@ -58,7 +58,7 @@ h2 {
 	font-size: 1.2rem;
 }
 
-#error-busy {
+.error {
 	background: rgba(228, 0, 0, 0.2);
 	color: var(--danger);
 }

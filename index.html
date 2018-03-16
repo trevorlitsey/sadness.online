@@ -43,18 +43,18 @@
 		<scroll-page id="sorry-that-happiness-was-unavailable" class="trigger--full-cover">
 			<h1>Sorry that happiness.online was unavailable</h1>
 			<div>
-				<a href="#continue" class="bttn">Yes, me too</a>
+				<a href="#continue" class="bttn" name="trigger">Yes, me too</a>
 				<a href="#sadnessDotOnline" class="bttn">No</a>
 			</div>
 		</scroll-page>
 		<scroll-page id="continue" class="trigger--circle-frame">
 			<h1>Continue?</h1>
 			<div>
-				<a href="#error-busy" class="bttn">Yes</a>
+				<a href="#error-busy" class="bttn" name="trigger">Yes</a>
 				<a href="#sadnessDotOnline" class="bttn">No</a>
 			</div>
 		</scroll-page>
-		<scroll-page id="error-busy">
+		<scroll-page id="error-busy" class="error">
 			<h1>ERROR_BUSY</h1>
 			<div>
 				<a href="#no-oh" class="bttn danger">Really?</a>
@@ -66,25 +66,24 @@
 				<a href="#this-seems-impracticle" class="bttn">oh.</a>
 			</div>
 		</scroll-page>
-		<scroll-page id="this-seems-impracticle">
+		<scroll-page id="this-seems-impracticle" class="trigger--x-frame">
 			<h1>This seems impractical</h1>
 			<div>
-				<a href="#keep-going" class="bttn">Yes</a>
+				<a href="#keep-going" class="bttn" name="trigger">Yes</a>
 				<a href="#sadnessDotOnline" class="bttn">No</a>
 			</div>
 		</scroll-page>
-		<scroll-page id="keep-going">
+		<scroll-page id="keep-going" class="trigger--squiggle">
 			<h1>Keep going?</h1>
 			<div>
-				<a href="#the-answers-is-unavailable" class="bttn">Yes</a>
+				<a href="#the-answers-is-unavailable" class="bttn" name="trigger">Yes</a>
 				<a href="#sadnessDotOnline" class="bttn">No</a>
 			</div>
 		</scroll-page>
 		<scroll-page id="the-answers-is-unavailable">
-			<h1>(Unfortunately https://TheAnswers.online is unavailable)</h1>
+			<h1>(Unfortunately https://TheAnswers.online was also unavailable)</h1>
 			<div>
-				<a href="#still-continue" class="bttn">Yes</a>
-				<a href="#sadnessDotOnline" class="bttn">No</a>
+				<a href="#still-continue" class="bttn">Ok</a>
 			</div>
 		</scroll-page>
 		<scroll-page id="still-continue">
@@ -101,11 +100,11 @@
 				<a href="#error-being-in-fact-the-thing" class="bttn">Yes</a>
 			</div>
 		</scroll-page>
-		<scroll-page id="error-being-in-fact-the-thing">
+		<scroll-page id="error-being-in-fact-the-thing" class="error">
 			<h1>ERROR_BEING_IN_FACT_THE_THING</h1>
 			<div>
-				<a href="#yes" class="bttn">True</a>
-				<a href="#sadnessDotOnline" class="bttn">False</a>
+				<a href="#yes" class="bttn danger">True</a>
+				<a href="#sadnessDotOnline" class="bttn danger">False</a>
 			</div>
 		</scroll-page>
 		<scroll-page id="yes">
@@ -118,7 +117,6 @@
 		<scroll-page id="webcam--page">
 			<canvas id="webcam"></canvas>
 		</scroll-page>
-
 	</scroll-container>
 
 	<script src="js/gradient.js"></script>
