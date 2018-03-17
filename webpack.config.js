@@ -5,11 +5,11 @@ module.exports = {
 	entry: './js/scripts.js',
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist')
+		path: path.resolve(__dirname)
 	},
 	mode: 'development',
 	devServer: {
-		contentBase: path.join(__dirname, "dist"),
+		contentBase: path.join(__dirname),
 		compress: true,
 		port: 8080
 	},
@@ -18,13 +18,13 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use: ExtractTextPlugin.extract({
-					fallback: "style-loader",
-					use: "css-loader"
+					fallback: 'style-loader',
+					use: 'css-loader',
 				})
 			}
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin("styles.css"),
+		new ExtractTextPlugin('bundle.css'),
 	],
 };
