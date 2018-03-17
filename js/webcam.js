@@ -6,7 +6,7 @@ function renderWebCam(canvas) {
 	function getVideo() {
 		navigator.mediaDevices.getUserMedia({ video: true, audio: false })
 			.then(localMediaStream => {
-				video.src = window.URL.createObjectURL(localMediaStream);
+				video.srcObject = localMediaStream;
 				video.play();
 			})
 			.catch(err => {
@@ -49,6 +49,6 @@ function renderWebCam(canvas) {
 
 }
 
-const webcamCanvas = document.getElementById('webcam');
+const webcamCanvas = document.getElementById('webcam-canvas');
 
 renderWebCam(webcamCanvas);

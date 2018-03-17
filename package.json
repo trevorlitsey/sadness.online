@@ -5,13 +5,25 @@
   "main": "index.js",
   "scripts": {
     "start": "run-script-os",
-    "start:darwin:linux": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser 'Google Chrome'"
+    "start:darwin:linux": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser 'Google Chrome'",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "dev": "webpack-dev-server --hot"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^8.1.0",
+    "babel-plugin-universal-import": "^1.4.0",
     "browser-sync": "^2.18.13",
-    "run-script-os": "^1.0.2"
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "postcss-loader": "^2.1.1",
+    "run-script-os": "^1.0.2",
+    "style-loader": "^0.20.3",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
   },
   "dependencies": {
     "hark": "^1.1.6"

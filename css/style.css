@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,600');
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 :root {
 	--transition: all .2s;
 	--danger: rgb(255, 146, 146);
@@ -20,7 +24,6 @@ body {
 scroll-container {
   display: block;
 	height: 100vh;
-	padding: 10px;
   overflow-y: scroll;
 	scroll-behavior: smooth;
 	transition: background-image 5s;
@@ -29,9 +32,10 @@ scroll-container {
 
 scroll-page {
 	position: relative;
+	height: 100vh;
+	padding: 10px;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -130,11 +134,20 @@ a.bttn:hover {
 }
 
 /* webcam */
-#webcam {
+scroll-page#webcam-page {
+	padding: 0;
+	transition: all 6s;
+}
+
+#webcam-canvas {
 	width: 100vw;
 	max-width: 133vh;
 }
 
 #webcam--page {
 	background: #000;
+}
+
+.off {
+	opacity: 0;
 }
