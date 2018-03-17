@@ -1,8 +1,9 @@
 import gradientConstructor from './gradientConstructor';
-import { scrollToNextPage } from './popups/helpers';
+import { scrollToNextPage } from '../popups/helpers';
+import { isScrolledIntoView } from '../helpers';
 
-const gradient = new gradientConstructor(background);
 const background = document.querySelector('scroll-container');
+const gradient = new gradientConstructor(background);
 const yesPage = document.querySelector('#yes');
 const webcamPage = document.querySelector('#webcam-page');
 
@@ -21,11 +22,12 @@ export function handleKeywordFound() {
 	const links = document.querySelectorAll('.next');
 	links.forEach(link => {
 		if (isScrolledIntoView(link)) {
+			// go to there
 			link.click();
 		}
 	})
 }
 
-export function go() {
+export function startGradient() {
 	gradient.start();
 }

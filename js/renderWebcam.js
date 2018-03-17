@@ -1,4 +1,4 @@
-function renderWebCam(canvas) {
+function renderWebcam(canvas) {
 
 	const video = document.createElement('video');
 	const ctx = canvas.getContext('2d');
@@ -49,6 +49,4 @@ function renderWebCam(canvas) {
 
 }
 
-const webcamCanvas = document.getElementById('webcam-canvas');
-
-renderWebCam(webcamCanvas);
+export default renderWebcam;

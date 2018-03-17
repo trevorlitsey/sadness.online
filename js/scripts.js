@@ -1,23 +1,28 @@
-import './webcam';
+import renderWebcam from './renderWebcam';
 import './welcomePage';
 import startSpeechDetection from './startSpeechDetection';
 import handlePopupClick from './popups/handlePopupClick';
-import { go, transitionToWebcam, handleKeywordFound } from './gradientControls';
-import { isScrolledIntoView } from './helpers';
+import { startGradient, transitionToWebcam, handleKeywordFound } from './gradient/gradientControls';
 
 import '../css/style.css'
 
 const popupTriggers = document.querySelectorAll('.trigger');
 const yesBttns = document.querySelectorAll('.bttn--yes');
-
-startSpeechDetection(handleKeywordFound);
+const webcamCanvas = document.getElementById('webcam-canvas');
 
 popupTriggers.forEach(trigger => trigger.addEventListener('click', handlePopupClick));
 yesBttns.forEach(bttn => bttn.addEventListener('click', transitionToWebcam));
-window.addEventListener('load', go);
+window.addEventListener('load', startGradient);
+window.addEventListener('load', () => startSpeechDetection(handleKeywordFound));
+window.addEventListener('load', () => renderWebcam(webcamCanvas));
 
 // where to scroll on default
-setTimeout(() => {
-	document.getElementById('yes').scrollIntoView();
-}, 300)
+// setTimeout(() => {
+// 	document.getElementById('yes').scrollIntoView();
+// }, 300)
+
+
+
+
+
 

@@ -8,6 +8,8 @@ const startSpeechDetection = (fn) => {
 	const recognition = new SpeechRecognition();
 	recognition.interimResults = true;
 
+	console.log('listening');
+
 	// listen for incoming speech
 	recognition.addEventListener('result', e => {
 
