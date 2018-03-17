@@ -11,10 +11,12 @@ const yesBttns = document.querySelectorAll('.bttn--yes');
 const webcamCanvas = document.getElementById('webcam-canvas');
 
 popupTriggers.forEach(trigger => trigger.addEventListener('click', handlePopupClick));
-yesBttns.forEach(bttn => bttn.addEventListener('click', transitionToWebcam));
+yesBttns.forEach(bttn => bttn.addEventListener('click', () => {
+	renderWebcam(webcamCanvas);
+	transitionToWebcam();
+}));
 window.addEventListener('load', startGradient);
 window.addEventListener('load', () => startSpeechDetection(handleKeywordFound));
-window.addEventListener('load', () => renderWebcam(webcamCanvas));
 
 // where to scroll on default
 // setTimeout(() => {

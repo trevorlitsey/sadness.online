@@ -11,9 +11,9 @@ export function getContainerWidthAndHeight(container) {
 export function getImgSrc() {
 	const num = Math.round(Math.random() * 149);
 	if (num >= 99 && num <= 145) {
-		return `images/${num}.gif`;
+		return `dist/images/${num}.gif`;
 	} else {
-		return `images/${num}.jpg`;
+		return `dist/images/${num}.jpg`;
 	}
 }
 

@@ -16,8 +16,10 @@
     "autoprefixer": "^8.1.0",
     "babel-plugin-universal-import": "^1.4.0",
     "browser-sync": "^2.18.13",
+    "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "imagemin-webpack-plugin": "^2.1.0",
     "postcss-loader": "^2.1.1",
     "precss": "^3.1.2",
     "run-script-os": "^1.0.2",
@@ -28,6 +30,7 @@
     "webpack-dev-server": "^3.1.1"
   },
   "dependencies": {
+    "cloudinary-core": "^2.5.0",
     "hark": "^1.1.6"
   }
 }

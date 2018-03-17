@@ -1,5 +1,7 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const path = require('path');
 
 module.exports = {
@@ -43,5 +45,11 @@ module.exports = {
 				test: /\.js($|\?)/i
 			}
 		),
+		// new CopyWebpackPlugin([{
+		// 	from: 'images/'
+		// }]),
+		// new ImageminPlugin({
+		// 	test: /\.(jpe?g|png|gif|svg)$/i,
+		// })
 	],
 };
