@@ -23,6 +23,9 @@ window.addEventListener('load', () => startSpeechDetection(handleKeywordFound));
 // 	document.getElementById('yes').scrollIntoView();
 // }, 300)
 
+console.log('hi!!');
+
+
 
 
 

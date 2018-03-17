@@ -20,7 +20,6 @@ module.exports = {
 		rules: [
 			{
 				test: /\.css$/,
-				exclude: /node_modules/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [
@@ -40,16 +39,10 @@ module.exports = {
 	},
 	plugins: [
 		new ExtractTextPlugin('bundle.css'),
-		new UglifyJsPlugin(
-			{
-				test: /\.js($|\?)/i
-			}
-		),
-		// new CopyWebpackPlugin([{
-		// 	from: 'images/'
-		// }]),
-		// new ImageminPlugin({
-		// 	test: /\.(jpe?g|png|gif|svg)$/i,
-		// })
+		// new UglifyJsPlugin(
+		// 	{
+		// 		test: /\.js($|\?)/i
+		// 	}
+		// ),
 	],
 };

@@ -6,7 +6,8 @@
 
 :root {
 	--transition: all .2s;
-	--danger: rgb(255, 146, 146);
+	--danger: rgb(255, 180, 180);
+	--text-color: #111;
 }
 
 html {
@@ -16,7 +17,7 @@ html {
 body {
 	margin: 0px;
 	font-family: 'Crimson Text', serif;
-	color: #eee;
+	color: var(--text-color);
 	scroll-behavior: smooth;
 	overflow-y: scroll;
 }
@@ -27,7 +28,7 @@ scroll-container {
   overflow-y: scroll;
 	scroll-behavior: smooth;
 	transition: background-image 5s;
-	background-image: linear-gradient(#333, #111);
+	background-image: linear-gradient(#c4fbdc, #ff4076);
 }
 
 scroll-page {
@@ -44,7 +45,7 @@ scroll-page {
 }
 
 a {
-	color: #eee;
+	color: var(--text-color);
 	text-decoration: none;
 }
 
@@ -78,7 +79,7 @@ a.bttn {
 	display: inline-block;
 	min-width: 2rem;
 	font-size: .6rem;
-	border: 1px solid #eee;
+	border: 1.2px solid var(--text-color);
 	border-radius: 12px;
 	padding: 2px 12px;
 	margin: 5px;
@@ -92,7 +93,6 @@ a.bttn:hover {
 #error-being-in-fact-the-thing {
 	word-break: break-all;
 }
-
 
 /* ------ pages ------- */
 /* welcome */
@@ -115,17 +115,18 @@ a.bttn:hover {
 
 .welcome--sadnessDotOnline span {
 	margin: 1px;
-	transition: all .4s;
+	transition-property: transform, font-color;
+	transition-duration: .4s, .4s;
 }
 
 .welcome--sadnessDotOnline span.on {
-	color: #eee;
+	color: var(--text-color);
 }
 
 .welcome--sadnessDotOnline span.up {
 	display: absolute;
 	transform: translateY(-5px);
-	opacity: .5;
+	opacity: .7;
 }
 
 /* yes */

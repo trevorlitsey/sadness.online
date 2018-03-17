@@ -18,10 +18,13 @@ class gradientConstructor {
     var $div = this.container;
     // rgb vals of the gradients
     var gradients = [
-      { start: [30, 30, 30], stop: [40, 40, 40] },
-      { start: [10, 10, 10], stop: [60, 60, 60] },
-      { start: [30, 30, 30], stop: [40, 40, 40] },
-      { start: [60, 60, 60], stop: [20, 20, 20] }
+      { start: [169, 251, 220], stop: [255, 64, 118] },
+      { start: [212, 157, 169], stop: [212, 157, 169] },
+      { start: [255, 64, 118], stop: [255, 64, 118] },
+      { start: [169, 251, 220], stop: [255, 64, 118] },
+      // { start: [10, 10, 10], stop: [60, 60, 60] },
+      // { start: [30, 30, 30], stop: [40, 40, 40] },
+      // { start: [60, 60, 60], stop: [20, 20, 20] }
     ];
     // how long for each transition
     var transition_time = 4;
