@@ -6,7 +6,7 @@ module.exports = {
 	entry: './js/scripts.js',
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname)
+		path: path.resolve(__dirname, 'dist')
 	},
 	mode: 'development',
 	devServer: {
