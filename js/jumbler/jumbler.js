@@ -1,10 +1,15 @@
 const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 function sparanwrap(node) {
-	return node.innerHTML
-		.split('')
-		.map(letter => `<span>${letter}</span>`)
-		.join('');
+	const isSpanned = node.innerHTML[0] === '<';
+	if (!isSpanned) {
+		return node.innerHTML
+			.split('')
+			.map(letter => `<span>${letter}</span>`)
+			.join('');
+	} else {
+		return node.innerHTML;
+	}
 }
 
 function rouletteRandomLetters(span, int) {
@@ -13,13 +18,15 @@ function rouletteRandomLetters(span, int) {
 	setTimeout(() => {
 		let i = 0
 		const interval = setInterval(() => {
-			span.innerHTML = letters[Math.floor(Math.random() * letters.length)];
-			i++;
-			if (i > 80 + int * 1) {
-				span.innerHTML = origLetter;
-				clearInterval(interval);
-			}
-		}, 30);
+			window.requestAnimationFrame(() => {
+				span.innerHTML = letters[Math.floor(Math.random() * letters.length)];
+				i++;
+				if (i > 80 + int * 3) {
+					span.innerHTML = origLetter;
+					clearInterval(interval);
+				}
+			}, 40);
+		})
 	}, 0 * int)
 }
 

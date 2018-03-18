@@ -4,11 +4,12 @@ const letters = sadnessDotOnline.querySelectorAll('span');
 function fadeIn(letters) {
 	let i = 0;
 	const interval = setInterval(() => {
-		letters[i].classList.add('on');
-		i++;
-		if (i === letters.length - 5) wave(letters);
-		if (i === letters.length) clearInterval(interval);
-
+		window.requestAnimationFrame(() => {
+			letters[i].classList.add('on')
+			i++;
+			if (i === letters.length - 5) wave(letters);
+			if (i === letters.length) clearInterval(interval);
+		})
 	}, 100)
 }
 
@@ -16,25 +17,29 @@ function wave(letters) {
 
 	function remove() {
 		setTimeout(() => {
-			this.classList.remove('up');
+			window.requestAnimationFrame(() => this.classList.remove('up'));
 		}, 80)
 	}
 
 	let i = 0;
 	const interval = setInterval(() => {
 		if (!isAnyPartOfElementInViewport(sadnessDotOnline)) reset(letters);
-		const letter = letters[i];
-		letter.classList.remove('up');
-		letter.classList.add('up');
-		letter.addEventListener('transitionend', remove);
-		i++
+		window.requestAnimationFrame(() => {
+			const letter = letters[i];
+			letter.classList.remove('up');
+			letter.classList.add('up');
+			letter.addEventListener('transitionend', remove);
+			i++
+		})
 		if (i === letters.length) i = 0;
 	}, 120)
 }
 
 function reset(letters) {
 	letters.forEach(letter => {
-		letter.classList.remove('up');
+		window.requestAnimationFrame(() => {
+			letter.classList.remove('up');
+		})
 	})
 }
 

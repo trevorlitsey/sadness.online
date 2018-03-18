@@ -2,7 +2,7 @@ import gradientConstructor from './gradientConstructor';
 import { scrollToNextPage } from '../popups/helpers';
 import { isScrolledIntoView } from '../helpers';
 
-const background = document.querySelector('scroll-container');
+const background = document.querySelector('body');
 const gradient = new gradientConstructor(background);
 const yesPage = document.querySelector('#yes');
 const webcamPage = document.querySelector('#webcam-page');

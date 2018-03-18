@@ -1,4 +1,5 @@
 import './welcomePage';
+import sneakInImages from './sneakInImages';
 import renderWebcam from './renderWebcam';
 import startSpeechDetection from './startSpeechDetection';
 import handlePopupClick from './popups/handlePopupClick';
@@ -21,7 +22,8 @@ popupTriggers.forEach(trigger => trigger.addEventListener('click', handlePopupCl
 jumbleTriggers.forEach(trigger => trigger.addEventListener('click', handleJumbleClick))
 yesBttns.forEach(bttn => bttn.addEventListener('click', handleYesBttnClick));
 window.addEventListener('load', startGradient);
-window.addEventListener('load', () => startSpeechDetection(handleKeywordFound));
+window.addEventListener('load', () => sneakInImages(149));
+// window.addEventListener('load', () => startSpeechDetection(handleKeywordFound));
 
 // where to scroll on default
 // setTimeout(() => {

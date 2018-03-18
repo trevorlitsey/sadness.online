@@ -1,5 +1,5 @@
 export function scrollToNextPage(hash) {
-	return document.querySelector(hash).scrollIntoView();
+	return document.querySelector(hash).scrollIntoView({ behavior: 'smooth' });
 }
 
 export function getContainerWidthAndHeight(container) {

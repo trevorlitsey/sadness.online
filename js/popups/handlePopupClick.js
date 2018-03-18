@@ -10,6 +10,9 @@ let lastPattern;
 
 async function handlePopupClick(e) {
 
+	console.log('handling popup click');
+
+
 	// abort if trigger link not clicked
 	if (e.target.name !== 'trigger') return;
 	e.preventDefault();
