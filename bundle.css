@@ -34,13 +34,9 @@ body {
 	overflow: hidden;
 }
 
-.images-preload {
-	display: fixed;
-	/* margin-left: -110%; */
-}
-
-img.images-preload {
-	left: -999;
+.images--preload {
+	display: absolute;
+	left: 3000;
 }
 
 a {
@@ -147,7 +143,7 @@ a.bttn:hover {
 }
 
 /* webcam */
-scroll-page#webcam-page {
+#webcam-page {
 	padding: 0;
 	transition: all 6s;
 }

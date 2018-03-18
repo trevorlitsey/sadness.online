@@ -17,22 +17,14 @@ body {
 	font-family: 'Crimson Text', serif;
 	color: #111;
 	color: var(--text-color);
+	display: block;
 	scroll-behavior: smooth;
-	overflow-y: scroll;
 }
 
-scroll-container {
-  display: block;
-	height: 100vh;
-  overflow-y: scroll;
-	scroll-behavior: smooth;
-	transition: background-image 5s;
-	background-image: linear-gradient(#c4fbdc, #ff4076);
-}
-
-scroll-page {
+.page {
 	position: relative;
 	height: 100vh;
+	width: 100vw;
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
@@ -40,6 +32,11 @@ scroll-page {
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+}
+
+.images--preload {
+	display: absolute;
+	left: 3000;
 }
 
 a {
@@ -105,10 +102,8 @@ a.bttn:hover {
 /* ------ pages ------- */
 /* welcome */
 .welcome {
-	font-weight: normal;
-}
-
-.welcome--sadnessDotOnline {
+	font-weight: bold;
+	font-size: 2.6rem;
 	height: 50px;
 	display: flex;
 	align-content: flex-end;
@@ -122,7 +117,7 @@ a.bttn:hover {
 	        filter: blur(2px);
 }
 
-.welcome--sadnessDotOnline span {
+.welcome span {
 	margin: 1px;
 	transition-property: font-color, -webkit-transform;
 	transition-property: transform, font-color;
@@ -130,12 +125,12 @@ a.bttn:hover {
 	transition-duration: .4s, .4s;
 }
 
-.welcome--sadnessDotOnline span.on {
+.welcome span.on {
 	color: #111;
 	color: var(--text-color);
 }
 
-.welcome--sadnessDotOnline span.up {
+.welcome span.up {
 	display: absolute;
 	-webkit-transform: translateY(-5px);
 	        transform: translateY(-5px);
@@ -148,7 +143,7 @@ a.bttn:hover {
 }
 
 /* webcam */
-scroll-page#webcam-page {
+#webcam-page {
 	padding: 0;
 	transition: all 6s;
 }

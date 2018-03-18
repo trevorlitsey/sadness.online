@@ -35,13 +35,9 @@ body {
 	overflow: hidden;
 }
 
-.images-preload {
-	display: fixed;
-	/* margin-left: -110%; */
-}
-
-img.images-preload {
-	left: -999;
+.images--preload {
+	display: absolute;
+	left: 3000;
 }
 
 a {
