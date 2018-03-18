@@ -52,15 +52,15 @@ export function getFullPagePop() {
 }
 
 export function paintPopups(container, popups, scrollTarget) {
-	let index = 0;
-	const interval = setInterval(() => {
-		if (index == popups.length - 1) {
-			clearInterval(interval);
-			setTimeout(() => {
-				scrollToNextPage(scrollTarget);
-			}, 1600)
-		}
-		insertPlacedPopup(container, popups[index]);
-		index++;
-	}, 50)
+	return new Promise((resolve, reject) => {
+		let index = 0;
+		const interval = setInterval(() => {
+			insertPlacedPopup(container, popups[index]);
+			if (index == popups.length - 1) {
+				clearInterval(interval);
+				resolve(true);
+			}
+			index++;
+		}, 50)
+	})
 }

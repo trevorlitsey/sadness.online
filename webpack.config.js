@@ -8,7 +8,7 @@ module.exports = {
 	entry: './js/scripts.js',
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist')
+		path: path.resolve(__dirname),
 	},
 	mode: 'development',
 	devServer: {
@@ -39,10 +39,10 @@ module.exports = {
 	},
 	plugins: [
 		new ExtractTextPlugin('bundle.css'),
-		// new UglifyJsPlugin(
-		// 	{
-		// 		test: /\.js($|\?)/i
-		// 	}
-		// ),
+		new UglifyJsPlugin(
+			{
+				test: /\.js($|\?)/i
+			}
+		),
 	],
 };
