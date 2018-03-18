@@ -18,7 +18,7 @@ export function transitionToWebcam() {
 				webcamPage.classList.remove('off');
 			});
 		}, 400)
-	}, 8000)
+	}, 10000)
 }
 
 export function handleKeywordFound() {

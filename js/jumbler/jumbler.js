@@ -1,4 +1,5 @@
 const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+let isRunning = false;
 
 function sparanwrap(node) {
 	const isSpanned = node.innerHTML[0] === '<';
@@ -21,9 +22,10 @@ function rouletteRandomLetters(span, int) {
 			window.requestAnimationFrame(() => {
 				span.innerHTML = letters[Math.floor(Math.random() * letters.length)];
 				i++;
-				if (i > 80 + int * 3) {
+				if (i > 70 + int * 3) {
 					span.innerHTML = origLetter;
 					clearInterval(interval);
+					isRunning = false;
 				}
 			}, 40);
 		})
@@ -31,6 +33,8 @@ function rouletteRandomLetters(span, int) {
 }
 
 function jumbler(tag) {
+	if (isRunning) return;
+	isRunning = true;
 	tag.innerHTML = sparanwrap(tag);
 	const spans = tag.querySelectorAll('span');
 	spans.forEach((span, indx) => {

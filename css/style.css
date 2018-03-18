@@ -36,8 +36,8 @@ body {
 }
 
 .images--preload {
-	display: absolute;
-	left: 3000;
+	margin-left: -100%;
+	height: 0;
 }
 
 a {
@@ -120,7 +120,6 @@ a.bttn:hover {
 }
 
 .welcome span.up {
-	display: absolute;
 	transform: translateY(-5px);
 	opacity: .7;
 }
@@ -133,16 +132,30 @@ a.bttn:hover {
 /* webcam */
 #webcam-page {
 	padding: 0;
-	transition: all 6s;
-}
-
-#webcam-canvas {
-	width: 100vw;
-	max-width: 133vh;
-}
-
-#webcam--page {
+	transition: opacity 6s;
 	background: #000;
+}
+
+.wrapper--webcam {
+	position: relative;
+	width: 100%;
+	max-width: 133.3333vh;
+	max-height: 100vh;
+}
+
+.webcam-canvas {
+	width: 100%;
+}
+
+.webcam-canvas--one {
+	opacity: .9;
+}
+
+.webcam-canvas--two {
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: .5;
 }
 
 .off {

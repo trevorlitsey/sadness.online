@@ -1,4 +1,8 @@
+let isRunning = false;
+
 const startSpeechDetection = (fn) => {
+
+	if (isRunning) return;
 
 	// too remember last words on page
 	let lastWordsTimestamp = 0;
@@ -9,6 +13,7 @@ const startSpeechDetection = (fn) => {
 	recognition.interimResults = true;
 
 	console.log('listening');
+	isRunning = true;
 
 	// listen for incoming speech
 	recognition.addEventListener('result', e => {

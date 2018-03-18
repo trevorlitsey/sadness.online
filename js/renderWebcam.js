@@ -1,7 +1,8 @@
-function renderWebcam(canvas) {
+function renderWebcam(canvasOne, canvasTwo, delay = 3000) {
 
 	const video = document.createElement('video');
-	const ctx = canvas.getContext('2d');
+	const ctxOne = canvasOne.getContext('2d');
+	const ctxTwo = canvasTwo.getContext('2d');
 
 	function getVideo() {
 		navigator.mediaDevices.getUserMedia({ video: true, audio: false })
@@ -17,20 +18,27 @@ function renderWebcam(canvas) {
 	function paintToCanvas() {
 		const width = video.videoWidth;
 		const height = video.videoHeight;
-		canvas.width = width;
-		canvas.height = height;
+		canvasOne.width = width;
+		canvasOne.height = height;
+		canvasTwo.width = width;
+		canvasTwo.height = height;
 
 		return setInterval(() => {
-			ctx.drawImage(video, 0, 0, width, height);
+			ctxOne.drawImage(video, 0, 0, width, height);
 			// take the pixels out
-			let pixels = ctx.getImageData(0, 0, width, height);
+			let pixels = ctxOne.getImageData(0, 0, width, height);
 			// mess with them
 			pixels = rgb(pixels);
 
-			ctx.globalAlpha = 1;
+			ctxOne.globalAlpha = 1;
 
 			// put them back
-			ctx.putImageData(pixels, 0, 0);
+			ctxOne.putImageData(pixels, 0, 0);
+			setTimeout(() => {
+				requestAnimationFrame(() => {
+					ctxTwo.putImageData(pixels, 0, 0);
+				})
+			}, delay)
 		}, 16);
 	}
 

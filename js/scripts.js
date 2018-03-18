@@ -13,7 +13,8 @@ const popupTriggers = document.querySelectorAll('.trigger--popup');
 const jumbleTriggers = document.querySelectorAll('.trigger--jumble');
 const normalTriggers = document.querySelectorAll('.trigger--normal');
 const yesBttns = document.querySelectorAll('.bttn--yes');
-const webcamCanvas = document.getElementById('webcam-canvas');
+const webcamCanvasOne = document.querySelector('.webcam-canvas--one');
+const webcamCanvasTwo = document.querySelector('.webcam-canvas--two');
 
 function handleNormalClick(e) {
 	e.preventDefault();
@@ -22,7 +23,7 @@ function handleNormalClick(e) {
 }
 
 function handleYesBttnClick() {
-	renderWebcam(webcamCanvas);
+	renderWebcam(webcamCanvasOne, webcamCanvasTwo, 3000);
 	transitionToWebcam();
 }
 
@@ -40,10 +41,8 @@ window.addEventListener('keyup', handleSpeechDetectionStart);
 
 // where to scroll on default
 // setTimeout(() => {
-// 	document.getElementById('hello-are-you-looking-for-sadness').scrollIntoView();
+// 	document.getElementById('webcam-page').scrollIntoView();
 // }, 300)
-
-
 
 
 
