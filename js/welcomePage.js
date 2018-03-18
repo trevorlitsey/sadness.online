@@ -1,4 +1,4 @@
-const sadnessDotOnline = document.querySelector('.welcome');
+const sadnessDotOnline = document.querySelector('#sadnessDotOnline');
 const letters = sadnessDotOnline.querySelectorAll('span');
 
 function fadeIn(letters) {
@@ -23,7 +23,7 @@ function wave(letters) {
 
 	let i = 0;
 	const interval = setInterval(() => {
-		if (!isAnyPartOfElementInViewport(sadnessDotOnline)) reset(letters);
+		if (!isAnyPartOfElementInViewport(sadnessDotOnline)) return reset(letters);
 		window.requestAnimationFrame(() => {
 			const letter = letters[i];
 			letter.classList.remove('up');
