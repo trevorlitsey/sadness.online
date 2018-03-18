@@ -2,7 +2,7 @@
 
 an in-progress website for a theater project by Patrick Marschke and Alana Horton.
 
-other non-popup-insive treats can be found at...
+some less javascript-intensive treats can be found at...
 
 [sadness.online/ptrk](http://sadness.online/ptrk)
 
