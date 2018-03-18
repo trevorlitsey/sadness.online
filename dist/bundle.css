@@ -39,7 +39,6 @@ scroll-page {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	text-align: center;
 	overflow: hidden;
 }
 
@@ -50,6 +49,7 @@ a {
 }
 
 h1 {
+	margin: 5% 10%;
 	font-size: 2rem;
 	transition: all .2s;
 	transition: var(--transition);
