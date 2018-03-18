@@ -15,15 +15,16 @@ function makeImageTag(num) {
 function sneakInImages(howManyImages) {
 	let i = 0;
 	const interval = setInterval(() => {
-		window.requestAnimationFrame(() => {
-			imageContainer.innerHTML += makeImageTag(i);
-			if (i === howManyImages) {
-				clearInterval(interval);
-				console.log('images loaded');
-			} else {
+		if (i >= howManyImages) {
+			clearInterval(interval);
+			console.log('images loaded');
+		} else {
+			// load in images one by one
+			window.requestAnimationFrame(() => {
+				imageContainer.innerHTML += makeImageTag(i);
 				i++;
-			}
-		})
+			})
+		}
 	}, 10)
 }
 

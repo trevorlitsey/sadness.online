@@ -10,3 +10,7 @@ export function isScrolledIntoView(el) {
 	//isVisible = elemTop < window.innerHeight && elemBottom >= 0;
 	return isVisible;
 }
+
+export function scrollToNextPage(node) {
+	return node.scrollIntoView({ behavior: 'smooth' });
+}

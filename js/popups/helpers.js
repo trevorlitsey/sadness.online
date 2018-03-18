@@ -1,7 +1,3 @@
-export function scrollToNextPage(hash) {
-	return document.querySelector(hash).scrollIntoView({ behavior: 'smooth' });
-}
-
 export function getContainerWidthAndHeight(container) {
 	const containerWidth = container.getBoundingClientRect().width;
 	const containerHeight = container.getBoundingClientRect().height;

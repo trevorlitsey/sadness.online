@@ -36,7 +36,11 @@ body {
 }
 
 .images-preload {
-	display: absolute;
+	display: fixed;
+	/* margin-left: -110%; */
+}
+
+img.images-preload {
 	left: -999;
 }
 
@@ -94,10 +98,8 @@ a.bttn:hover {
 /* ------ pages ------- */
 /* welcome */
 .welcome {
-	font-weight: normal;
-}
-
-.welcome--sadnessDotOnline {
+	font-weight: bold;
+	font-size: 2.6rem;
 	height: 50px;
 	display: flex;
 	align-content: flex-end;
@@ -110,17 +112,17 @@ a.bttn:hover {
 	filter: blur(2px);
 }
 
-.welcome--sadnessDotOnline span {
+.welcome span {
 	margin: 1px;
 	transition-property: transform, font-color;
 	transition-duration: .4s, .4s;
 }
 
-.welcome--sadnessDotOnline span.on {
+.welcome span.on {
 	color: var(--text-color);
 }
 
-.welcome--sadnessDotOnline span.up {
+.welcome span.up {
 	display: absolute;
 	transform: translateY(-5px);
 	opacity: .7;
@@ -132,7 +134,7 @@ a.bttn:hover {
 }
 
 /* webcam */
-scroll-page#webcam-page {
+#webcam-page {
 	padding: 0;
 	transition: all 6s;
 }

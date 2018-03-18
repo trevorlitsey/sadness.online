@@ -1,4 +1,5 @@
-import { paintPopups, scrollToNextPage } from './helpers';
+import { paintPopups } from './helpers';
+import { scrollToNextPage } from '../helpers';
 import jumbler from '../jumbler/jumbler';
 import getPictureFramePopups from './getPictureFramePopups';
 import getFullCoverPopups from './getFullCoverPopups';
@@ -9,13 +10,12 @@ import getSquigglePopups from './getSquigglePopups';
 let lastPattern;
 
 async function handlePopupClick(e) {
-
-	console.log('handling popup click');
-
+	e.preventDefault();
 
 	// abort if trigger link not clicked
-	if (e.target.name !== 'trigger') return;
-	e.preventDefault();
+	const { name } = e.target;
+	if (name && name === 'cancel') scrollToNextPage(document.querySelector(e.target.hash));
+	if (name !== 'trigger') return;
 
 	const container = this;
 	const scrollTarget = e.target.hash;
@@ -49,8 +49,8 @@ async function handlePopupClick(e) {
 	await paintPopups(container, popups);
 
 	setTimeout(() => {
-		scrollToNextPage(scrollTarget);
-		jumbleTarget && jumbler(document.getElementById(jumbleTarget).querySelector('h1'));
+		scrollToNextPage(document.querySelector(scrollTarget));
+		// jumbleTarget && jumbler(document.getElementById(jumbleTarget).querySelector('h1'));
 	}, 1600)
 }
 

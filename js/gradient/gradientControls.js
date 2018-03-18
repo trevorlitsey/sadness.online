@@ -1,5 +1,5 @@
 import gradientConstructor from './gradientConstructor';
-import { scrollToNextPage } from '../popups/helpers';
+import { scrollToNextPage } from '../helpers';
 import { isScrolledIntoView } from '../helpers';
 
 const background = document.querySelector('body');
@@ -9,12 +9,15 @@ const webcamPage = document.querySelector('#webcam-page');
 
 export function transitionToWebcam() {
 	gradient.stop();
-	yesPage.classList.add('off');
+	window.requestAnimationFrame(() => yesPage.classList.add('off'));
 	setTimeout(() => {
-		scrollToNextPage('#webcam-page');
+		const scrollTarget = document.querySelector('#webcam-page');
+		scrollToNextPage(scrollTarget);
 		setTimeout(() => {
-			webcamPage.classList.remove('off');
-		}, 200)
+			window.requestAnimationFrame(() => {
+				webcamPage.classList.remove('off');
+			});
+		}, 400)
 	}, 8000)
 }
 

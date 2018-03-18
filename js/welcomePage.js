@@ -1,4 +1,4 @@
-const sadnessDotOnline = document.querySelector('.welcome--sadnessDotOnline');
+const sadnessDotOnline = document.querySelector('.welcome');
 const letters = sadnessDotOnline.querySelectorAll('span');
 
 function fadeIn(letters) {
