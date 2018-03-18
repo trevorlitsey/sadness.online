@@ -1,6 +1,6 @@
 # sadness.online
 
-a website for a threater project by Patrick Marschke and Alana Horton. one will need to turn off popup blockers to view the main site.
+an in-progress website for a theater project by Patrick Marschke and Alana Horton.
 
 other non-popup-insive treats can be found at...
 
