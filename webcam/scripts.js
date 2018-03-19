@@ -37,9 +37,9 @@ function renderWebCam(canvas) {
 
 	function rgb(pixels) {
 		for (let i = 0; i < pixels.data.length; i += 4) {
-			pixels.data[i + 0] = pixels.data[i + 0] - 50; // RED
-			pixels.data[i + 1] = pixels.data[i + 1] - 50; // GREEN
-			pixels.data[i + 2] = pixels.data[i + 2] - 50; // Blue
+			pixels.data[i + 0] = pixels.data[i + 0] + 50; // RED
+			pixels.data[i + 1] = pixels.data[i + 1] + 50; // GREEN
+			pixels.data[i + 2] = pixels.data[i + 2] + 50; // Blue
 		}
 		return pixels;
 	}
