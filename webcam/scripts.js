@@ -1,13 +1,13 @@
-function renderWebCam(canvas) {
+function renderWebcam(canvasOne, canvasTwo, delay = 3000) {
 
-	// const canvas = document.querySelector('.photo1');
 	const video = document.createElement('video');
-	const ctx = canvas.getContext('2d');
+	const ctxOne = canvasOne.getContext('2d');
+	const ctxTwo = canvasTwo.getContext('2d');
 
 	function getVideo() {
 		navigator.mediaDevices.getUserMedia({ video: true, audio: false })
 			.then(localMediaStream => {
-				video.src = window.URL.createObjectURL(localMediaStream);
+				video.srcObject = localMediaStream;
 				video.play();
 			})
 			.catch(err => {
@@ -18,30 +18,25 @@ function renderWebCam(canvas) {
 	function paintToCanvas() {
 		const width = video.videoWidth;
 		const height = video.videoHeight;
-		canvas.width = width;
-		canvas.height = height;
+		canvasOne.width = width;
+		canvasOne.height = height;
+		canvasTwo.width = width;
+		canvasTwo.height = height;
 
 		return setInterval(() => {
-			ctx.drawImage(video, 0, 0, width, height);
+			ctxOne.drawImage(video, 0, 0, width, height);
 			// take the pixels out
-			let pixels = ctx.getImageData(0, 0, width, height);
-			// mess with them
-			pixels = rgb(pixels);
+			let pixels = ctxOne.getImageData(0, 0, width, height);
 
-			ctx.globalAlpha = 1;
 
 			// put them back
-			ctx.putImageData(pixels, 0, 0);
+			ctxOne.putImageData(pixels, 0, 0);
+			setTimeout(() => {
+				requestAnimationFrame(() => {
+					ctxTwo.putImageData(pixels, 0, 0);
+				})
+			}, delay)
 		}, 16);
-	}
-
-	function rgb(pixels) {
-		for (let i = 0; i < pixels.data.length; i += 4) {
-			pixels.data[i + 0] = pixels.data[i + 0] + 50; // RED
-			pixels.data[i + 1] = pixels.data[i + 1] + 50; // GREEN
-			pixels.data[i + 2] = pixels.data[i + 2] + 50; // Blue
-		}
-		return pixels;
 	}
 
 	getVideo();
@@ -49,3 +44,8 @@ function renderWebCam(canvas) {
 	video.addEventListener('canplay', paintToCanvas);
 
 }
+
+const canvasOne = document.querySelector('.webcam-canvas--one');
+const canvasTwo = document.querySelector('.webcam-canvas--two');
+
+renderWebcam(canvasOne, canvasTwo, 1000);

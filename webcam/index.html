@@ -8,19 +8,75 @@
 
 <body>
 
-	<div class="photobooth">
-		<canvas class="photo1"></canvas>
+	<div id="webcam-page" class="page off">
+		<div class="wrapper--webcam">
+			<canvas class="webcam-canvas webcam-canvas--one"></canvas>
+			<canvas class="webcam-canvas webcam-canvas--two"></canvas>
+		</div>
 	</div>
 
 	<style>
+		body {
+			/* background: black; */
+		}
+
+		canvas {
+			filter: brightness(180%);
+		}
+
+		.page {
+			position: relative;
+			height: 100vh;
+			width: 100vw;
+			padding: 10px;
+			display: flex;
+			flex-direction: column;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+		}
+
+		/* webcam */
+
+		#webcam-page {
+			padding: 0;
+			transition: opacity 6s;
+			background: #000;
+		}
+
+		.wrapper--webcam {
+			position: relative;
+			width: 100%;
+			max-width: 133.3333vh;
+			max-height: 100vh;
+		}
+
+		.webcam-canvas {
+			width: 100%;
+		}
+
+		.webcam-canvas--one {
+			opacity: 1;
+		}
+
+		.webcam-canvas--two {
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: .5;
+		}
+
+		/* .off {
+			opacity: 0;
+		} */
+
+		.background--black {
+			background: black;
+		}
 	</style>
 
 	<script src="scripts.js"></script>
-	<script>
-
-		renderWebCam(document.querySelector('canvas'));
-
-	</script>
 
 </body>
 

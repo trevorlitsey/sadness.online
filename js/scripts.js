@@ -1,11 +1,9 @@
 import './welcomePage';
 import sneakInImages from './sneakInImages';
 import renderWebcam from './renderWebcam';
-import startSpeechDetection from './startSpeechDetection';
 import handlePopupClick from './popups/handlePopupClick';
 import handleJumbleClick from './jumbler/handleJumbleClick'
-import { startGradient, transitionToWebcam, handleKeywordFound } from './gradient/gradientControls';
-import { scrollToNextPage } from './helpers';
+import { scrollToNextPage, transitionToWebcam } from './helpers';
 
 import '../css/style.css'
 
@@ -35,9 +33,7 @@ popupTriggers.forEach(trigger => trigger.addEventListener('click', handlePopupCl
 jumbleTriggers.forEach(trigger => trigger.addEventListener('click', handleJumbleClick))
 yesBttns.forEach(bttn => bttn.addEventListener('click', handleYesBttnClick));
 normalTriggers.forEach(bttn => bttn.addEventListener('click', handleNormalClick));
-window.addEventListener('load', startGradient);
 window.addEventListener('load', () => sneakInImages(149));
-window.addEventListener('keyup', handleSpeechDetectionStart);
 
 // where to scroll on default
 // setTimeout(() => {

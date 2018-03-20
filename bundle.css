@@ -3,9 +3,10 @@
 }
 
 :root {
-	--transition: all .2s;
-	--danger: rgb(255, 180, 180);
+	--transition: .2s;
+	--danger: rgb(255, 59, 59);
 	--text-color: #111;
+	--blur: 5px;
 }
 
 html {
@@ -13,12 +14,13 @@ html {
 }
 
 body {
-	margin: 0px;
+	margin: 0;
 	font-family: 'Crimson Text', serif;
 	color: #111;
 	color: var(--text-color);
 	display: block;
 	scroll-behavior: smooth;
+	background: linear-gradient(rgb(169, 251, 220), rgb(255, 117, 156));
 }
 
 .page {
@@ -35,6 +37,7 @@ body {
 }
 
 .images--preload {
+	height: 0;
 	margin-left: -100%;
 	height: 0;
 }
@@ -49,14 +52,20 @@ a {
 h1 {
 	margin: 5% 10%;
 	font-size: 2rem;
-	transition: all .2s;
-	transition: var(--transition);
+	transition: -webkit-filter .2s;
+	transition: filter .2s;
+	transition: filter .2s, -webkit-filter .2s;
+	transition: -webkit-filter var(--transition);
+	transition: filter var(--transition);
+	transition: filter var(--transition), -webkit-filter var(--transition);
 }
 
 h1:hover {
 	cursor: pointer;
-	-webkit-filter: blur(1px);
-	        filter: blur(1px);
+	-webkit-filter: blur(5px);
+	        filter: blur(5px);
+	-webkit-filter: blur(var(--blur));
+	        filter: blur(var(--blur));
 }
 
 h2 {
@@ -64,36 +73,40 @@ h2 {
 }
 
 .error {
-	background: rgba(228, 0, 0, 0.2);
-	color: rgb(255, 180, 180);
+	color: rgb(255, 59, 59);
 	color: var(--danger);
 }
 
-a.bttn.danger {
-	color: rgb(255, 180, 180);
-	color: var(--danger);
-	border-color: rgb(255, 180, 180);
-	border-color: var(--danger);
-}
 
-/* pop-up window styles */
-
+/* buttons */
 a.bttn {
 	display: inline-block;
 	min-width: 2rem;
-	font-size: .6rem;
-	border: 1.2px solid #111;
-	border: 1.2px solid var(--text-color);
+	font-size: .7rem;
+	font-weight: bold;
+	border: 2px solid #111;
+	border: 2px solid var(--text-color);
 	border-radius: 12px;
 	padding: 2px 12px;
 	margin: 5px;
-	transition: all .2s;
-	transition: var(--transition);
+	transition: -webkit-filter .2s;
+	transition: filter .2s;
+	transition: filter .2s, -webkit-filter .2s;
+	transition: -webkit-filter var(--transition);
+	transition: filter var(--transition);
+	transition: filter var(--transition), -webkit-filter var(--transition);
+}
+
+a.bttn.danger {
+	color: rgb(255, 59, 59);
+	color: var(--danger);
+	border-color: rgb(255, 59, 59);
+	border-color: var(--danger);
 }
 
 a.bttn:hover {
-	-webkit-filter: blur(1px);
-	        filter: blur(1px);
+	-webkit-filter: blur(2.5px);
+	        filter: blur(2.5px);
 }
 
 #error-being-in-fact-the-thing {
@@ -102,7 +115,7 @@ a.bttn:hover {
 
 /* ------ pages ------- */
 /* welcome */
-.welcome {
+a.welcome {
 	font-weight: bold;
 	font-size: 2.6rem;
 	height: 50px;
@@ -113,9 +126,11 @@ a.bttn:hover {
 	color: rgba(0,0,0,0);
 }
 
-.welcome--sadnessDotOnline:hover {
-	-webkit-filter: blur(2px);
-	        filter: blur(2px);
+a.welcome:hover {
+	-webkit-filter: blur(5px);
+	        filter: blur(5px);
+	-webkit-filter: blur(var(--blur));
+	        filter: blur(var(--blur));
 }
 
 .welcome span {
@@ -154,10 +169,13 @@ a.bttn:hover {
 	width: 100%;
 	max-width: 133.3333vh;
 	max-height: 100vh;
+	background: white;
 }
 
 .webcam-canvas {
 	width: 100%;
+	-webkit-filter: brightness(140%);
+	        filter: brightness(140%);
 }
 
 .webcam-canvas--one {
@@ -173,4 +191,8 @@ a.bttn:hover {
 
 .off {
 	opacity: 0;
+}
+
+.background--black {
+	background: black;
 }

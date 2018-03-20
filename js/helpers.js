@@ -14,3 +14,17 @@ export function isScrolledIntoView(el) {
 export function scrollToNextPage(node) {
 	return node.scrollIntoView({ behavior: 'smooth' });
 }
+
+export function transitionToWebcam() {
+	const yesPage = document.getElementById('yes');
+	const webcamPage = document.getElementById('webcam-page');
+	window.requestAnimationFrame(() => yesPage.classList.add('off'));
+	setTimeout(() => {
+		scrollToNextPage(webcamPage);
+		setTimeout(() => {
+			window.requestAnimationFrame(() => {
+				webcamPage.classList.remove('off');
+			});
+		}, 400)
+	}, 10000)
+}
