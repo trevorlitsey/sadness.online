@@ -22,7 +22,7 @@ function rouletteRandomLetters(span, int) {
 			window.requestAnimationFrame(() => {
 				span.innerHTML = letters[Math.floor(Math.random() * letters.length)];
 				i++;
-				if (i > 70 + int * 3) {
+				if (i > 75 + int * 5) {
 					span.innerHTML = origLetter;
 					clearInterval(interval);
 					isRunning = false;

@@ -3,10 +3,11 @@ import { scrollToNextPage } from '../helpers';
 
 function handleJumbleClick(e) {
 	e.preventDefault();
-	const jumblePage = document.getElementById(this.dataset.jumble);
+	const jumblePage = document.querySelector(e.target.hash || this.dataset.jumble)
 	const jumbleTarget = jumblePage.querySelector('h1');
-	if (!jumbleTarget) return;
-	jumbler(jumbleTarget);
+	if (jumbleTarget) {
+		jumbler(jumbleTarget);
+	}
 	scrollToNextPage(jumblePage);
 }
 

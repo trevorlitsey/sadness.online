@@ -25,7 +25,7 @@ function sneakInImages(howManyImages) {
 				i++;
 			})
 		}
-	}, 10)
+	}, 20)
 }
 
 export default sneakInImages;

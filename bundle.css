@@ -6,11 +6,11 @@
 	--transition: .2s;
 	--danger: rgb(255, 59, 59);
 	--text-color: #111;
-	--blur: 5px;
 }
 
 html {
 	font-size: calc(1.8vh + 1.8vw);
+	margin: 0;
 }
 
 body {
@@ -20,7 +20,7 @@ body {
 	color: var(--text-color);
 	display: block;
 	scroll-behavior: smooth;
-	background: linear-gradient(rgb(169, 251, 220), rgb(255, 117, 156));
+	background: linear-gradient(#c4fbdc, #f88dc4, #f7af9d, #f7e3af);
 }
 
 .page {
@@ -28,18 +28,19 @@ body {
 	height: 100vh;
 	width: 100vw;
 	padding: 10px;
-	display: flex;
-	flex-direction: column;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr;
+	justify-items: center;
 	overflow: hidden;
 }
 
+.page div {
+	align-self: start;
+}
+
 .images--preload {
-	height: 0;
-	margin-left: -100%;
-	height: 0;
+	display: none;
 }
 
 a {
@@ -50,22 +51,23 @@ a {
 }
 
 h1 {
+	text-align: center;
+	align-self: end;
 	margin: 5% 10%;
 	font-size: 2rem;
-	transition: -webkit-filter .2s;
-	transition: filter .2s;
-	transition: filter .2s, -webkit-filter .2s;
-	transition: -webkit-filter var(--transition);
-	transition: filter var(--transition);
-	transition: filter var(--transition), -webkit-filter var(--transition);
+	transition: -webkit-transform .2s;
+	transition: transform .2s;
+	transition: transform .2s, -webkit-transform .2s;
 }
 
 h1:hover {
 	cursor: pointer;
-	-webkit-filter: blur(5px);
-	        filter: blur(5px);
-	-webkit-filter: blur(var(--blur));
-	        filter: blur(var(--blur));
+	-webkit-transform: scale(1.04);
+	        transform: scale(1.04);
+}
+
+h1.slot-machine {
+		text-align: left;
 }
 
 h2 {
@@ -77,24 +79,37 @@ h2 {
 	color: var(--danger);
 }
 
+h1.blur:hover {
+	-webkit-filter: blur(4px);
+	        filter: blur(4px);
+}
+
+a.blur:hover {
+	-webkit-filter: blur(3px);
+	        filter: blur(3px);
+	-webkit-transform: scale(1);
+	        transform: scale(1);
+}
+
+span {
+	margin: 0;
+	padding: 0;
+}
 
 /* buttons */
 a.bttn {
 	display: inline-block;
 	min-width: 2rem;
-	font-size: .7rem;
+	font-size: 1rem;
 	font-weight: bold;
-	border: 2px solid #111;
-	border: 2px solid var(--text-color);
+	border: 2.6px solid #111;
+	border: 2.6px solid var(--text-color);
 	border-radius: 12px;
 	padding: 2px 12px;
 	margin: 5px;
-	transition: -webkit-filter .2s;
-	transition: filter .2s;
-	transition: filter .2s, -webkit-filter .2s;
-	transition: -webkit-filter var(--transition);
-	transition: filter var(--transition);
-	transition: filter var(--transition), -webkit-filter var(--transition);
+	transition: -webkit-transform .2s;
+	transition: transform .2s;
+	transition: transform .2s, -webkit-transform .2s;
 }
 
 a.bttn.danger {
@@ -105,16 +120,83 @@ a.bttn.danger {
 }
 
 a.bttn:hover {
-	-webkit-filter: blur(2.5px);
-	        filter: blur(2.5px);
+	-webkit-transform: scale(1.08);
+	        transform: scale(1.08);
 }
 
-#error-being-in-fact-the-thing {
-	word-break: break-all;
+.smiley {
+	display: inline-block;
+	font-size: 4rem;
+	margin: 0 20px;
+	transition: -webkit-transform .2s;
+	transition: transform .2s;
+	transition: transform .2s, -webkit-transform .2s;
 }
 
-/* ------ pages ------- */
-/* welcome */
+a.smiley:hover {
+	-webkit-transform: scale(1.08);
+	        transform: scale(1.08);
+}
+
+/* ~~~quiz~~~ */
+.quiz-text {
+	text-align: center;
+	font-size: 1.6rem;
+}
+
+.container--quiz-links {
+	display: flex;
+}
+
+a.quiz-link {
+	background-size: cover;
+	background-position: center;
+	display: inline-block;
+	height: 25vw;
+	width: 25vw;
+	margin: 0 6px;
+	border: 6px solid #eee;
+	box-shadow: 1px 1px 2px rgb(49, 49, 49);
+	transition: -webkit-transform .2s;
+	transition: transform .2s;
+	transition: transform .2s, -webkit-transform .2s;
+}
+
+a.quiz-link:hover {
+	-webkit-transform: scale(1.1);
+	        transform: scale(1.1);
+}
+
+.quiz-text.smiles {
+	align-self: end;
+	width: 100%;
+	font-size: 3.6rem;
+	margin: 4%;
+}
+
+.quiz-text.smiles span {
+	margin: 10px 10px;
+}
+
+.quiz-text.smiles span:hover {
+	cursor: pointer;
+	-webkit-transform: scale(1.4);
+	        transform: scale(1.4);
+}
+
+/* ======= pages ======= */
+
+/* --- center-center pages --- */
+#sadnessDotOnline, #questions, #webcam-page {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	justify-items: center;
+	align-items: center;
+}
+
+/* ------ welcome ------ */
+
 a.welcome {
 	font-weight: bold;
 	font-size: 2.6rem;
@@ -124,13 +206,6 @@ a.welcome {
 	cursor: pointer;
 	transition: all .2s;
 	color: rgba(0,0,0,0);
-}
-
-a.welcome:hover {
-	-webkit-filter: blur(5px);
-	        filter: blur(5px);
-	-webkit-filter: blur(var(--blur));
-	        filter: blur(var(--blur));
 }
 
 .welcome span {
@@ -152,12 +227,23 @@ a.welcome:hover {
 	opacity: .7;
 }
 
-/* yes */
+/* ---- questions ---- */
+
+/* ----- err-lacking-substance ------ */
+#error-lacking-substance {
+	text-align: center;
+}
+
+#error-lacking-substance span {
+	margin-left: -.3rem;
+}
+
+/* ------ yes ------ */
 #yes {
 	transition: all 5s;
 }
 
-/* webcam */
+/* ------ webcam ------ */
 #webcam-page {
 	padding: 0;
 	transition: opacity 6s;
@@ -169,13 +255,13 @@ a.welcome:hover {
 	width: 100%;
 	max-width: 133.3333vh;
 	max-height: 100vh;
-	background: white;
+	align-self: center;
 }
 
 .webcam-canvas {
 	width: 100%;
-	-webkit-filter: brightness(140%);
-	        filter: brightness(140%);
+	-webkit-filter: brightness(100%);
+	        filter: brightness(100%);
 }
 
 .webcam-canvas--one {
@@ -195,4 +281,11 @@ a.welcome:hover {
 
 .background--black {
 	background: black;
+}
+
+
+/* ===== helpers ===== */
+
+.text-center {
+	text-align: center;
 }
