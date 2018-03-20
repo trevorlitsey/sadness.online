@@ -201,13 +201,6 @@ a.welcome {
 }
 
 /* ---- questions ---- */
- {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 1fr;
-	justify-items: center;
-	align-items: center;
-}
 
 /* ----- err-lacking-substance ------ */
 #error-lacking-substance {
