@@ -175,7 +175,7 @@ a.quiz-link {
 	margin: 0 6px;
 	border: 6px solid #eee;
 	border-radius: 2px;
-	box-shadow: 1px 1px 2px #bbb;
+	box-shadow: 0px 0px 8px #bbb;
 	transition: -webkit-transform .2s;
 	transition: transform .2s;
 	transition: transform .2s, -webkit-transform .2s;
