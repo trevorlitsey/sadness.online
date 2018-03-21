@@ -47,7 +47,7 @@ function handleSecondQuestionsClick() {
 		'Signal becomes story.',
 		'Stories become decisions.',
 	]
-	cycleQuestions(h1Node, questions);
+	cycleQuestions(h1Node, questions, 150);
 }
 
 popupTriggers.forEach(trigger => trigger.addEventListener('click', handlePopupClick));
@@ -60,9 +60,9 @@ normalTriggers.forEach(bttn => bttn.addEventListener('click', handleNormalClick)
 window.addEventListener('load', () => setTimeout(() => sneakInImages(149), 4000));
 
 // where to scroll on default
-// setTimeout(() => {
-// 	document.getElementById('webcam-page').scrollIntoView();
-// }, 300)
+setTimeout(() => {
+	// scrollToNextPage(document.getElementById('questions-two'))
+}, 300)
 
 
 

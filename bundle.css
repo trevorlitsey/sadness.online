@@ -104,6 +104,16 @@ span {
 	padding: 0;
 }
 
+.black {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background: black;
+	transition: all 8s;
+}
+
 /* buttons */
 a.bttn {
 	display: inline-block;
@@ -164,7 +174,8 @@ a.quiz-link {
 	width: 25vw;
 	margin: 0 6px;
 	border: 6px solid #eee;
-	box-shadow: 1px 1px 2px rgb(49, 49, 49);
+	border-radius: 2px;
+	box-shadow: 1px 1px 2px #bbb;
 	transition: -webkit-transform .2s;
 	transition: transform .2s;
 	transition: transform .2s, -webkit-transform .2s;
@@ -179,11 +190,14 @@ a.quiz-link:hover {
 	align-self: end;
 	width: 100%;
 	font-size: 3.6rem;
-	margin: 0 4% 4%;
+	margin: 0 4% 4% 0;
 }
 
 .quiz-text.smiles span {
 	margin: 10px 10px;
+	transition: -webkit-transform .2s;
+	transition: transform .2s;
+	transition: transform .2s, -webkit-transform .2s;
 }
 
 .quiz-text.smiles span:hover {
@@ -193,6 +207,7 @@ a.quiz-link:hover {
 }
 
 /* ======= pages ======= */
+
 /* ------ welcome ------ */
 #sadnessDotOnline, #questions, #webcam-page {
 	display: grid;
@@ -211,14 +226,14 @@ a.welcome {
 	cursor: pointer;
 	transition: all .2s;
 	color: rgba(0,0,0,0);
+	transition: font-color .4s; /* these transitions have to live in two different places i do not know why */
 }
 
 .welcome span {
 	margin: 1px;
-	transition-property: font-color, -webkit-transform;
-	transition-property: transform, font-color;
-	transition-property: transform, font-color, -webkit-transform;
-	transition-duration: .4s, .4s;
+	transition: -webkit-transform .4s;
+	transition: transform .4s;
+	transition: transform .4s, -webkit-transform .4s; /* these transitions have to live in two different places i do not know why */
 }
 
 .welcome span.on {
@@ -245,7 +260,7 @@ a.welcome {
 
 /* ------ yes ------ */
 #yes {
-	transition: all 8s;
+	transition: opacity 8s;
 }
 
 /* ------ webcam ------ */

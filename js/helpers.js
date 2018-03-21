@@ -20,6 +20,7 @@ export function transitionToWebcam() {
 	const webcamPage = document.getElementById('webcam-page');
 	window.requestAnimationFrame(() => {
 		yesPage.classList.add('off')
+		document.querySelector('.black').classList.remove('off')
 	});
 	setTimeout(() => {
 		scrollToNextPage(webcamPage);
@@ -31,10 +32,12 @@ export function transitionToWebcam() {
 	}, 10000)
 }
 
+const picked = [];
 function getQuizImgSrc() {
 	const quizImages = [0, 1, 2, 5, 8, 9, 10, 11, 12, 17, 18, 19, 21, 23, 24, 26, 27, 29, 30, 32, 33, 35, 40, 42, 43, 44, 45, 46, 48, 50, 53];
 	const num = quizImages[Math.floor(Math.random() * quizImages.length)];
-
+	if (picked.includes(num)) return getQuizImgSrc();
+	picked.push(num);
 	if (num >= 99 && num <= 145) {
 		return `url('dist/images/${num}.gif')`;
 	} else {
@@ -46,12 +49,11 @@ export function insertQuizImage(linkNode) {
 	linkNode.style.backgroundImage = getQuizImgSrc();
 }
 
-export function cycleQuestions(h1Node, questions) {
+export function cycleQuestions(h1Node, questions, speed = 250) {
 
 	if (h1Node.isRunning) return;
 	h1Node.isStarted = false;
 	h1Node.isRunning = true;
-
 
 	function cycle() {
 		let i = 1;
@@ -67,7 +69,7 @@ export function cycleQuestions(h1Node, questions) {
 				h1Node.innerHTML = questions[i];
 				i === questions.length - 1 ? i = 0 : i++;
 			})
-		}, 250);
+		}, speed);
 	}
 
 	setTimeout(cycle, 500);
