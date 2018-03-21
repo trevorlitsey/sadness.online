@@ -28,15 +28,23 @@ body {
 	height: 100vh;
 	width: 100vw;
 	padding: 10px;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 1fr;
-	justify-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	overflow: hidden;
 }
 
-.page div {
-	align-self: start;
+.wrapper {
+	width: 100%;
+}
+
+.wrapper div {
+	display: flex;
+	justify-content: center;
+}
+
+.buttons {
+	margin: auto;
 }
 
 .images--preload {
@@ -53,7 +61,7 @@ a {
 h1 {
 	text-align: center;
 	align-self: end;
-	margin: 5% 10%;
+	margin: 0 10% 5%;
 	font-size: 2rem;
 	transition: -webkit-transform .2s;
 	transition: transform .2s;
@@ -171,7 +179,7 @@ a.quiz-link:hover {
 	align-self: end;
 	width: 100%;
 	font-size: 3.6rem;
-	margin: 4%;
+	margin: 0 4% 4%;
 }
 
 .quiz-text.smiles span {
@@ -197,7 +205,7 @@ a.quiz-link:hover {
 a.welcome {
 	font-weight: bold;
 	font-size: 2.6rem;
-	height: 50px;
+	line-height: 3rem;
 	display: flex;
 	align-content: flex-end;
 	cursor: pointer;
@@ -237,7 +245,7 @@ a.welcome {
 
 /* ------ yes ------ */
 #yes {
-	transition: all 5s;
+	transition: all 8s;
 }
 
 /* ------ webcam ------ */
@@ -274,11 +282,6 @@ a.welcome {
 .off {
 	opacity: 0;
 }
-
-.background--black {
-	background: black;
-}
-
 
 /* ===== helpers ===== */
 

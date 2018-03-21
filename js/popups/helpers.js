@@ -24,14 +24,20 @@ export function insertRandomPopup(node) {
 }
 
 export function insertPlacedPopup(node, popOptions) {
-	let { width, height, top, bottom, left, right } = popOptions;
-	if (!width) width = 'auto';
-	if (!height) height = 'auto';
-	if (!top) top = 'auto';
-	if (!bottom) bottom = 'auto';
-	if (!left) left = 'auto';
-	if (!right) right = 'auto';
+	const options = {
+		width: 'auto',
+		height: 'auto',
+		top: 'auto',
+		bottom: 'auto',
+		left: 'auto',
+		right: 'auto',
+		...popOptions,
+	}
+
+	const { width, height, top, bottom, left, right } = options;
+
 	const img = `<img src="${getImgSrc()}" style="position: absolute; left: ${left}; right: ${right}; top: ${top}; bottom: ${bottom}; width: ${width}; height: ${height}"></img>`;
+
 	window.requestAnimationFrame(() => {
 		node.innerHTML += img;
 	})
@@ -47,7 +53,7 @@ export function getFullPagePop() {
 	}
 }
 
-export function paintPopups(container, popups, scrollTarget) {
+export function paintPopups(container, popups, delayInterval = 50) {
 	return new Promise((resolve, reject) => {
 		let index = 0;
 		const interval = setInterval(() => {
@@ -57,6 +63,6 @@ export function paintPopups(container, popups, scrollTarget) {
 				resolve(true);
 			}
 			index++;
-		}, 50)
+		}, delayInterval)
 	})
 }

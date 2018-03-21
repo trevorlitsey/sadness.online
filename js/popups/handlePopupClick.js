@@ -6,6 +6,8 @@ import getFullCoverPopups from './getFullCoverPopups';
 import getCircleFramePopups from './getCircleFramePopups';
 import getXFramePopups from './getXFramePopups';
 import getSquigglePopups from './getSquigglePopups';
+import getZigZagPopups from './getZigZagPopups';
+import getRandomPopups from './getRandomPopups';
 
 let lastPattern;
 
@@ -42,9 +44,21 @@ async function handlePopupClick(e) {
 		case 'squiggle':
 			popups = getSquigglePopups();
 			break;
+		case 'zig-zag':
+			popups = getZigZagPopups();
+			break
+		case 'random':
+			popups = getRandomPopups(75);
+			break
 	}
 
+	console.log(popups);
+
+
 	lastPattern = pattern;
+
+	console.log(container);
+
 
 	await paintPopups(container, popups);
 

@@ -18,7 +18,9 @@ export function scrollToNextPage(node) {
 export function transitionToWebcam() {
 	const yesPage = document.getElementById('yes');
 	const webcamPage = document.getElementById('webcam-page');
-	window.requestAnimationFrame(() => yesPage.classList.add('off'));
+	window.requestAnimationFrame(() => {
+		yesPage.classList.add('off')
+	});
 	setTimeout(() => {
 		scrollToNextPage(webcamPage);
 		setTimeout(() => {
@@ -47,17 +49,24 @@ export function insertQuizImage(linkNode) {
 export function cycleQuestions(h1Node, questions) {
 
 	if (h1Node.isRunning) return;
+	h1Node.isStarted = false;
 	h1Node.isRunning = true;
+
 
 	function cycle() {
 		let i = 1;
 		const interval = setInterval(() => {
-			if (!isScrolledIntoView(h1Node)) {
-				h1Node.isRunning = false;
+			let { isStarted, isRunning } = h1Node;
+			if (isStarted && !isScrolledIntoView(h1Node)) {
+				isRunning = false;
 				return clearInterval(interval);
 			}
-			h1Node.innerHTML = questions[i];
-			i === questions.length - 1 ? i = 0 : i++;
+			// we have started
+			if (!isStarted) isStarted = true;
+			requestAnimationFrame(() => {
+				h1Node.innerHTML = questions[i];
+				i === questions.length - 1 ? i = 0 : i++;
+			})
 		}, 250);
 	}
 
