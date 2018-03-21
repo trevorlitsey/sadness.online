@@ -32,45 +32,65 @@ export function transitionToWebcam() {
 	}, 10000)
 }
 
-const picked = [];
-function getQuizImgSrc() {
-	const quizImages = [0, 1, 2, 5, 8, 9, 10, 11, 12, 17, 18, 19, 21, 23, 24, 26, 27, 29, 30, 32, 33, 35, 40, 42, 43, 44, 45, 46, 48, 50, 53];
-	const num = quizImages[Math.floor(Math.random() * quizImages.length)];
-	if (picked.includes(num)) return getQuizImgSrc();
-	picked.push(num);
+export function getImgSrc(num) {
 	if (num >= 99 && num <= 145) {
-		return `url('dist/images/${num}.gif')`;
+		return `dist/images/${num}.gif`;
 	} else {
-		return `url('dist/images/${num}.jpg')`;
+		return `dist/images/${num}.jpg`;
 	}
 }
 
+const picked = [];
 export function insertQuizImage(linkNode) {
-	linkNode.style.backgroundImage = getQuizImgSrc();
+	const quizImages = [0, 1, 2, 5, 8, 9, 10, 11, 12, 17, 18, 19, 21, 23, 24, 26, 27, 29, 30, 32, 33, 35, 40, 42, 43, 44, 45, 46, 48, 50, 53];
+	const num = quizImages[Math.floor(Math.random() * quizImages.length)];
+	if (picked.indexOf(num) > -1) return insertQuizImage(linkNode);
+	picked.push(num);
+	linkNode.style.backgroundImage = `url('${getImgSrc(num)}')`;
 }
 
-export function cycleQuestions(h1Node, questions, speed = 250) {
+export function cycleQuestions(h1Node, questions, speedUp) {
 
 	if (h1Node.isRunning) return;
 	h1Node.isStarted = false;
 	h1Node.isRunning = true;
 
-	function cycle() {
+	function reset(isRunning, interval) {
+		isRunning = false;
+		return clearInterval(interval);
+	}
+
+	function cycle(speed = 250) {
+
 		let i = 1;
+		let count = 0;
 		const interval = setInterval(() => {
 			let { isStarted, isRunning } = h1Node;
 			if (isStarted && !isScrolledIntoView(h1Node)) {
-				isRunning = false;
-				return clearInterval(interval);
+				// stop!
+				return reset(isRunning, interval);
 			}
 			// we have started
-			if (!isStarted) isStarted = true;
+			if (!isStarted && isScrolledIntoView(h1Node)) {
+				isStarted = true;
+			}
+
+			if (!isStarted) return;
 			requestAnimationFrame(() => {
 				h1Node.innerHTML = questions[i];
 				i === questions.length - 1 ? i = 0 : i++;
+
+				if (speedUp && count === 3 && speed > 5) {
+					clearInterval(interval);
+					const newSpeed = speed < 20 ? 5 : speed - 20;
+					h1Node.innerHTML = questions[i];
+					return cycle(newSpeed);
+				}
+
+				count++
 			})
 		}, speed);
 	}
 
-	setTimeout(cycle, 500);
+	setTimeout(cycle, 300);
 }

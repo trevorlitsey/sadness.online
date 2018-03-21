@@ -1,12 +1,6 @@
-const imageContainer = document.querySelector('.images--preload');
+import { getImgSrc } from './helpers';
 
-function getImgSrc(num) {
-	if (num >= 99 && num <= 145) {
-		return `dist/images/${num}.gif`;
-	} else {
-		return `dist/images/${num}.jpg`;
-	}
-}
+const imageContainer = document.querySelector('.images--preload');
 
 function makeImageTag(num) {
 	return `<img src="${getImgSrc(num)}" width="1" height="1">`

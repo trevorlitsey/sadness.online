@@ -28,7 +28,7 @@ body {
 	position: relative;
 	height: 100vh;
 	width: 100vw;
-	padding: 10px;
+	padding: 3%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -61,7 +61,7 @@ a {
 h1 {
 	text-align: center;
 	align-self: end;
-	margin: 0 10% 5%;
+	margin: 0 0 5%;
 	font-size: 2rem;
 	transition: transform .2s;
 }
@@ -72,7 +72,8 @@ h1:hover {
 }
 
 h1.slot-machine {
-		text-align: left;
+	text-align: left;
+	margin: 0 7% 5%;
 }
 
 h2 {
@@ -155,7 +156,9 @@ a.quiz-link {
 	background-position: center;
 	display: inline-block;
 	height: 25vw;
+	max-height: 33vh;
 	width: 25vw;
+	max-width: 33vh;
 	margin: 0 6px;
 	border: 6px solid #eee;
 	border-radius: 2px;
@@ -222,6 +225,7 @@ a.welcome {
 }
 
 /* ---- questions ---- */
+
 
 /* ----- err-lacking-substance ------ */
 #error-lacking-substance {

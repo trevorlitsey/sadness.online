@@ -52,13 +52,7 @@ async function handlePopupClick(e) {
 			break
 	}
 
-	console.log(popups);
-
-
 	lastPattern = pattern;
-
-	console.log(container);
-
 
 	await paintPopups(container, popups);
 

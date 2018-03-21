@@ -47,7 +47,7 @@ function handleSecondQuestionsClick() {
 		'Signal becomes story.',
 		'Stories become decisions.',
 	]
-	cycleQuestions(h1Node, questions, 150);
+	cycleQuestions(h1Node, questions, true);
 }
 
 popupTriggers.forEach(trigger => trigger.addEventListener('click', handlePopupClick));
@@ -57,7 +57,7 @@ firstQuestionsTriggers.forEach(trigger => trigger.addEventListener('click', hand
 secondQuestionsTriggers.forEach(trigger => trigger.addEventListener('click', handleSecondQuestionsClick))
 yesBttns.forEach(bttn => bttn.addEventListener('click', handleYesBttnClick));
 normalTriggers.forEach(bttn => bttn.addEventListener('click', handleNormalClick));
-window.addEventListener('load', () => setTimeout(() => sneakInImages(149), 4000));
+setTimeout(() => sneakInImages(149), 4000);
 
 // where to scroll on default
 setTimeout(() => {
