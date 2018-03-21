@@ -41,8 +41,6 @@ function handleFirstQuestionsClick() {
 }
 
 function handleSecondQuestionsClick() {
-	console.log('second questions click');
-
 	const h1Node = document.getElementById('questions-two').querySelector('h1');
 	const questions = [
 		'Noise becomes signal.',
