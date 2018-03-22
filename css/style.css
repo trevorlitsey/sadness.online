@@ -106,6 +106,7 @@ span {
 	top: 0;
 	background: black;
 	transition: all 8s;
+	opacity: 0;
 }
 
 /* buttons */
