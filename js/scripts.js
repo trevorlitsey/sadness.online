@@ -7,6 +7,7 @@ import { scrollToNextPage, transitionToWebcam, insertQuizImage, cycleQuestions }
 
 import '../css/style.css'
 
+const boop = document.getElementById('boop');
 const popupTriggers = document.querySelectorAll('.trigger--popup');
 const jumbleTriggers = document.querySelectorAll('.trigger--jumble');
 const normalTriggers = document.querySelectorAll('.trigger--normal');
@@ -17,10 +18,15 @@ const yesBttns = document.querySelectorAll('.bttn--yes');
 const webcamCanvasOne = document.querySelector('.webcam-canvas--one');
 const webcamCanvasTwo = document.querySelector('.webcam-canvas--two');
 
+console.log(boop);
+
+
 function handleNormalClick(e) {
 	e.preventDefault();
 	const scrollTarget = document.querySelector(e.target.hash);
-	scrollToNextPage(scrollTarget);
+	if (scrollTarget) {
+		scrollToNextPage(scrollTarget);
+	}
 }
 
 function handleYesBttnClick() {
@@ -50,8 +56,16 @@ function handleSecondQuestionsClick() {
 	cycleQuestions(h1Node, questions, true);
 }
 
+function boopOrNoBoop(e) {
+	if (e.target.dataset.boop === 'true') {
+		boop.currentTime = 0;
+		boop.play();
+	}
+}
+
 popupTriggers.forEach(trigger => trigger.addEventListener('click', handlePopupClick));
 jumbleTriggers.forEach(trigger => trigger.addEventListener('click', handleJumbleClick));
+document.addEventListener('click', boopOrNoBoop);
 quizLinks.forEach(linkNode => insertQuizImage(linkNode));
 firstQuestionsTriggers.forEach(trigger => trigger.addEventListener('click', handleFirstQuestionsClick))
 secondQuestionsTriggers.forEach(trigger => trigger.addEventListener('click', handleSecondQuestionsClick))
