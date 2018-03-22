@@ -16,12 +16,18 @@ export function scrollToNextPage(node) {
 }
 
 export function transitionToWebcam() {
+
 	const yesPage = document.getElementById('yes');
 	const webcamPage = document.getElementById('webcam-page');
+
 	window.requestAnimationFrame(() => {
-		yesPage.classList.add('off')
-		document.querySelector('.black').classList.remove('off')
+		setTimeout(() => {
+			yesPage.classList.add('off')
+			document.querySelector('.black').classList.remove('off')
+		}, 2000);
 	});
+
+	// wait 10 second
 	setTimeout(() => {
 		scrollToNextPage(webcamPage);
 		setTimeout(() => {

@@ -48,7 +48,7 @@ async function handlePopupClick(e) {
 			popups = getZigZagPopups();
 			break
 		case 'random':
-			popups = getRandomPopups(75);
+			popups = getRandomPopups(100);
 			break
 	}
 
@@ -56,9 +56,10 @@ async function handlePopupClick(e) {
 
 	await paintPopups(container, popups);
 
+	if (pattern === 'random') return; // yesClick function takes care of transition
+
 	setTimeout(() => {
 		scrollToNextPage(document.querySelector(scrollTarget));
-		// jumbleTarget && jumbler(document.getElementById(jumbleTarget).querySelector('h1'));
 	}, 1600)
 }
 
