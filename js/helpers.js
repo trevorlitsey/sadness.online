@@ -23,7 +23,7 @@ export function transitionToWebcam() {
 	window.requestAnimationFrame(() => {
 		setTimeout(() => {
 			yesPage.classList.add('off')
-			document.querySelector('.black').classList.remove('off')
+			document.querySelector('.black').style.opacity = 1;
 		}, 2000);
 	});
 
