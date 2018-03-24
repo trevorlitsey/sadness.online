@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>__ i hope this feeling lasts</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="word">A</div>
+		<div class="word">fair</div>
+		<div class="word">amount</div>
+		<div class="word">of</div>
+		<div class="word">failures</div>
+	</div>
+
+
+	<style>
+		body {
+			font-family: 'Times New Roman', Times, serif;
+			margin: 0;
+			padding: 4%;
+			background: #000;
+			color: #eee;
+			font-size: calc(3.4vh + 3.4vw);
+			height: 100vh;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+			text-align: center;
+		}
+
+		.wrapper {
+			width: 100%;
+			text-transform: uppercase;
+			margin-bottom: 4%;
+		}
+
+		.word {
+			display: inline-block;
+			margin: 1.4%;
+			white-space: nowrap;
+		}
+
+		span {
+			display: inline-block;
+			transition: color 2s;
+		}
+
+		.word span.fall {
+			color: black;
+			transition: all 5.4s cubic-bezier(.89, -0.02, .6, .51), font-size 0s;
+		}
+
+		.space {
+			width: 2rem;
+		}
+	</style>
+
+	<script src="./iphoneFix.js"></script>
+	<script>
+
+		const words = document.querySelectorAll('.word');
+		words.forEach(word => word.innerHTML = sparanwrap(word))
+		const spans = document.querySelectorAll('span');
+
+		function sparanwrap(node) {
+			return node.innerHTML
+				.split('')
+				.map(letter => {
+					if (letter === ' ') {
+						return `<span class="space">${letter}</span>`
+					} else {
+						return `<span>${letter}</span>`
+					}
+				})
+				.join('');
+		}
+
+		function transitionLetter(span) {
+			span.classList.add('fall');
+			span.style.transform = `translateY(60vh) rotate(${Math.round(Math.random() * 80 - 40)}deg)`;
+			span.isTransitioning = true;
+			span.addEventListener('transitionend', resetLetter);
+		}
+
+		function resetLetter() {
+			setTimeout(() => {
+				this.classList.remove('fall');
+				this.style.transform = '';
+				this.isTransitioning = false;
+			}, 1000)
+		}
+
+		const interval = setInterval(() => {
+			const num = Math.floor(Math.random() * spans.length);
+			const span = spans[num];
+			if (span.isTransitioning) return;
+			transitionLetter(span); // do the thing
+		}, 600)
+
+		fixHeightForIphoneScreen(document.body);
+
+	</script>
+
+
+</body>
+
+</html>
