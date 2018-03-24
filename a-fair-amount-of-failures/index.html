@@ -17,7 +17,6 @@
 		<div class="word">failures</div>
 	</div>
 
-
 	<style>
 		body {
 			font-family: 'Times New Roman', Times, serif;
@@ -25,7 +24,7 @@
 			padding: 4%;
 			background: #000;
 			color: #eee;
-			font-size: calc(2vh + 4vw);
+			font-size: calc(2vh + 3vw + 4px);
 			height: 100vh;
 			display: flex;
 			flex-wrap: wrap;
@@ -43,7 +42,7 @@
 
 		.word {
 			display: inline-block;
-			margin: 1.4%;
+			margin: 3% 1.4%;
 			white-space: nowrap;
 		}
 
@@ -54,7 +53,7 @@
 
 		.word span.fall {
 			color: black;
-			transition: all 5.4s ease-in, font-size 0s;
+			transition: all 5.4s cubic-bezier(.78, .05, .97, .92), font-size 0s;
 		}
 
 		.space {
@@ -72,13 +71,7 @@
 		function sparanwrap(node) {
 			return node.innerHTML
 				.split('')
-				.map(letter => {
-					if (letter === ' ') {
-						return `<span class="space">${letter}</span>`
-					} else {
-						return `<span>${letter}</span>`
-					}
-				})
+				.map(letter => `<span>${letter}</span>`)
 				.join('');
 		}
 
@@ -86,7 +79,6 @@
 			span.classList.add('fall');
 			span.style.transform = `translateY(60vh) rotate(${Math.round(Math.random() * 80 - 40)}deg)`;
 			span.isTransitioning = true;
-			span.addEventListener('transitionend', resetLetter);
 		}
 
 		function resetLetter() {
@@ -102,6 +94,7 @@
 			const span = spans[num];
 			if (span.isTransitioning) return;
 			transitionLetter(span); // do the thing
+			span.addEventListener('transitionend', resetLetter);
 		}, 600)
 
 		fixHeightForIphoneScreen(document.body);
