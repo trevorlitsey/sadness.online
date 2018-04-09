@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,600');
+@import '~remodal/dist/remodal.css';
+@import '~remodal/dist/remodal-default-theme.css';
 
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
+$black: #111;
+$danger: rgb(255, 59, 59);
+$white: #eee;
+
 :root {
 	--transition: .2s;
-	--danger: rgb(255, 59, 59);
+	--danger: $danger;
 	--text-color: #111;
 }
 
@@ -190,6 +196,31 @@ a.quiz-link:hover {
 .quiz-text.smiles span:hover {
 	cursor: pointer;
 	transform: scale(1.4);
+}
+
+/* remodal */
+
+div.remodal.error {
+	background: rgb(255, 102, 102);
+}
+
+button.remodal-cancel {
+	padding: 8px;
+	background: white;
+	color: var(--text-color);
+	border: 2.6px solid var(--text-color);
+	&:hover {
+		background: darken(white, 10%);
+	}
+}
+
+button.remodal-confirm {
+	padding: 8px;
+	background: var(--text-color);
+	color: $white;
+		&:hover {
+		background: lighten($black, 10%);
+	}
 }
 
 /* ======= pages ======= */

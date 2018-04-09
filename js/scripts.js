@@ -7,6 +7,8 @@ import './pages/SadnessDotOnline';
 import { scrollToNextPage, transitionToWebcam, insertQuizImage, cycleQuestions } from './helpers';
 import '../styles/style.scss'
 
+import 'remodal/dist/remodal.min.js';
+
 const boop = document.getElementById('boop');
 const popupTriggers = document.querySelectorAll('.trigger--popup');
 const jumbleTriggers = document.querySelectorAll('.trigger--jumble');

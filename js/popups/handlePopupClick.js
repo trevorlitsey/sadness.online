@@ -14,6 +14,9 @@ let lastPattern;
 async function handlePopupClick(e) {
 	e.preventDefault();
 
+	console.log('popup');
+
+
 	// abort if trigger link not clicked
 	const { name } = e.target;
 	if (name && name === 'cancel') scrollToNextPage(document.querySelector(e.target.hash));
