@@ -31,7 +31,5 @@
     "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1"
   },
-  "dependencies": {
-    "remodal": "^1.1.1"
-  }
+  "dependencies": {}
 }

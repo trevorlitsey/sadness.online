@@ -15,10 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>sadness.online</title>
-	<link rel="stylesheet" href="./node_modules/remodal/dist/remodal.css">
-	<link rel="stylesheet" href="./node_modules/remodal/dist/remodal-default-theme.css">
-
-	<!-- <link rel="stylesheet" href="./bundle.css"> -->
+	<link rel="stylesheet" href="./bundle.css">
 </head>
 
 <body>
@@ -211,7 +208,7 @@
 			<div class="wrapper">
 				<h1 class="text-center">Noise becomes signal.</h1>
 				<div>
-					<a href="#error-busy" class="bttn" name="trigger" data-boop="true">Cancel</a>
+					<a data-remodal-target="error-busy" class="bttn" name="trigger" data-boop="true">Cancel</a>
 				</div>
 			</div>
 		</div>
@@ -222,7 +219,7 @@
 		<div class="wrapper">
 			<h1>ERROR_BUSY</h1>
 			<div>
-				<a data-remodal-target="error-busy" class="bttn danger" data-boop="true">Really?</a>
+				<a class="bttn danger" data-boop="true">Really?</a>
 			</div>
 		</div>
 	</div>
@@ -278,27 +275,22 @@
 	</div>
 
 	<!-- /////////// modals //////////// -->
-	<div class="error trigger--popup remodal" data-remodal-id="error-busy" data-pattern="x-frame">
-		<button data-remodal-action="close" class="remodal-close"></button>
-		<h1>ERROR_BUSY</h1>
-		<br>
-		<a data-remodal-target="no-oh" name="trigger">
-			<button data-remodal-action="confirm" name="trigger" class="remodal-confirm">Really?</button>
-		</a>
+
+	<div class="modal" modal-id="error-busy">
+		<div class="card">
+			<button class="modal-close">X</button>
+			<h1>ERROR_BUSY</h1>
+			<div class="buttons">
+				<button>Really?</button>
+			</div>
+		</div>
 	</div>
 
-	<div class="remodal" data-remodal-id="no-oh">
-		<button data-remodal-action="close" class="remodal-close"></button>
-		<h1>No.</h1>
-		<br>
-		<button data-remodal-action="cancel" class="remodal-cancel">Oh.</button>
-	</div>
 	<!-- ////////////// end modals //////////// -->
 
 	<div class="images--preload"></div>
 
 	<audio id="boop" src="./dist/audio/boop.mp3"></audio>
-	<script src="./node_modules/remodal/dist/remodal.min.js"></script>
 	<script src="./bundle.js"></script>
 
 </body>

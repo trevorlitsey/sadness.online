@@ -223,6 +223,64 @@ button.remodal-confirm {
 	}
 }
 
+/* custom modal */
+
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(24, 24, 24, .9);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	& > .card {
+		background: rgb(255, 98, 98);
+		border: 1px solid black;
+		width: 50%;
+		height: 40%;
+		display: grid;
+		grid-template-rows: 50% 50%;
+
+		& > .modal-close {
+			position: absolute;
+			width: 10px;
+			height: 10px;
+			top: 1;
+			left: 1;
+			background: none;
+			border: none;
+			margin: 10px;
+			cursor: pointer;
+		}
+
+		& > .buttons {
+
+			& > button {
+				font-size: .8rem;
+				padding: 20px;
+				background: $black;
+				color: white;
+				border: none;
+				margin: 10px;
+				cursor: pointer;
+				transition: .2s;
+
+				&:hover {
+					transform: scale(1.04);
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
 /* ======= pages ======= */
 
 /* ------ welcome ------ */

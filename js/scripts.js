@@ -3,7 +3,6 @@ import sneakInImages from './sneakInImages';
 import renderWebcam from './renderWebcam';
 import handlePopupClick from './popups/handlePopupClick';
 import handleJumbleClick from './jumbler/handleJumbleClick'
-import './pages/SadnessDotOnline';
 import { scrollToNextPage, transitionToWebcam, insertQuizImage, cycleQuestions } from './helpers';
 import '../styles/style.scss'
 
