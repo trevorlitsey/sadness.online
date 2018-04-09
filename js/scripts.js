@@ -18,9 +18,6 @@ const yesBttns = document.querySelectorAll('.bttn--yes');
 const webcamCanvasOne = document.querySelector('.webcam-canvas--one');
 const webcamCanvasTwo = document.querySelector('.webcam-canvas--two');
 
-console.log(boop);
-
-
 function handleNormalClick(e) {
 	e.preventDefault();
 	const scrollTarget = document.querySelector(e.target.hash);

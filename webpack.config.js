@@ -21,6 +21,7 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use: ExtractTextPlugin.extract({
+					disable: process.env === 'development' && true,
 					fallback: 'style-loader',
 					use: [
 						{

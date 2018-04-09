@@ -4,11 +4,13 @@ import { scrollToNextPage } from '../helpers';
 function handleJumbleClick(e) {
 	e.preventDefault();
 	const jumblePage = document.querySelector(e.target.hash || this.dataset.jumble)
-	const jumbleTarget = jumblePage.querySelector('h1');
-	if (jumbleTarget) {
-		jumbler(jumbleTarget);
+	if (jumblePage) {
+		const jumbleTarget = jumblePage.querySelector('h1');
+		if (jumbleTarget) {
+			jumbler(jumbleTarget);
+		}
+		scrollToNextPage(jumblePage);
 	}
-	scrollToNextPage(jumblePage);
 }
 
 export default handleJumbleClick;
