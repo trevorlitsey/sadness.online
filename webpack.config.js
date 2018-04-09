@@ -1,8 +1,25 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const path = require('path');
+
+const extractCssPlugin = ExtractTextPlugin.extract({
+	disable: process.env.NODE_ENV === 'development' && true,
+	fallback: 'style-loader',
+	use: [
+		{
+			loader: 'css-loader',
+			options: {
+				importLoaders: 1,
+				minimize: true,
+			}
+		},
+		{
+			loader: 'postcss-loader'
+		}
+	]
+})
 
 module.exports = {
 	entry: './js/scripts.js',
@@ -20,22 +37,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.css$/,
-				use: ExtractTextPlugin.extract({
-					disable: process.env === 'development' && true,
-					fallback: 'style-loader',
-					use: [
-						{
-							loader: 'css-loader',
-							options: {
-								importLoaders: 1,
-								minimize: true,
-							}
-						},
-						{
-							loader: 'postcss-loader'
-						}
-					]
-				})
+				use: process.env.NODE_ENV === 'development' ? ['style-loader', 'css-loader'] : extractCssPlugin,
 			}
 		]
 	},

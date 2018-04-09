@@ -8,7 +8,7 @@
     "start:darwin:linux": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser 'Google Chrome'",
     "build": "webpack",
     "watch": "webpack --watch",
-    "dev": "webpack-dev-server --hot"
+    "dev": "NODE_ENV=development webpack-dev-server --hot"
   },
   "author": "",
   "license": "ISC",

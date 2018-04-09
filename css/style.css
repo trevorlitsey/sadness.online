@@ -225,8 +225,44 @@ a.welcome {
 	opacity: .7;
 }
 
-/* ---- questions ---- */
+.background {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	display: flex;
+	flex-wrap: wrap;
+	/* grid-template-columns: repeat(30, 1fr);
+	grid-template-rows: repeat(50, 1fr); */
+	cursor:'☹️', auto;
+}
 
+.background div {
+	height: 5px;
+}
+
+.background:hover {
+}
+
+.tick {
+	transition: rotate 3s;
+	transform: translateY(-50px);
+}
+
+.tick:before {
+	content: '☹️'
+}
+
+.tick.spin {
+	transform: rotate(360deg);
+}
+
+.make-transparent {
+	opacity: 0;
+}
+
+/* ---- questions ---- */
 
 /* ----- err-lacking-substance ------ */
 #error-lacking-substance {
