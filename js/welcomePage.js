@@ -26,10 +26,12 @@ function wave(letters) {
 		if (!isAnyPartOfElementInViewport(sadnessDotOnline)) return reset(letters);
 		window.requestAnimationFrame(() => {
 			const letter = letters[i];
-			letter.classList.remove('up');
-			letter.classList.add('up');
-			letter.addEventListener('transitionend', remove);
-			i++
+			if (letter) {
+				letter.classList.remove('up');
+				letter.classList.add('up');
+				letter.addEventListener('transitionend', remove);
+				i++
+			}
 		})
 		if (i === letters.length) i = 0;
 	}, 120)

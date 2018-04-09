@@ -5,15 +5,14 @@ import handlePopupClick from './popups/handlePopupClick';
 import handleJumbleClick from './jumbler/handleJumbleClick'
 import './pages/SadnessDotOnline';
 import { scrollToNextPage, transitionToWebcam, insertQuizImage, cycleQuestions } from './helpers';
-import '../css/style.css'
+import '../styles/style.scss'
 
 const boop = document.getElementById('boop');
 const popupTriggers = document.querySelectorAll('.trigger--popup');
 const jumbleTriggers = document.querySelectorAll('.trigger--jumble');
 const normalTriggers = document.querySelectorAll('.trigger--normal');
 const quizLinks = document.querySelectorAll('.quiz-link');
-const firstQuestionsTriggers = document.querySelector('#smilies').querySelectorAll('a');
-const secondQuestionsTriggers = document.querySelector('#questions-one').querySelectorAll('a');
+const QuestionsTriggers = document.querySelector('#this-seems-impracticle').querySelectorAll('a');
 const yesBttns = document.querySelectorAll('.bttn--yes');
 const webcamCanvasOne = document.querySelector('.webcam-canvas--one');
 const webcamCanvasTwo = document.querySelector('.webcam-canvas--two');
@@ -31,20 +30,8 @@ function handleYesBttnClick() {
 	transitionToWebcam();
 }
 
-function handleFirstQuestionsClick() {
-	const h1Node = document.getElementById('questions-one').querySelector('h1');
-	const questions = [
-		'Do you panic easily?',
-		'Do you often feel blue?',
-		'Do you have a sharp tongue?',
-		'Do you get chores done right away?',
-		'Do you believe in the importance of art?',
-	]
-	cycleQuestions(h1Node, questions);
-}
-
-function handleSecondQuestionsClick() {
-	const h1Node = document.getElementById('questions-two').querySelector('h1');
+function handleQuestionsClick() {
+	const h1Node = document.getElementById('questions').querySelector('h1');
 	const questions = [
 		'Noise becomes signal.',
 		'Signal becomes story.',
@@ -64,8 +51,7 @@ popupTriggers.forEach(trigger => trigger.addEventListener('click', handlePopupCl
 jumbleTriggers.forEach(trigger => trigger.addEventListener('click', handleJumbleClick));
 document.addEventListener('click', boopOrNoBoop);
 quizLinks.forEach(linkNode => insertQuizImage(linkNode));
-firstQuestionsTriggers.forEach(trigger => trigger.addEventListener('click', handleFirstQuestionsClick))
-secondQuestionsTriggers.forEach(trigger => trigger.addEventListener('click', handleSecondQuestionsClick))
+QuestionsTriggers.forEach(trigger => trigger.addEventListener('click', handleQuestionsClick))
 yesBttns.forEach(bttn => bttn.addEventListener('click', handleYesBttnClick));
 normalTriggers.forEach(bttn => bttn.addEventListener('click', handleNormalClick));
 setTimeout(() => sneakInImages(149), 4000);
@@ -74,8 +60,3 @@ setTimeout(() => sneakInImages(149), 4000);
 setTimeout(() => {
 	// scrollToNextPage(document.getElementById('yes'))
 }, 300)
-
-
-
-
-

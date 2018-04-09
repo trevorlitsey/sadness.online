@@ -9,7 +9,6 @@ function disappear(tick) {
 	tick.classList.add('spin');
 
 	setTimeout(() => {
-		console.log('remove');
 		tick.remove();
 	}, 5000);
 }

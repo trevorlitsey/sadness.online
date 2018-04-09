@@ -27,7 +27,7 @@ module.exports = {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname),
 	},
-	mode: 'development',
+	mode: process.env.NODE_ENV,
 	devServer: {
 		contentBase: path.join(__dirname),
 		compress: true,
@@ -38,6 +38,10 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use: process.env.NODE_ENV === 'development' ? ['style-loader', 'css-loader'] : extractCssPlugin,
+			},
+			{
+				test: /\.scss$/,
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 			}
 		]
 	},

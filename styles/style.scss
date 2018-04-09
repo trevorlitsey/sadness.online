@@ -105,8 +105,12 @@ span {
 	bottom: 0;
 	top: 0;
 	background: black;
-	transition: all 8s;
 	opacity: 0;
+}
+
+.black.on {
+	transition: all 8s;
+	opacity: 1;
 }
 
 /* buttons */
@@ -233,9 +237,6 @@ a.welcome {
 	right: 0;
 	display: flex;
 	flex-wrap: wrap;
-	/* grid-template-columns: repeat(30, 1fr);
-	grid-template-rows: repeat(50, 1fr); */
-	cursor:'☹️', auto;
 }
 
 .background div {
@@ -263,6 +264,26 @@ a.welcome {
 }
 
 /* ---- questions ---- */
+
+.horizontal-scroll {
+	display: block;
+  width: 100vh;
+	height: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: rotate(-90deg) translateY(-100vh);
+  transform-origin: right top;
+  & > .page {
+		margin: 0;
+		width: 100vh;
+		height: 100vw;
+    transform: rotate(90deg);
+    // transform-origin: right top;
+	}
+	&::-webkit-scrollbar { 
+    display: none;  // Safari and Chrome
+}
+}
 
 /* ----- err-lacking-substance ------ */
 #error-lacking-substance {

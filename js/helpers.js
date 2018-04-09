@@ -22,8 +22,8 @@ export function transitionToWebcam() {
 
 	window.requestAnimationFrame(() => {
 		setTimeout(() => {
+			document.querySelector('.black').classList.add('on');
 			yesPage.classList.add('off')
-			document.querySelector('.black').style.opacity = 1;
 		}, 2000);
 	});
 
