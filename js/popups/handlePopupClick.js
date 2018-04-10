@@ -14,18 +14,15 @@ let lastPattern;
 async function handlePopupClick(e) {
 	e.preventDefault();
 
-	console.log('popup');
-
-
 	// abort if trigger link not clicked
 	const { name } = e.target;
 	if (name && name === 'cancel') scrollToNextPage(document.querySelector(e.target.hash));
-	if (name !== 'trigger') return;
+	if (name !== 'trigger') return; // if name does not equal trigger it is not an action we care about
 
 	const container = this;
 	const scrollTarget = e.target.hash;
+	const modalId = container.dataset.modal;
 	const pattern = container.dataset.pattern;
-	const jumbleTarget = container.dataset.jumble;
 
 	if (lastPattern === pattern) return;
 
@@ -57,12 +54,21 @@ async function handlePopupClick(e) {
 
 	lastPattern = pattern;
 
+	// what's the container when it's a modal??
 	await paintPopups(container, popups);
 
 	if (pattern === 'random') return; // yesClick function takes care of transition
 
 	setTimeout(() => {
-		scrollToNextPage(document.querySelector(scrollTarget));
+		if (scrollTarget) {
+			scrollToNextPage(document.querySelector(scrollTarget));
+		} else if (modalId) {
+			const modal = document.getElementById(modalId);
+			console.log(modal);
+
+			modal.classList.remove('off');
+			modal.classList.add('on');
+		}
 	}, 1600)
 }
 

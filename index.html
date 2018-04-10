@@ -81,6 +81,7 @@
 		</div>
 	</div>
 
+	<!-- horizontal scroll -->
 	<section class="horizontal-scroll">
 
 		<div id="continue" class="page trigger--normal">
@@ -204,34 +205,17 @@
 			</div>
 		</div>
 
-		<div id="questions" class="page trigger--popup" data-pattern="circle-frame">
+		<div id="questions" class="page trigger--popup" data-pattern="circle-frame" data-modal="error-busy">
 			<div class="wrapper">
 				<h1 class="text-center">Noise becomes signal.</h1>
 				<div>
-					<a data-remodal-target="error-busy" class="bttn" name="trigger" data-boop="true">Cancel</a>
+					<a class="bttn" name="trigger" data-boop="true">Cancel</a>
 				</div>
 			</div>
 		</div>
 
 	</section>
 	<!-- end horizontal scroll -->
-	<div id="error-busy" class="page error">
-		<div class="wrapper">
-			<h1>ERROR_BUSY</h1>
-			<div>
-				<a class="bttn danger" data-boop="true">Really?</a>
-			</div>
-		</div>
-	</div>
-
-	<div id="no-oh" class="page trigger--normal">
-		<div class="wrapper">
-			<h1>no</h1>
-			<div>
-				<a href="#error-lacking-substance" class="bttn" data-boop="true">oh.</a>
-			</div>
-		</div>
-	</div>
 
 	<div id="error-lacking-substance" class="page error trigger--popup" data-pattern="zig-zag">
 		<div class="wrapper">
@@ -276,12 +260,22 @@
 
 	<!-- /////////// modals //////////// -->
 
-	<div class="modal" modal-id="error-busy">
-		<div class="card">
-			<button class="modal-close">X</button>
+	<div id="error-busy" class="modal trigger--popup" data-pattern="x-frame" data-modal="no-oh">
+		<div class="card error">
+			<span class="modal-close">X</span>
 			<h1>ERROR_BUSY</h1>
 			<div class="buttons">
-				<button>Really?</button>
+				<button class="no" name="trigger">Really?</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="no-oh" class="modal trigger--popup">
+		<div class="card error">
+			<span class="modal-close">X</span>
+			<h1>no</h1>
+			<div class="buttons">
+				<button class="yes">oh.</button>
 			</div>
 		</div>
 	</div>

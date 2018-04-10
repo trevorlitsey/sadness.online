@@ -116,3 +116,10 @@ export function debounce(func, wait, immediate) {
 		if (callNow) func.apply(context, args);
 	};
 };
+
+export function boopOrNoBoop(e) {
+	if (e.target.dataset.boop === 'true') {
+		boop.currentTime = 0;
+		boop.play();
+	}
+}
