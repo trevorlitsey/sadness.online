@@ -136,5 +136,6 @@ export function deleteAllPages() {
 	document.querySelectorAll('.page').forEach(page => {
 		page.remove();
 	})
-	document.querySelector('.black').classList.add('on');
+	document.querySelectorAll('[data-delete="true"]').forEach(node => node.remove());
+	document.body.style.background = 'black';
 }

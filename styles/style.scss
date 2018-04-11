@@ -32,7 +32,7 @@ body {
 	position: relative;
 	height: 100vh;
 	width: 100vw;
-	padding: 3%;
+	padding: 0 3%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -88,6 +88,10 @@ h2 {
 	color: var(--danger);
 }
 
+h1.blur {
+	transition: filter .2s;
+}
+
 h1.blur:hover {
 	filter: blur(4px);
 }
@@ -100,21 +104,6 @@ a.blur:hover {
 span {
 	margin: 0;
 	padding: 0;
-}
-
-.black {
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	background: black;
-	opacity: 0;
-}
-
-.black.on {
-	transition: all 8s;
-	opacity: 1;
 }
 
 /* buttons */
@@ -136,6 +125,7 @@ a.bttn.danger {
 }
 
 a.bttn:hover {
+	cursor: pointer;
 	transform: scale(1.08);
 }
 
@@ -200,7 +190,7 @@ a.quiz-link:hover {
 /* modal */
 
 .modal {
-	padding: 20px;
+	padding: 40px;
 	transform: scale(.1);
 	opacity: 0;
 	position: fixed;
@@ -213,7 +203,6 @@ a.quiz-link:hover {
 	justify-content: center;
 	align-items: center;
 	transition: all .4s;
-	z-index: 500;
 	
 	&.on {
 		display: flex;
@@ -235,9 +224,9 @@ a.quiz-link:hover {
 
 	// card
 	& > .card {
+		position: relative;
 		margin: auto;
 		padding: 20px;
-		border: 1px solid black;
 		min-width: 50%;
 		min-height: 40%;
 		display: grid;
@@ -256,9 +245,11 @@ a.quiz-link:hover {
 
 		// close btn
 		& > .modal-close {
-			font-weight: bold;
-			font-size: .4rem;
 			position: absolute;
+			top: 0px;
+			left: 0px;
+			font-weight: 900;
+			font-size: .4rem;
 			width: 10px;
 			height: 10px;
 			margin: 10px;
@@ -279,11 +270,12 @@ a.quiz-link:hover {
 				// no bttn
 				&.no {
 					background: $black;
+					border: 2px solid lighten($black, 10%);
 					color: white;
 				}
 
 				&.yes {
-					border: 2px solid $black;
+					border: 2px solid darken(white, 10%);
 					background: white;
 					color: $black;
 				}
@@ -337,37 +329,6 @@ a.welcome {
 	opacity: .7;
 }
 
-.background {
-	position: absolute;
-	left: 0;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.background div {
-	height: 5px;
-}
-
-.tick {
-	transition: rotate 3s;
-	transform: translateY(-50px);
-}
-
-.tick:before {
-	content: '☹️'
-}
-
-.tick.spin {
-	transform: rotate(360deg);
-}
-
-.make-transparent {
-	opacity: 0;
-}
-
 /* ---- questions ---- */
 
 .horizontal-scroll {
@@ -390,13 +351,6 @@ a.welcome {
 }
 }
 
-/* ----- err-lacking-substance ------ */
-
-/* ------ yes ------ */
-#yes {
-	transition: opacity 8s;
-}
-
 /* ------ webcam ------ */
 #webcam-page {
 	padding: 0;
@@ -413,7 +367,7 @@ a.welcome {
 
 .webcam-canvas {
 	width: 100%;
-	filter: brightness(100%);
+	filter: brightness(90%);
 }
 
 .webcam-canvas--one {
@@ -431,4 +385,8 @@ a.welcome {
 
 .text-center {
 	text-align: center;
+}
+
+.make-transparent {
+	opacity: 0;
 }

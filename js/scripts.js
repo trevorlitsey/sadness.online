@@ -69,5 +69,5 @@ setTimeout(() => sneakInImages(149), 4000);
 
 // where to scroll on default
 setTimeout(() => {
-	scrollToNextPage(document.getElementById('questions'))
+	// scrollToNextPage(document.getElementById('questions'))
 }, 300)
