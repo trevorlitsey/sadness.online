@@ -200,6 +200,7 @@ a.quiz-link:hover {
 /* modal */
 
 .modal {
+	padding: 20px;
 	transform: scale(.1);
 	opacity: 0;
 	position: fixed;
@@ -219,6 +220,12 @@ a.quiz-link:hover {
 		transform: scale(1);
 		opacity: 1;
 	}
+
+	// final transition
+	&.on.final-off {
+		transition: all 6s;
+		opacity: 0;
+	}
 	
 	&.off {
 		opacity: 0;
@@ -229,11 +236,18 @@ a.quiz-link:hover {
 	// card
 	& > .card {
 		margin: auto;
+		padding: 20px;
 		border: 1px solid black;
-		width: 50%;
-		height: 40%;
+		min-width: 50%;
+		min-height: 40%;
 		display: grid;
 		grid-template-rows: 50% 50%;
+		background: #c4fbdc;
+
+		// error-lacking-substance
+		& h1 > span {
+			display: inline-block;
+		}
 
 		// error
 		&.error {
@@ -242,6 +256,7 @@ a.quiz-link:hover {
 
 		// close btn
 		& > .modal-close {
+			font-weight: bold;
 			font-size: .4rem;
 			position: absolute;
 			width: 10px;
@@ -255,7 +270,7 @@ a.quiz-link:hover {
 
 			& > button {
 				font-size: .8rem;
-				padding: 20px;
+				padding: 16px 22px;
 				border: none;
 				margin: 10px;
 				cursor: pointer;
@@ -268,10 +283,11 @@ a.quiz-link:hover {
 				}
 
 				&.yes {
-					background: $white;
+					border: 2px solid $black;
+					background: white;
 					color: $black;
 				}
-
+				
 				&:hover {
 					transform: scale(1.04);
 				}
@@ -378,13 +394,6 @@ a.welcome {
 }
 
 /* ----- err-lacking-substance ------ */
-#error-lacking-substance {
-	text-align: center;
-}
-
-#error-lacking-substance span {
-	margin-left: -.3rem;
-}
 
 /* ------ yes ------ */
 #yes {
@@ -419,10 +428,6 @@ a.welcome {
 	left: 0;
 	top: 0;
 	opacity: .5;
-}
-
-.off {
-	opacity: 0;
 }
 
 /* ===== helpers ===== */

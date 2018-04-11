@@ -205,7 +205,7 @@
 			</div>
 		</div>
 
-		<div id="questions" class="page trigger--popup" data-pattern="circle-frame" data-modal="error-busy">
+		<div id="questions" class="page trigger--popup" data-pattern="circle-frame" data-modal-target="error-busy">
 			<div class="wrapper">
 				<h1 class="text-center">Noise becomes signal.</h1>
 				<div>
@@ -217,65 +217,39 @@
 	</section>
 	<!-- end horizontal scroll -->
 
-	<div id="error-lacking-substance" class="page error trigger--popup" data-pattern="zig-zag">
-		<div class="wrapper">
+	<!-- /////////// begin modals //////////// -->
+
+	<div id="error-busy" class="modal trigger--popup" data-pattern="x-frame" data-modal-target="no-oh">
+		<div class="card error">
+			<span class="modal-close">X</span>
+			<h1>ERROR_BUSY</h1>
+			<div class="buttons">
+				<button class="no" name="trigger" data-delete-all-pages="true">Really?</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="no-oh" class="modal trigger--popup" data-pattern="squiggle" data-modal-target="error-lacking-substance">
+		<div class="card">
+			<span class="modal-close">X</span>
+			<h1>no</h1>
+			<div class="buttons">
+				<button class="yes" name="trigger">oh.</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="error-lacking-substance" class="modal trigger--popup" data-pattern="random" data-is-final="true">
+		<div class="card error">
+			<span class="modal-close">X</span>
 			<h1>
 				<span>ERROR_</span>
 				<span>LACKING_</span>
 				<span>SUBSTANCE</span>
 			</h1>
-			<div>
-				<a href="#this-seems-impracticle" class="bttn danger" name="trigger" data-boop="true">Yes</a>
-				<a href="#this-seems-impracticle" class="bttn danger" name="trigger" data-boop="true">Yes</a>
-			</div>
-		</div>
-	</div>
-
-	<div id="feelings-are-never-an-abstraction" class="page trigger--popup" data-pattern="full-cover">
-		<div class="wrapper">
-			<h1>Feelings are never an abstraction.</h1>
-			<div>
-				<a href="#yes" class="bttn" name="trigger" data-boop="true">Yes</a>
-				<a href="#yes" class="bttn" name="trigger" data-boop="true">Yes</a>
-			</div>
-		</div>
-	</div>
-
-	<div id="yes" class="page trigger--popup" data-pattern="random">
-		<div class="wrapper">
-			<h1>Yes</h1>
-			<div>
-				<a href="#yes" class="bttn bttn--yes" name="trigger" data-boop="true">Yes</a>
-				<a href="#yes" class="bttn bttn--yes" name="trigger" data-boop="true">Yes</a>
-			</div>
-		</div>
-	</div>
-
-	<div id="webcam-page" class="page off">
-		<div class="wrapper--webcam">
-			<canvas class="webcam-canvas webcam-canvas--one" data-boop="true"></canvas>
-			<canvas class="webcam-canvas webcam-canvas--two" data-boop="true"></canvas>
-		</div>
-	</div>
-
-	<!-- /////////// modals //////////// -->
-
-	<div id="error-busy" class="modal trigger--popup" data-pattern="x-frame" data-modal="no-oh">
-		<div class="card error">
-			<span class="modal-close">X</span>
-			<h1>ERROR_BUSY</h1>
 			<div class="buttons">
-				<button class="no" name="trigger">Really?</button>
-			</div>
-		</div>
-	</div>
-
-	<div id="no-oh" class="modal trigger--popup">
-		<div class="card error">
-			<span class="modal-close">X</span>
-			<h1>no</h1>
-			<div class="buttons">
-				<button class="yes">oh.</button>
+				<button class="yes bttn--yes" name="trigger">Yes</button>
+				<button class="no bttn--yes" name="trigger">Yes</button>
 			</div>
 		</div>
 	</div>

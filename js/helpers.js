@@ -123,3 +123,18 @@ export function boopOrNoBoop(e) {
 		boop.play();
 	}
 }
+
+export function turnOffModal(modal) {
+	modal.classList.remove('on');
+	modal.classList.add('off');
+	modal.addEventListener('transitionend', () => {
+		modal.style.display = 'none';
+	})
+}
+
+export function deleteAllPages() {
+	document.querySelectorAll('.page').forEach(page => {
+		page.remove();
+	})
+	document.querySelector('.black').classList.add('on');
+}

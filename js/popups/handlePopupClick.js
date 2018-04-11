@@ -9,6 +9,8 @@ import getSquigglePopups from './getSquigglePopups';
 import getZigZagPopups from './getZigZagPopups';
 import getRandomPopups from './getRandomPopups';
 
+import { turnOffModal } from '../helpers';
+
 let lastPattern;
 
 async function handlePopupClick(e) {
@@ -21,8 +23,9 @@ async function handlePopupClick(e) {
 
 	const container = this;
 	const scrollTarget = e.target.hash;
-	const modalId = container.dataset.modal;
+	const modalTarget = container.dataset.modalTarget;
 	const pattern = container.dataset.pattern;
+	const isFinal = container.dataset.isFinal;
 
 	if (lastPattern === pattern) return;
 
@@ -54,19 +57,19 @@ async function handlePopupClick(e) {
 
 	lastPattern = pattern;
 
-	// what's the container when it's a modal??
 	await paintPopups(container, popups);
 
 	if (pattern === 'random') return; // yesClick function takes care of transition
 
 	setTimeout(() => {
+		if (container.isModal && !isFinal) {
+			turnOffModal(container);
+		}
 		if (scrollTarget) {
 			scrollToNextPage(document.querySelector(scrollTarget));
-		} else if (modalId) {
-			const modal = document.getElementById(modalId);
-			console.log(modal);
-
-			modal.classList.remove('off');
+		} else if (modalTarget) {
+			const modal = document.getElementById(modalTarget);
+			modal.classList.remove('off'); // just to be sure..
 			modal.classList.add('on');
 		}
 	}, 1600)

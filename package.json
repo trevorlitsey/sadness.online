@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "run-script-os",
-    "start:darwin:linux": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser 'Google Chrome'",
+    "serve": "run-script-os",
+    "start:serve": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser 'Google Chrome'",
     "build": "webpack",
     "watch": "webpack --watch",
     "dev": "NODE_ENV=development webpack-dev-server --hot"
