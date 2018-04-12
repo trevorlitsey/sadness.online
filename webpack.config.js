@@ -27,7 +27,7 @@ module.exports = {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname),
 	},
-	mode: process.env.NODE_ENV,
+	mode: process.env.NODE_ENV || 'development',
 	devServer: {
 		contentBase: path.join(__dirname),
 		compress: true,

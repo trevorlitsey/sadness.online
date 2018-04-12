@@ -6,7 +6,6 @@ import handleJumble from './jumbler/handleJumble'
 import { handleNormalClick, handleQuestionsClick } from './clickHandlers';
 import {
 	scrollToNextPage,
-	transitionToWebcam,
 	insertQuizImage,
 	cycleQuestions,
 	play,
