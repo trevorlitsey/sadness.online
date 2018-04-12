@@ -16,7 +16,7 @@ const extractCssPlugin = ExtractTextPlugin.extract({
 			}
 		},
 		{
-			loader: 'postcss-loader'
+			loader: 'sass-loader'
 		}
 	]
 })
@@ -36,12 +36,8 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.css$/,
-				use: process.env.NODE_ENV === 'development' ? ['style-loader', 'css-loader'] : extractCssPlugin,
-			},
-			{
 				test: /\.scss$/,
-				use: ['style-loader', 'css-loader', 'sass-loader'],
+				use: process.env.NODE_ENV === 'development' ? ['style-loader', 'css-loader', 'sass-loader'] : extractCssPlugin,
 			}
 		]
 	},
