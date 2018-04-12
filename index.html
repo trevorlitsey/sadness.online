@@ -19,7 +19,7 @@
 </head>
 
 <body>
-	<div id="sadnessDotOnline" class="page center-center trigger--jumble" data-jumble="#hello-are-you-looking-for-sadness">
+	<div id="sadnessDotOnline" class="page center-center" data-normal-target="#hello-are-you-looking-for-sadness" data-jumble-target="#hello-are-you-looking-for-sadness">
 		<a href="#hello-are-you-looking-for-sadness" class="welcome blur">
 			<span>S</span>
 			<span>a</span>
@@ -38,7 +38,7 @@
 		</a>
 	</div>
 
-	<div id="hello-are-you-looking-for-sadness" class="page trigger--jumble">
+	<div id="hello-are-you-looking-for-sadness" class="page trigger--jumble" data-jumble-target="#how-are-you-feeling">
 		<div class="wrapper">
 			<h1 class="slot-machine">Hello. Are you looking for sadness.online?</h1>
 			<div class="buttons">
@@ -48,7 +48,7 @@
 		</div>
 	</div>
 
-	<div id="how-are-you-feeling" class="page trigger--jumble">
+	<div id="how-are-you-feeling" class="page trigger--jumble" data-jumble-target="#sorry-that-happiness-was-unavailable">
 		<div class="wrapper">
 			<h1 class="slot-machine">How are you feeling?</h1>
 			<div class="buttons">
@@ -59,7 +59,7 @@
 		</div>
 	</div>
 
-	<div id="sorry-that-happiness-was-unavailable" class="page trigger--normal">
+	<div id="sorry-that-happiness-was-unavailable" class="page" data-normal-target="true">
 		<div class="wrapper">
 			<h1 class="slot-machine">Sorry that happiness.online was unavailable</h1>
 			<div>
@@ -69,7 +69,7 @@
 		</div>
 	</div>
 
-	<div id="shall-we-begin" class="page trigger--normal">
+	<div id="shall-we-begin" class="page" data-normal-target="true">
 		<div class="wrapper">
 			<h1>Shall we begin?</h1>
 			<div>
@@ -79,104 +79,98 @@
 		</div>
 	</div>
 
-	<!-- horizontal scroll -->
+	<!-- //////////// begin horizontal scroll ////////////// -->
 	<section class="horizontal-scroll" data-delete="true">
 
-		<div id="continue" class="page trigger--normal">
+		<div id="continue" class="page" data-normal-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text">You receive a phone call from a number you don’t recognize. Which option best describes your thought process?</h1>
 				<div class="container--quiz-links">
-					<a href="#its-your-pets-birthday" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#its-your-pets-birthday" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#its-your-pets-birthday" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
+					<a href="#its-your-pets-birthday" class="quiz-link" data-boop="true"></a>
+					<a href="#its-your-pets-birthday" class="quiz-link" data-boop="true"></a>
+					<a href="#its-your-pets-birthday" class="quiz-link" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div id="its-your-pets-birthday" class="page trigger--normal">
+		<div id="its-your-pets-birthday" class="page" data-normal-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text">It’s your pet’s birthday!!! Which option best describes how you feel?</h1>
 				<div class="container--quiz-links">
-					<a href="#difficult-to-introduce-yourself" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#difficult-to-introduce-yourself" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#difficult-to-introduce-yourself" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
+					<a href="#difficult-to-introduce-yourself" class="quiz-link" data-boop="true"></a>
+					<a href="#difficult-to-introduce-yourself" class="quiz-link" data-boop="true"></a>
+					<a href="#difficult-to-introduce-yourself" class="quiz-link" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div id="difficult-to-introduce-yourself" class="page trigger--normal">
+		<div id="difficult-to-introduce-yourself" class="page" data-normal-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text">You find it difficult to introduce yourself to other people. Agree or disagree?</h1>
 				<div class="container--quiz-links">
-					<a href="#looking-for-answers-find-yourself-on-wikipedia" class="quiz-link" data-boop="true" data-boop="true" data-boop="true"
-					 data-boop="true"></a>
-					<a href="#looking-for-answers-find-yourself-on-wikipedia" class="quiz-link" data-boop="true" data-boop="true" data-boop="true"
-					 data-boop="true"></a>
-					<a href="#looking-for-answers-find-yourself-on-wikipedia" class="quiz-link" data-boop="true" data-boop="true" data-boop="true"
-					 data-boop="true"></a>
+					<a href="#looking-for-answers-find-yourself-on-wikipedia" class="quiz-link" data-boop="true"></a>
+					<a href="#looking-for-answers-find-yourself-on-wikipedia" class="quiz-link" data-boop="true"></a>
+					<a href="#looking-for-answers-find-yourself-on-wikipedia" class="quiz-link" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div id="looking-for-answers-find-yourself-on-wikipedia" class="page trigger--normal">
+		<div id="looking-for-answers-find-yourself-on-wikipedia" class="page" data-normal-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text">You’re looking for “answers” and you end up on Wikipedia. What next?</h1>
 				<div class="container--quiz-links">
-					<a href="#you-are-at-play" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#you-are-at-play" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#you-are-at-play" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
+					<a href="#you-are-at-play" class="quiz-link" data-boop="true"></a>
+					<a href="#you-are-at-play" class="quiz-link" data-boop="true"></a>
+					<a href="#you-are-at-play" class="quiz-link" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div id="you-are-at-play" class="page trigger--normal">
+		<div id="you-are-at-play" class="page" data-normal-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text">You are at a play. You see something you don’t understand. Do you:</h1>
 				<div class="container--quiz-links">
-					<a href="#looking-for-answers-find-yourself-on-the-internet" class="quiz-link" data-boop="true" data-boop="true" data-boop="true"
-					 data-boop="true"></a>
-					<a href="#looking-for-answers-find-yourself-on-the-internet" class="quiz-link" data-boop="true" data-boop="true" data-boop="true"
-					 data-boop="true"></a>
-					<a href="#looking-for-answers-find-yourself-on-the-internet" class="quiz-link" data-boop="true" data-boop="true" data-boop="true"
-					 data-boop="true"></a>
+					<a href="#looking-for-answers-find-yourself-on-the-internet" class="quiz-link" data-boop="true"></a>
+					<a href="#looking-for-answers-find-yourself-on-the-internet" class="quiz-link" data-boop="true"></a>
+					<a href="#looking-for-answers-find-yourself-on-the-internet" class="quiz-link" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div id="looking-for-answers-find-yourself-on-the-internet" class="page trigger--normal">
+		<div id="looking-for-answers-find-yourself-on-the-internet" class="page" data-normal-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text">You’re looking for “answers” and you end up on the Internet. What next?</h1>
 				<div class="container--quiz-links">
-					<a href="#you-wake-up-in-the-morning" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#you-wake-up-in-the-morning" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#you-wake-up-in-the-morning" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
+					<a href="#you-wake-up-in-the-morning" class="quiz-link" data-boop="true"></a>
+					<a href="#you-wake-up-in-the-morning" class="quiz-link" data-boop="true"></a>
+					<a href="#you-wake-up-in-the-morning" class="quiz-link" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div id="you-wake-up-in-the-morning" class="page trigger--normal">
+		<div id="you-wake-up-in-the-morning" class="page" data-normal-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text">You wake up in the morning, but keep your eyes closed?</h1>
 				<div class="container--quiz-links">
-					<a href="#it-is-night-time" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#it-is-night-time" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#it-is-night-time" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
+					<a href="#it-is-night-time" class="quiz-link" data-boop="true"></a>
+					<a href="#it-is-night-time" class="quiz-link" data-boop="true"></a>
+					<a href="#it-is-night-time" class="quiz-link" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div id="it-is-night-time" class="page trigger--normal">
+		<div id="it-is-night-time" class="page" data-normal-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text">It is night time.</h1>
 				<div class="container--quiz-links">
-					<a href="#smilies" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#smilies" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#smilies" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
+					<a href="#smilies" class="quiz-link" data-boop="true"></a>
+					<a href="#smilies" class="quiz-link" data-boop="true"></a>
+					<a href="#smilies" class="quiz-link" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div id="smilies" class="page trigger--normal" data-pattern="full-cover">
+		<div id="smilies" class="page">
 			<div class="wrapper">
 				<div class="quiz-text smiles">
 					<span>:)</span>
@@ -185,59 +179,59 @@
 					<span>?</span>
 				</div>
 				<div class="container--quiz-links">
-					<a href="#this-seems-impracticle" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#this-seems-impracticle" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
-					<a href="#this-seems-impracticle" class="quiz-link" data-boop="true" data-boop="true" data-boop="true" data-boop="true"></a>
+					<a href="#this-seems-impracticle" class="quiz-link" data-boop="true"></a>
+					<a href="#this-seems-impracticle" class="quiz-link" data-boop="true"></a>
+					<a href="#this-seems-impracticle" class="quiz-link" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div id="this-seems-impracticle" class="page trigger--normal" data-pattern="x-frame">
+		<div id="this-seems-impracticle" class="page" data-normal-target="true" data-questions-trigger="true">
 			<div class="wrapper">
 				<h1>This seems impractical</h1>
 				<div class="buttons">
-					<a href="#questions" class="smiley">:)</a>
-					<a href="#questions" class="smiley">:|</a>
-					<a href="#questions" class="smiley">:(</a>
+					<a href="#questions" class="smiley" data-boop="true">:)</a>
+					<a href="#questions" class="smiley" data-boop="true">:|</a>
+					<a href="#questions" class="smiley" data-boop="true">:(</a>
 				</div>
 			</div>
 		</div>
 
-		<div id="questions" class="page trigger--popup" data-pattern="circle-frame" data-modal-target="error-busy">
+		<div id="questions" class="page" data-popup-pattern="circle-frame" data-modal-target="error-busy">
 			<div class="wrapper">
 				<h1 class="text-center">Noise becomes signal.</h1>
 				<div>
-					<a class="bttn" name="trigger" data-boop="true">Cancel</a>
+					<a class="bttn" data-trigger="true" data-boop="true">Cancel</a>
 				</div>
 			</div>
 		</div>
 
 	</section>
-	<!-- end horizontal scroll -->
+	<!-- ////////// end horizontal scroll ////////// -->
 
 	<!-- /////////// begin modals //////////// -->
 
-	<div id="error-busy" class="modal trigger--popup" data-pattern="x-frame" data-modal-target="no-oh">
+	<div id="error-busy" class="modal" data-popup-pattern="x-frame" data-modal-target="no-oh">
 		<div class="card error">
 			<span class="modal-close">X</span>
 			<h1>ERROR_BUSY</h1>
 			<div class="buttons">
-				<button class="no" name="trigger" data-delete-all-pages="true">Really?</button>
+				<button class="no" data-trigger="true" data-boop="true" data-delete-all-pages="true">Really?</button>
 			</div>
 		</div>
 	</div>
 
-	<div id="no-oh" class="modal trigger--popup" data-pattern="squiggle" data-modal-target="error-lacking-substance">
+	<div id="no-oh" class="modal" data-popup-pattern="squiggle" data-modal-target="error-lacking-substance">
 		<div class="card">
 			<span class="modal-close">X</span>
 			<h1>no</h1>
 			<div class="buttons">
-				<button class="yes" name="trigger">oh.</button>
+				<button class="yes" data-boop="true" data-trigger="true">oh.</button>
 			</div>
 		</div>
 	</div>
 
-	<div id="error-lacking-substance" class="modal trigger--popup" data-pattern="random" data-is-final="true">
+	<div id="error-lacking-substance" class="modal" data-popup-pattern="full-cover" data-modal-target="feelings-are-never-an-abstraction">
 		<div class="card error">
 			<span class="modal-close">X</span>
 			<h1>
@@ -246,17 +240,43 @@
 				<span>SUBSTANCE</span>
 			</h1>
 			<div class="buttons">
-				<button class="yes bttn--yes" name="trigger">Yes</button>
-				<button class="no bttn--yes" name="trigger">Yes</button>
+				<button class="yes bttn--yes" data-boop="true" name="trigger">Yes</button>
+				<button class="no bttn--yes" data-boop="true" name="trigger">Yes</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="feelings-are-never-an-abstraction" class="modal" data-popup-pattern="random" data-last-modal="true">
+		<div class="card error">
+			<span class="modal-close">X</span>
+			<h1>Feelings are never an abstraction</h1>
+			<div class="buttons">
+				<button class="no bttn--yes" data-boop="true" name="trigger">Yes</button>
+				<button class="yes bttn--yes" data-boop="true" name="trigger">Yes</button>
 			</div>
 		</div>
 	</div>
 
 	<!-- ////////////// end modals //////////// -->
 
+
+	<!-- ////////////// webcam //////////////// -->
+
+	<div id="webcam-page" class="page--webcam">
+		<div class="wrapper--webcam">
+			<canvas class="webcam-canvas webcam-canvas--one" data-boop="true"></canvas>
+			<canvas class="webcam-canvas webcam-canvas--two" data-boop="true"></canvas>
+		</div>
+	</div>
+
+	<!-- ////////////// images /////////////// -->
+
 	<div class="images--preload" data-delete="true"></div>
 
-	<audio id="boop" src="./dist/audio/boop.mp3"></audio>
+	<!-- ////////////// sound /////////////// -->
+
+	<audio id="boop" src="./dist/audio/boop.mp3" data-delete="true"></audio>
+
 	<script src="./bundle.js"></script>
 
 </body>

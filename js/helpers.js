@@ -11,7 +11,8 @@ export function isScrolledIntoView(el) {
 	return isVisible;
 }
 
-export function scrollToNextPage(node) {
+export function scrollToNextPage(scrollTargetHash) {
+	const node = document.querySelector(scrollTargetHash);
 	return node.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -117,18 +118,22 @@ export function debounce(func, wait, immediate) {
 	};
 };
 
-export function boopOrNoBoop(e) {
-	if (e.target.dataset.boop === 'true') {
-		boop.currentTime = 0;
-		boop.play();
-	}
+export function play(sound) {
+	sound.currentTime = 0;
+	sound.play();
 }
 
-export function turnOffModal(modal) {
-	modal.classList.remove('on');
-	modal.classList.add('off');
-	modal.addEventListener('transitionend', () => {
-		modal.style.display = 'none';
+export function turnOnModal(modalTargetID) {
+	const modal = document.getElementById(modalTargetID);
+	modal.classList.remove('off'); // just to be sure..
+	modal.classList.add('on');
+}
+
+export function turnOffModal(modalNode) {
+	modalNode.classList.remove('on');
+	modalNode.classList.add('off');
+	modalNode.addEventListener('transitionend', () => {
+		modalNode.style.display = 'none';
 	})
 }
 
@@ -140,14 +145,31 @@ export function deleteAllPages() {
 	document.body.style.background = 'black';
 }
 
-export function transitionToFeelingsAreNeverAnAbstraction() {
-	setTimeout(() => {
-		window.requestAnimationFrame(() => {
-			const page = document.getElementById('error-lacking-substance');
-			page.classList.add('final-off');
-			page.addEventListener('transitionend', () => {
-				page.remove();
-			})
+export function handleFinalPageClick(finalPage) {
+	return new Promise((resolve, reject) => {
+		fadeAllModals();
+		finalPage.addEventListener('transitionend', () => {
+			deleteEverythingButWebcam();
+			resolve(true);
+		})
+	})
+}
+
+// ==================
+function fadeAllModals() {
+	document.querySelectorAll('.modal').forEach(modal => {
+		modal.classList.add('final-off');
+	})
+}
+
+function deleteEverythingButWebcam() {
+	deleteNodes(document.querySelectorAll('[data-delete="true"]'));
+	deleteNodes(document.querySelectorAll('.modal'));
+
+	// ------------------
+	function deleteNodes(nodes) {
+		nodes.forEach(node => {
+			node.remove()
 		});
-	}, 2000); // 2s
+	}
 }

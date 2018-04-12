@@ -352,10 +352,24 @@ a.welcome {
 }
 
 /* ------ webcam ------ */
-#webcam-page {
+
+.page--webcam {
+	@extend .page;
 	padding: 0;
 	transition: opacity 6s;
 	background: #000;
+	z-index: -99999;
+	opacity: 0;
+
+	& > canvas {
+		filter: brightness(70%);
+	}
+
+}
+
+.page--webcam.on {
+	transition: opacity 6s;
+	opacity: 1;
 }
 
 .wrapper--webcam {
@@ -367,7 +381,6 @@ a.welcome {
 
 .webcam-canvas {
 	width: 100%;
-	filter: brightness(90%);
 }
 
 .webcam-canvas--one {
