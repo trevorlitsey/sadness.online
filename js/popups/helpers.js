@@ -43,16 +43,6 @@ export function insertPlacedPopup(node, popOptions) {
 	})
 }
 
-export function getFullPagePop() {
-	return {
-		width: '100%',
-		height: '100%',
-		top: '0',
-		left: '0',
-		right: 'auto',
-	}
-}
-
 export function paintPopups(container, popups, delayInterval = 50) {
 	return new Promise((resolve, reject) => {
 		let index = 0;

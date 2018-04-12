@@ -1,4 +1,4 @@
-function getFullCoverPopups() {
+function fullCover() {
 	const popups = [];
 	let direction = true;
 	let j;
@@ -21,4 +21,4 @@ function getFullCoverPopups() {
 	return popups;
 }
 
-export default getFullCoverPopups;
+export default fullCover;

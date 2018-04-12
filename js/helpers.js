@@ -139,3 +139,15 @@ export function deleteAllPages() {
 	document.querySelectorAll('[data-delete="true"]').forEach(node => node.remove());
 	document.body.style.background = 'black';
 }
+
+export function transitionToFeelingsAreNeverAnAbstraction() {
+	setTimeout(() => {
+		window.requestAnimationFrame(() => {
+			const page = document.getElementById('error-lacking-substance');
+			page.classList.add('final-off');
+			page.addEventListener('transitionend', () => {
+				page.remove();
+			})
+		});
+	}, 2000); // 2s
+}

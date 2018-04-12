@@ -1,4 +1,4 @@
-function getRandomPopups(num) {
+function random(num) {
 
 	const popups = [];
 
@@ -15,4 +15,4 @@ function getRandomPopups(num) {
 
 }
 
-export default getRandomPopups;
+export default random;

@@ -1,13 +1,7 @@
+import getPopupsFromPattern from './getPopupsFromPattern';
 import { paintPopups } from './helpers';
 import { scrollToNextPage } from '../helpers';
 import jumbler from '../jumbler/jumbler';
-import getPictureFramePopups from './getPictureFramePopups';
-import getFullCoverPopups from './getFullCoverPopups';
-import getCircleFramePopups from './getCircleFramePopups';
-import getXFramePopups from './getXFramePopups';
-import getSquigglePopups from './getSquigglePopups';
-import getZigZagPopups from './getZigZagPopups';
-import getRandomPopups from './getRandomPopups';
 
 import { turnOffModal } from '../helpers';
 
@@ -29,31 +23,7 @@ async function handlePopupClick(e) {
 
 	if (lastPattern === pattern) return;
 
-	let popups;
-
-	switch (pattern) {
-		case 'picture-frame':
-			popups = getPictureFramePopups();
-			break;
-		case 'full-cover':
-			popups = getFullCoverPopups();
-			break;
-		case 'circle-frame':
-			popups = getCircleFramePopups();
-			break;
-		case 'x-frame':
-			popups = getXFramePopups();
-			break;
-		case 'squiggle':
-			popups = getSquigglePopups();
-			break;
-		case 'zig-zag':
-			popups = getZigZagPopups();
-			break
-		case 'random':
-			popups = getRandomPopups(100);
-			break
-	}
+	const popups = getPopupsFromPattern(pattern);
 
 	lastPattern = pattern;
 

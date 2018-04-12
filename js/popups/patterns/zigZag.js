@@ -1,4 +1,4 @@
-function getZigZagPopups() {
+function zigZag() {
 	const popups = [];
 	let direction = true;
 	let y = -10;
@@ -17,4 +17,4 @@ function getZigZagPopups() {
 	return popups;
 }
 
-export default getZigZagPopups;
+export default zigZag;

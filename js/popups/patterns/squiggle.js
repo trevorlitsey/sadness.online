@@ -1,4 +1,4 @@
-function getSquigglePopups() {
+function squiggle() {
 
 	const popups = [];
 
@@ -45,4 +45,4 @@ function getSquigglePopups() {
 
 }
 
-export default getSquigglePopups;
+export default squiggle;

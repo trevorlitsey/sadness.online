@@ -1,6 +1,6 @@
-import { getFullPagePop } from './helpers';
+import fullPagePop from './fullPagePop';
 
-function circleFramePopups() {
+function circleFrame() {
 
 	const popups = [];
 	const radius = 40;
@@ -19,10 +19,10 @@ function circleFramePopups() {
 		popups.push(popOptions);
 	}
 
-	popups.push(getFullPagePop());
+	popups.push(fullPagePop());
 
 	return popups;
 
 }
 
-export default circleFramePopups;
+export default circleFrame;

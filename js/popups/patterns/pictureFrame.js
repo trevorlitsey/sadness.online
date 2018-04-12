@@ -1,6 +1,4 @@
-
-
-function getPictureFramePopups() {
+function pictureFrame() {
 
 	const popups = [];
 
@@ -47,4 +45,4 @@ function getPictureFramePopups() {
 	return popups;
 }
 
-export default getPictureFramePopups;
+export default pictureFrame;

@@ -1,4 +1,4 @@
-function getXFramePopups() {
+function xFrame() {
 
 	const popups = [];
 
@@ -28,4 +28,4 @@ function getXFramePopups() {
 
 }
 
-export default getXFramePopups;
+export default xFrame;
