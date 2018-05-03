@@ -38,7 +38,8 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				use: process.env.NODE_ENV === 'development' ? ['style-loader', 'css-loader', 'sass-loader'] : extractCssPlugin,
-			}
+			},
+			{ test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
 		]
 	},
 	plugins: [

@@ -142,7 +142,7 @@ export function deleteAllPages() {
 		page.remove();
 	})
 	document.querySelectorAll('[data-delete="true"]').forEach(node => node.remove());
-	document.body.style.background = 'black';
+	// document.body.style.background = 'black';
 }
 
 export function handleFinalPageClick(finalPage) {
@@ -153,6 +153,11 @@ export function handleFinalPageClick(finalPage) {
 			resolve(true);
 		})
 	})
+}
+
+export function applyBackgroundMotion(node1, node2) {
+	move(node1, .5)
+	move(node2, .5, true)
 }
 
 // ==================
@@ -172,4 +177,24 @@ function deleteEverythingButWebcam() {
 			node.remove()
 		});
 	}
+}
+
+function move(node, inc = 1, direction = false) {
+
+	if (direction === true) node.style.top = '-50px';
+
+	const interval = setInterval(() => {
+
+		const currentTop = Number(window.getComputedStyle(node).top.split('px')[0]);
+		const newTop = direction ? currentTop + inc : currentTop - inc;
+
+		if (newTop === -50 || newTop === 0) {
+			direction = !direction;
+		}
+
+		requestAnimationFrame(() => {
+			node.style.top = `${newTop}px`;
+		})
+
+	}, 100)
 }

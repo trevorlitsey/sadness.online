@@ -19,7 +19,14 @@
 </head>
 
 <body>
-	<div id="sadnessDotOnline" class="page center-center" data-normal-target="#hello-are-you-looking-for-sadness" data-jumble-target="#hello-are-you-looking-for-sadness">
+
+	<!-- background images -->
+	<div class="background-image shape-1"></div>
+	<div class="background-image shape-2"></div>
+	<div class="background-image shape-3"></div>
+
+	<div id="sadnessDotOnline" class="page sadnessDotOnline center-center" data-normal-target="#hello-are-you-looking-for-sadness"
+	 data-jumble-target="#hello-are-you-looking-for-sadness">
 		<a href="#hello-are-you-looking-for-sadness" class="welcome blur">
 			<span>S</span>
 			<span>a</span>
@@ -59,9 +66,9 @@
 		</div>
 	</div>
 
-	<div id="sorry-that-happiness-was-unavailable" class="page" data-normal-target="true">
+	<div id="sorry-that-happiness-was-unavailable" class="page sorry-that-happiness-was-unavailable" data-normal-target="true">
 		<div class="wrapper">
-			<h1 class="slot-machine">Sorry that happiness.online was unavailable</h1>
+			<h1 class="slot-machine clamp">Sorry that happiness.online was unavailable</h1>
 			<div>
 				<a href="#shall-we-begin" class="bttn">same.</a>
 				<a href="#sadnessDotOnline" class="bttn">ugh.</a>
@@ -221,17 +228,18 @@
 		</div>
 	</div>
 
-	<div id="no-oh" class="modal" data-popup-pattern="squiggle" data-modal-target="error-lacking-substance">
-		<div class="card">
+	<div id="no-oh" class="modal" data-popup-pattern="squiggle" data-modal-target="error-lacking-substance" data-offset='10'>
+		<div class="card error">
 			<span class="modal-close">X</span>
 			<h1>no</h1>
 			<div class="buttons">
-				<button class="yes" data-boop="true" data-trigger="true">oh.</button>
+				<button class="no" data-boop="true" data-trigger="true">oh.</button>
 			</div>
 		</div>
 	</div>
 
-	<div id="error-lacking-substance" class="modal" data-popup-pattern="full-cover" data-modal-target="feelings-are-never-an-abstraction">
+	<div id="error-lacking-substance" class="modal" data-popup-pattern="full-cover" data-modal-target="feelings-are-never-an-abstraction"
+	 data-offset='20'>
 		<div class="card error">
 			<span class="modal-close">X</span>
 			<h1>
@@ -240,25 +248,25 @@
 				<span>SUBSTANCE</span>
 			</h1>
 			<div class="buttons">
-				<button class="yes bttn--yes" data-boop="true" name="trigger">Yes</button>
-				<button class="no bttn--yes" data-boop="true" name="trigger">Yes</button>
-			</div>
-		</div>
-	</div>
-
-	<div id="feelings-are-never-an-abstraction" class="modal" data-popup-pattern="random" data-last-modal="true">
-		<div class="card error">
-			<span class="modal-close">X</span>
-			<h1>Feelings are never an abstraction</h1>
-			<div class="buttons">
-				<button class="no bttn--yes" data-boop="true" name="trigger">Yes</button>
-				<button class="yes bttn--yes" data-boop="true" name="trigger">Yes</button>
+				<button class="no" data-boop="true" name="trigger">Oh</button>
 			</div>
 		</div>
 	</div>
 
 	<!-- ////////////// end modals //////////// -->
 
+	<!-- TODO: need to make this a crazy page -->
+
+	<div id="feelings-are-never-an-abstraction" class="modal" data-popup-pattern="random" data-last-modal="true">
+		<div class="card error">
+			<span class="modal-close">X</span>
+			<h1>Feelings are never an abstraction</h1>
+			<div class="buttons">
+				<button class="no" data-boop="true" name="trigger">Yes</button>
+				<button class="yes" data-boop="true" name="trigger">Yes</button>
+			</div>
+		</div>
+	</div>
 
 	<!-- ////////////// webcam //////////////// -->
 
