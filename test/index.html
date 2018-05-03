@@ -12,22 +12,45 @@
 
 <body>
 
-	<div id="feelings-are-never-an-abstraction" class="feelings-are-never-an-abstraction" data-popup-pattern="random" data-last-modal="true">
-		<div class="wrapper--3d">
-			<div class="text">
-				<h1>feelings</h1>
-				<h1>are never </h1>
-				<h1>an abstraction</h1>
+	<!-- background images -->
+	<div class="background-image shape-1"></div>
+	<div class="background-image shape-2"></div>
+	<div class="background-image shape-3"></div>
+
+	<div id="continue" class="page" data-normal-target="true">
+		<div class="wrapper">
+			<div class="wrapper--text">
+				<h1 class="quiz-text make-transparent">You receive a phone call from a number you don’t recognize.</h1>
+				<h1 class="quiz-text make-transparent">Which option best describes your thought process?</h1>
 			</div>
-			<div class="bttns">
-				<a class="bttn" data-trigger="true">Yes</a>
-				<a class="bttn" data-trigger="true">Yes</a>
+			<div class="container--quiz-links">
+				<a href="#its-your-pets-birthday" class="quiz-link make-transparent" data-boop="true"></a>
+				<a href="#its-your-pets-birthday" class="quiz-link make-transparent" data-boop="true"></a>
+				<a href="#its-your-pets-birthday" class="quiz-link make-transparent" data-boop="true"></a>
 			</div>
 		</div>
 	</div>
-
 	<script>
 
+		const page = document.getElementById('continue');
+		const quizLinks = document.querySelectorAll('.quiz-link');
+		quizLinks.forEach(linkNode => insertQuizImage(linkNode));
+
+		displayQuizPage(page);
+
+		function insertQuizImage(linkNode) {
+			const quizImages = [0, 1, 2, 5, 8, 9, 10, 11, 12, 17, 18, 19, 21, 23, 24, 26, 27, 29, 30, 32, 33, 35, 40, 42, 43, 44, 45, 46, 48, 50, 53];
+			const num = quizImages[Math.floor(Math.random() * quizImages.length)];
+			linkNode.style.backgroundImage = `url('${getImgSrc(num)}')`;
+		}
+
+		function getImgSrc(num) {
+			if (num >= 99 && num <= 145) {
+				return `../dist/images/${num}.gif`;
+			} else {
+				return `../dist/images/${num}.jpg`;
+			}
+		}
 
 	</script>
 

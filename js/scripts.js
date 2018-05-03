@@ -15,7 +15,8 @@ import {
 	turnOffModal,
 	deleteAllPages,
 	handleFinalPageClick,
-	applyBackgroundMotion
+	applyBackgroundMotion,
+	displayQuizPage
 } from './helpers';
 
 import '../styles/style.scss'
@@ -37,7 +38,7 @@ const modals = document.querySelectorAll('.modal')
 async function filterClick(e) {
 	e.preventDefault();
 
-	const { popupPattern, jumbleTarget, questionsTrigger, modalTarget, normalTarget, isModal, lastModal } = this.dataset;
+	const { popupPattern, jumbleTarget, questionsTrigger, modalTarget, quizTarget, normalTarget, isModal, lastModal } = this.dataset;
 	const { boop } = e.target.dataset;
 	const { nodeName } = e.target;
 
@@ -57,6 +58,11 @@ async function filterClick(e) {
 	if (jumbleTarget) {
 		handleJumble(jumbleTarget);
 	}
+	// quiz click (fade in next page)
+	if (quizTarget) {
+		const page = document.querySelector(clickTargetHash);
+		displayQuizPage(page, 250);
+	}
 	// questions click (cycler)
 	if (questionsTrigger) {
 		handleQuestionsClick();
@@ -66,7 +72,7 @@ async function filterClick(e) {
 	}
 	// modal click
 	if (modalTarget) {
-		turnOnModal(modalTarget, TopLeftMargin);
+		turnOnModal(modalTarget);
 	}
 	// just a normal click
 	if (clickTargetHash) {

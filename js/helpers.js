@@ -198,3 +198,27 @@ function move(node, inc = 1, direction = false) {
 
 	}, 100)
 }
+
+export async function displayQuizPage(node, firstInterval) {
+	const h1s = node.querySelectorAll('h1');
+	const quizLinks = node.querySelectorAll('a');
+	await unHideNode(null, firstInterval)
+	h1s[0] && await unHideNode(h1s[0], 250)
+	h1s[1] && await unHideNode(h1s[1], 3000)
+	await unHideNode(quizLinks[0], 2000)
+	await unHideNode(quizLinks[1], 500)
+	await unHideNode(quizLinks[2], 500)
+
+	// --------
+	function unHideNode(node, interval) {
+		return new Promise((res, rej) => {
+			setTimeout(() => {
+				node && node.classList.remove('make-transparent');
+				return res(true)
+			}, interval)
+
+		})
+	}
+
+}
+
