@@ -104,5 +104,5 @@ quizLinks.forEach(linkNode => insertQuizImage(linkNode));
 
 // where to scroll on default
 setTimeout(() => {
-	scrollToNextPage('#this-seems-impractical');
+	// scrollToNextPage('#this-seems-impractical');
 }, 300)
