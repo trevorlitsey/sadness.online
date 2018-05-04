@@ -14,7 +14,8 @@ import {
 	turnOnModal,
 	turnOffModal,
 	deleteAllPages,
-	handleFinalPageClick,
+	handleTransitionToFeelings,
+	transitionToWebcam as handleTransitionToWebcam,
 	applyBackgroundMotion,
 	displayQuizPage
 } from './helpers';
@@ -38,7 +39,7 @@ const modals = document.querySelectorAll('.modal')
 async function filterClick(e) {
 	e.preventDefault();
 
-	const { popupPattern, jumbleTarget, questionsTrigger, modalTarget, quizTarget, normalTarget, isModal, lastModal } = this.dataset;
+	const { popupPattern, jumbleTarget, questionsTrigger, modalTarget, quizTarget, normalTarget, isModal, transitionToFeelings, transitionToWebcam } = this.dataset;
 	const { boop } = e.target.dataset;
 	const { nodeName } = e.target;
 
@@ -74,23 +75,26 @@ async function filterClick(e) {
 	if (modalTarget) {
 		turnOnModal(modalTarget);
 	}
+	// transition to webcam
+	if (transitionToWebcam) {
+		renderWebcam(webcamCanvasOne, webcamCanvasTwo);
+		return handleTransitionToWebcam()
+	}
+
+	// transition to feelings
+	if (transitionToFeelings) {
+		await handleTransitionToFeelings(this);
+	}
+
 	// just a normal click
 	if (clickTargetHash) {
 		scrollToNextPage(clickTargetHash);
-	}
-
-	// last page :(
-	if (lastModal) {
-		renderWebcam(webcamCanvasOne, webcamCanvasTwo);
-		await handleFinalPageClick(this);
-		webcamPage.classList.add('on');
 	}
 
 }
 
 pages.forEach(page => page.addEventListener('click', filterClick))
 modals.forEach(modal => modal.addEventListener('click', filterClick))
-// $clamp(clampedText, { clamp: 2 });
 // deletePagesTrigger.addEventListener('click', deleteAllPages);
 
 window.addEventListener('load', () => applyBackgroundMotion(backgroundImageOne, backgroundImageTwo))
@@ -100,5 +104,5 @@ quizLinks.forEach(linkNode => insertQuizImage(linkNode));
 
 // where to scroll on default
 setTimeout(() => {
-	// scrollToNextPage('#questions')
+	scrollToNextPage('#this-seems-impractical');
 }, 300)

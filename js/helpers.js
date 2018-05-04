@@ -16,27 +16,30 @@ export function scrollToNextPage(scrollTargetHash) {
 	return node.scrollIntoView({ behavior: 'smooth' });
 }
 
+export function transitionToFeelings() {
+
+}
+
 export function transitionToWebcam() {
 
-	const yesPage = document.getElementById('yes');
+	const yesPage = document.querySelector('.feelings-are-never-an-abstraction');
 	const webcamPage = document.getElementById('webcam-page');
 
 	window.requestAnimationFrame(() => {
-		setTimeout(() => {
-			document.querySelector('.black').classList.add('on');
-			yesPage.classList.add('off')
-		}, 2000);
+		document.body.style.background = 'black';
+		yesPage.style.opacity = 0;
 	});
 
 	// wait 10 second
 	setTimeout(() => {
-		scrollToNextPage(webcamPage);
+		scrollToNextPage('#webcam-page');
 		setTimeout(() => {
 			window.requestAnimationFrame(() => {
 				webcamPage.classList.remove('off');
+				webcamPage.classList.add('on');
 			});
 		}, 400)
-	}, 10000)
+	}, 8000)
 }
 
 export function getImgSrc(num) {
@@ -58,6 +61,9 @@ export function insertQuizImage(linkNode) {
 
 export function cycleQuestions(h1Node, questions, speedUp) {
 
+	const wrapper = document.querySelector('.wrapper--questions');
+	let scale = 1.2;
+
 	if (h1Node.isRunning) return;
 	h1Node.isStarted = false;
 	h1Node.isRunning = true;
@@ -69,7 +75,7 @@ export function cycleQuestions(h1Node, questions, speedUp) {
 
 	function cycle(speed = 250) {
 
-		let i = 1;
+		let i = 0;
 		let count = 0;
 		const interval = setInterval(() => {
 			let { isStarted, isRunning } = h1Node;
@@ -88,6 +94,11 @@ export function cycleQuestions(h1Node, questions, speedUp) {
 				i === questions.length - 1 ? i = 0 : i++;
 
 				if (speedUp && count === 3 && speed > 5) {
+					// TODO
+					// if (scale <= 3) {
+					// 	wrapper.style.transform = `scale(${scale})`;
+					// 	scale += .2;
+					// }
 					clearInterval(interval);
 					const newSpeed = speed < 20 ? 5 : speed - 20;
 					h1Node.innerHTML = questions[i];
@@ -142,13 +153,16 @@ export function deleteAllPages() {
 		page.remove();
 	})
 	document.querySelectorAll('[data-delete="true"]').forEach(node => node.remove());
-	// document.body.style.background = 'black';
 }
 
-export function handleFinalPageClick(finalPage) {
+export function handleTransitionToFeelings(finalPage) {
+	document.body.style.background = 'black';
 	return new Promise((resolve, reject) => {
+		deleteNodes(document.querySelectorAll('.background-image'));
 		fadeAllModals();
+		fadeAllQuestions();
 		finalPage.addEventListener('transitionend', () => {
+			document.querySelector('.feelings-are-never-an-abstraction').style.opacity = 1;
 			deleteEverythingButWebcam();
 			resolve(true);
 		})
@@ -167,16 +181,19 @@ function fadeAllModals() {
 	})
 }
 
+function fadeAllQuestions() {
+	document.querySelector('.questions').classList.add('final-off');
+}
+
 function deleteEverythingButWebcam() {
 	deleteNodes(document.querySelectorAll('[data-delete="true"]'));
 	deleteNodes(document.querySelectorAll('.modal'));
+}
 
-	// ------------------
-	function deleteNodes(nodes) {
-		nodes.forEach(node => {
-			node.remove()
-		});
-	}
+function deleteNodes(nodes) {
+	nodes.forEach(node => {
+		node.remove()
+	});
 }
 
 function move(node, inc = 1, direction = false) {

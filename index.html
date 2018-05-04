@@ -87,7 +87,7 @@
 	</div>
 
 	<!-- //////////// begin horizontal scroll ////////////// -->
-	<section class="horizontal-scroll" data-delete="true">
+	<section class="horizontal-scroll questions" data-delete="true">
 
 		<div id="continue" class="page" data-quiz-target="true">
 			<div class="wrapper">
@@ -206,14 +206,14 @@
 					<span>?</span>
 				</h1>
 				<div class="container--quiz-links">
-					<a href="#this-seems-impracticle" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#this-seems-impracticle" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#this-seems-impracticle" class="quiz-link make-transparent" data-boop="true"></a>
+					<a href="#this-seems-impractical" class="quiz-link make-transparent" data-boop="true"></a>
+					<a href="#this-seems-impractical" class="quiz-link make-transparent" data-boop="true"></a>
+					<a href="#this-seems-impractical" class="quiz-link make-transparent" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div id="this-seems-impracticle" class="page" data-normal-target="true">
+		<div id="this-seems-impractical" class="page" data-questions-trigger="true">
 			<div class="wrapper">
 				<h1 class="quiz-text make-transparent">This seems impractical</h1>
 				<div class="buttons">
@@ -225,8 +225,8 @@
 		</div>
 
 		<div id="questions" class="page" data-popup-pattern="circle-frame" data-modal-target="error-busy">
-			<div class="wrapper">
-				<h1 class="text-center">Noise becomes signal.</h1>
+			<div class="wrapper--questions">
+				<h1 class="text-center no-line-break">Noise becomes signal.</h1>
 				<div>
 					<a class="bttn" data-trigger="true" data-boop="true">Cancel</a>
 				</div>
@@ -258,8 +258,7 @@
 		</div>
 	</div>
 
-	<div id="error-lacking-substance" class="modal" data-popup-pattern="full-cover" data-modal-target="feelings-are-never-an-abstraction"
-	 data-offset='20'>
+	<div id="error-lacking-substance" class="modal" data-popup-pattern="full-cover" data-transition-to-feelings="true">
 		<div class="card error">
 			<span class="modal-close">X</span>
 			<h1>
@@ -277,13 +276,16 @@
 
 	<!-- TODO: need to make this a crazy page -->
 
-	<div id="feelings-are-never-an-abstraction" class="modal" data-popup-pattern="random" data-last-modal="true">
-		<div class="card error">
-			<span class="modal-close">X</span>
-			<h1>Feelings are never an abstraction</h1>
-			<div class="buttons">
-				<button class="no" data-boop="true" name="trigger">Yes</button>
-				<button class="yes" data-boop="true" name="trigger">Yes</button>
+	<div id="feelings-are-never-an-abstraction" class="page feelings-are-never-an-abstraction" data-transition-to-webcam="true">
+		<div class="wrapper--3d">
+			<div class="text">
+				<h1>Feelings</h1>
+				<h1>are never</h1>
+				<h1>an abstraction</h1>
+			</div>
+			<div class="bttns">
+				<a href="#webcam-page" class="bttn" data-boop="true" name="trigger"></a>
+				<a href="#webcam-page" class="bttn" data-boop="true" name="trigger"></a>
 			</div>
 		</div>
 	</div>
