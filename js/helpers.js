@@ -16,10 +16,6 @@ export function scrollToNextPage(scrollTargetHash) {
 	return node.scrollIntoView({ behavior: 'smooth' });
 }
 
-export function transitionToFeelings() {
-
-}
-
 export function transitionToWebcam() {
 
 	const yesPage = document.querySelector('.feelings-are-never-an-abstraction');
@@ -134,20 +130,6 @@ export function play(sound) {
 	sound.play();
 }
 
-export function turnOnModal(modalTargetID) {
-	const modal = document.getElementById(modalTargetID);
-	modal.classList.remove('off'); // just to be sure..
-	modal.classList.add('on');
-}
-
-export function turnOffModal(modalNode) {
-	modalNode.classList.remove('on');
-	modalNode.classList.add('off');
-	modalNode.addEventListener('transitionend', () => {
-		modalNode.style.display = 'none';
-	})
-}
-
 export function deleteAllPages() {
 	document.querySelectorAll('.page').forEach(page => {
 		page.remove();
@@ -158,28 +140,6 @@ export function deleteAllPages() {
 export function applyBackgroundMotion(node1, node2) {
 	move(node1, .5)
 	move(node2, .5, true)
-}
-
-// ==================
-
-function move(node, inc = 1, direction = false) {
-
-	if (direction === true) node.style.top = '-50px';
-
-	const interval = setInterval(() => {
-
-		const currentTop = Number(window.getComputedStyle(node).top.split('px')[0]);
-		const newTop = direction ? currentTop + inc : currentTop - inc;
-
-		if (newTop === -50 || newTop === 0) {
-			direction = !direction;
-		}
-
-		requestAnimationFrame(() => {
-			node.style.top = `${newTop}px`;
-		})
-
-	}, 100)
 }
 
 export async function displayQuizPage(node, firstInterval) {
@@ -203,5 +163,27 @@ export async function displayQuizPage(node, firstInterval) {
 		})
 	}
 
+}
+
+// ==================
+
+function move(node, inc = 1, direction = false) {
+
+	if (direction === true) node.style.top = '-50px';
+
+	const interval = setInterval(() => {
+
+		const currentTop = Number(window.getComputedStyle(node).top.split('px')[0]);
+		const newTop = direction ? currentTop + inc : currentTop - inc;
+
+		if (newTop === -50 || newTop === 0) {
+			direction = !direction;
+		}
+
+		requestAnimationFrame(() => {
+			node.style.top = `${newTop}px`;
+		})
+
+	}, 100)
 }
 

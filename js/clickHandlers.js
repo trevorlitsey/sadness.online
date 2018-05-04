@@ -18,6 +18,20 @@ export function handleQuestionsClick() {
 	cycleQuestions(h1Node, questions, true);
 }
 
+export function turnOnModal(modalTargetID) {
+	const modal = document.getElementById(modalTargetID);
+	modal.classList.remove('off'); // just to be sure..
+	modal.classList.add('on');
+}
+
+export function turnOffModal(modalNode) {
+	modalNode.classList.remove('on');
+	modalNode.classList.add('off');
+	modalNode.addEventListener('transitionend', () => {
+		modalNode.style.display = 'none';
+	})
+}
+
 export function handleTransitionToFeelings(finalPage) {
 	document.body.style.background = 'black';
 	return new Promise((resolve, reject) => {

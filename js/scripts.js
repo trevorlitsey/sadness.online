@@ -8,15 +8,15 @@ import handleJumble from './jumbler/handleJumble'
 import {
 	handleNormalClick,
 	handleQuestionsClick,
-	handleTransitionToFeelings
+	turnOnModal,
+	turnOffModal,
+	handleTransitionToFeelings,
 } from './clickHandlers';
 import {
 	scrollToNextPage,
 	insertQuizImage,
 	cycleQuestions,
 	play,
-	turnOnModal,
-	turnOffModal,
 	deleteAllPages,
 	transitionToWebcam as handleTransitionToWebcam,
 	applyBackgroundMotion,
