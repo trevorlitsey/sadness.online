@@ -155,46 +155,12 @@ export function deleteAllPages() {
 	document.querySelectorAll('[data-delete="true"]').forEach(node => node.remove());
 }
 
-export function handleTransitionToFeelings(finalPage) {
-	document.body.style.background = 'black';
-	return new Promise((resolve, reject) => {
-		deleteNodes(document.querySelectorAll('.background-image'));
-		fadeAllModals();
-		fadeAllQuestions();
-		finalPage.addEventListener('transitionend', () => {
-			document.querySelector('.feelings-are-never-an-abstraction').style.opacity = 1;
-			deleteEverythingButWebcam();
-			resolve(true);
-		})
-	})
-}
-
 export function applyBackgroundMotion(node1, node2) {
 	move(node1, .5)
 	move(node2, .5, true)
 }
 
 // ==================
-function fadeAllModals() {
-	document.querySelectorAll('.modal').forEach(modal => {
-		modal.classList.add('final-off');
-	})
-}
-
-function fadeAllQuestions() {
-	document.querySelector('.questions').classList.add('final-off');
-}
-
-function deleteEverythingButWebcam() {
-	deleteNodes(document.querySelectorAll('[data-delete="true"]'));
-	deleteNodes(document.querySelectorAll('.modal'));
-}
-
-function deleteNodes(nodes) {
-	nodes.forEach(node => {
-		node.remove()
-	});
-}
 
 function move(node, inc = 1, direction = false) {
 

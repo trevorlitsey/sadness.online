@@ -5,7 +5,11 @@ import sneakInImages from './sneakInImages';
 import renderWebcam from './renderWebcam';
 import printPopups from './popups/printPopups';
 import handleJumble from './jumbler/handleJumble'
-import { handleNormalClick, handleQuestionsClick } from './clickHandlers';
+import {
+	handleNormalClick,
+	handleQuestionsClick,
+	handleTransitionToFeelings
+} from './clickHandlers';
 import {
 	scrollToNextPage,
 	insertQuizImage,
@@ -14,7 +18,6 @@ import {
 	turnOnModal,
 	turnOffModal,
 	deleteAllPages,
-	handleTransitionToFeelings,
 	transitionToWebcam as handleTransitionToWebcam,
 	applyBackgroundMotion,
 	displayQuizPage
