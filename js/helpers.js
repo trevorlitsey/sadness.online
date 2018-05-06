@@ -147,25 +147,31 @@ export async function displayQuizPage(node, firstInterval) {
 	const quizLinks = node.querySelectorAll('a');
 	await unHideNode(null, firstInterval)
 	h1s[0] && await unHideNode(h1s[0], 250)
-	h1s[1] && await unHideNode(h1s[1], 3000)
-	await unHideNode(quizLinks[0], 2000)
+	h1s[1] && await unHideNode(h1s[1], 1500)
+	await unHideNode(quizLinks[0], 1500)
 	await unHideNode(quizLinks[1], 500)
 	await unHideNode(quizLinks[2], 500)
+}
 
-	// --------
-	function unHideNode(node, interval) {
-		return new Promise((res, rej) => {
-			setTimeout(() => {
-				node && node.classList.remove('make-transparent');
-				return res(true)
-			}, interval)
-
-		})
-	}
-
+export async function displayFeelings() {
+	const feelings = document.querySelector('#feelings-are-never-an-abstraction');
+	const h1s = feelings.querySelectorAll('h1');
+	const buttons = feelings.querySelector('.bttns');
+	await unHideNode(h1s[0], 500)
+	await unHideNode(h1s[1], 500)
+	await unHideNode(h1s[2], 700)
+	await unHideNode(buttons, 800)
 }
 
 // ==================
+function unHideNode(node, interval) {
+	return new Promise((res, rej) => {
+		setTimeout(() => {
+			node && node.classList.remove('make-transparent');
+			return res(true)
+		}, interval)
+	})
+}
 
 function move(node, inc = 1, direction = false) {
 

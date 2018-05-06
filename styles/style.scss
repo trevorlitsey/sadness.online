@@ -165,18 +165,18 @@ a.smiley:hover {
 
 .shape-1 {
 	filter: brightness(220%);
-	// background: url('../dist/shapes/shape-1.png') no-repeat;
+	background: url('../dist/shapes/shape-1.png') no-repeat;
 	background-size:cover;
 }
 
 .shape-2 {
 	filter: brightness(140%);
-	// background: url('../dist/shapes/shape-2.png') no-repeat;
+	background: url('../dist/shapes/shape-2.png') no-repeat;
 	background-size:cover;
 }
 
 .shape-3 {
-	// background: url('../dist/shapes/shape-3.png') no-repeat;
+	background: url('../dist/shapes/shape-3.png') no-repeat;
 	background-size:cover;
 }
 
@@ -437,9 +437,8 @@ a.welcome {
 	color: white;
 	display: flex;
 	justify-content: center;
-	transition: opacity 5s;
-	opacity: 0;
-
+	opacity: 1;
+	
 	& > .wrapper--3d {
 		padding: 10%;
 		width: 100%;
@@ -459,18 +458,20 @@ a.welcome {
 				background-color: rgba(255,255,255,.3);
 			}
 		}
-
+		
 		& > .text > h1 {
 			white-space: nowrap;
 			line-height: 1.2rem;
 			padding: 0;
 			text-align: left;
+			transition: opacity .75s;
 		}
-
+		
 		& > .bttns {
 			padding-top: 3rem;
 			display: flex;
 			margin-right: 5rem;
+			transition: opacity .75s;
 		}
 
 		& > .bttns > a.bttn {

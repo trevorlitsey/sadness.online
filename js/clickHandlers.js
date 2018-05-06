@@ -1,4 +1,4 @@
-import { scrollToNextPage, cycleQuestions } from './helpers';
+import { scrollToNextPage, cycleQuestions, displayFeelings } from './helpers';
 
 export function handleNormalClick(e) {
 	e.preventDefault();
@@ -39,7 +39,7 @@ export function handleTransitionToFeelings(finalPage) {
 		fadeNodes('.modal');
 		fadeNodes('.questions');
 		finalPage.addEventListener('transitionend', () => {
-			document.querySelector('.feelings-are-never-an-abstraction').style.opacity = 1;
+			displayFeelings();
 			deleteEverythingButWebcam();
 			resolve(true);
 		})

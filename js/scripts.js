@@ -100,7 +100,7 @@ pages.forEach(page => page.addEventListener('click', filterClick))
 modals.forEach(modal => modal.addEventListener('click', filterClick))
 // deletePagesTrigger.addEventListener('click', deleteAllPages);
 
-// window.addEventListener('load', () => applyBackgroundMotion(backgroundImageOne, backgroundImageTwo))
+window.addEventListener('load', () => applyBackgroundMotion(backgroundImageOne, backgroundImageTwo))
 document.querySelectorAll('.modal').forEach(modal => modal.isModal = true);
 setTimeout(() => sneakInImages(149), 4000);
 quizLinks.forEach(linkNode => insertQuizImage(linkNode));

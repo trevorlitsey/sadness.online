@@ -27,9 +27,14 @@
 		const canvas = document.querySelector('canvas');
 		p.setup(canvas);
 
-		const shape1 = makeShape();
-		// const shape2 = makeShape();
-		// const shape3 = makeShape();
+		const gray1 = 'HSLA(220, 8%, 92%, 1.00)'
+		const gray2 = 'HSLA(220, 10%, 72%, 1.00)'
+		const gray3 = 'HSLA(220, 10%, 52%, 1.00)'
+
+
+		const shape1 = makeShape(gray1);
+		const shape2 = makeShape(gray2);
+		const shape3 = makeShape(gray3);
 
 		// let center = [window.innerWidth / 2, window.innerHeight / 2];
 		// shape1.onFrame = (e) => {
@@ -46,7 +51,7 @@
 
 		// ------
 
-		function makeShape() {
+		function makeShape(color) {
 			const shape = new p.Group();
 
 			for (let i = 0; i < window.innerHeight; i += 20) {
@@ -59,8 +64,7 @@
 				shape.addChild(path)
 			}
 
-			shape.fillColor = 'gray';
-			shape.fillRule = 'evenodd'
+			shape.strokeColor = color;
 
 			return shape;
 		}
@@ -69,35 +73,40 @@
 			const segments = getHorizontalLineSegments(y);
 			const path = new p.Path(segments);
 			path.smooth({ type: 'continuous' });
-			path.strokeColor = 'black';
+			path.strokeWidth = 10;
 			return path;
+
+			// --------
+			function getHorizontalLineSegments(y) {
+				let wonkyY = y
+				const segments = [];
+				const width = window.innerWidth;
+				for (let i = 0; i < 4; i++) {
+					const x = i * (width / 3)
+					wonkyY += Math.random() * 4 - 2;
+					segments.push(new p.Point(x, wonkyY));
+				}
+				return segments;
+			}
 		}
 
-		function getHorizontalLineSegments(y) {
-			const segments = [];
-			const width = window.innerWidth;
-			for (let i = 0; i < 4; i++) {
-				const x = i * (width / 3)
-				const wonkyY = y + Math.round(Math.random() * 6 - 3)
-				segments.push(new p.Point(x, wonkyY));
-			}
-			return segments;
-		}
+
 
 		function drawVerticalLine(x) {
 			const segments = getVerticalLineSegments(x);
 			const path = new p.Path(segments);
 			path.smooth({ type: 'continuous' });
-			path.strokeColor = 'black';
+			path.strokeWidth = 10;
 			return path;
 		}
 
 		function getVerticalLineSegments(x) {
+			let wonkyX = x;
 			const segments = [];
 			const height = window.innerHeight;
 			for (let i = 0; i < 4; i++) {
-				const wonkyX = x + Math.round(Math.random() * 6 - 3)
 				const y = i * (height / 3)
+				wonkyX += Math.random() * 4 - 2;
 				segments.push(new p.Point(wonkyX, y));
 			}
 			return segments;
