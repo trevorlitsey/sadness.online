@@ -7,52 +7,27 @@
 	<title>Test</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="../bundle.css" />
-	<script src="../js/libraries/paper-core.min.js" type="text/javascript"></script>
+	<script type="text/javascript" href="../bundle.js" />
 </head>
 
 <body>
 
-	<div id="hello-are-you-looking-for-sadness" class="page trigger--jumble" data-jumble-target="#how-are-you-feeling">
-		<div class="wrapper">
-			<h1 class="slot-machine">Hello. Are you looking for sadness.online?</h1>
-			<div class="buttons">
-				<a class="bttn one">Yes</a>
-				<a class="bttn">No</a>
-			</div>
+	<div id="feelings-are-never-an-abstraction" class="page feelings-are-never-an-abstraction" data-transition-to-webcam="true">
+		<div class="text">
+			<h1>Feelings</h1>
+			<h1>are never</h1>
+			<h1>an abstraction</h1>
 		</div>
-	</div>
-
-	<div id="how-are-you-feeling" class="page trigger--jumble" data-jumble-target="#sorry-that-happiness-was-unavailable">
-		<div class="wrapper">
-			<h1 class="slot-machine">How are you feeling?</h1>
-			<div class="buttons">
-				<a href="#sorry-that-happiness-was-unavailable" class="smiley">:)</a>
-				<a href="#sorry-that-happiness-was-unavailable" class="smiley">:|</a>
-				<a href="#sorry-that-happiness-was-unavailable" class="smiley">:(</a>
-			</div>
-		</div>
-	</div>
-
-	<div id="sorry-that-happiness-was-unavailable" class="page sorry-that-happiness-was-unavailable" data-normal-target="true">
-		<div class="wrapper">
-			<h1 class="slot-machine clamp">Sorry that happiness.online was unavailable</h1>
-			<div>
-				<a href="#shall-we-begin" class="bttn">same.</a>
-				<a href="#sadnessDotOnline" class="bttn">ugh.</a>
-			</div>
+		<div class="bttns">
+			<a href="#webcam-page" class="bttn bttn--swap bttn1" data-boop="true" name="trigger"></a>
+			<a href="#webcam-page" class="bttn bttn--swap bttn2" data-boop="true" name="trigger"></a>
 		</div>
 	</div>
 
 	<script>
 
-		const container = document.querySelector('.container');
-		const button = document.querySelector('.one');
 
-		button.addEventListener('click', () => {
-			document.body.style.marginTop = '-100vh';
-			console.log(container.scrollTop);
 
-		})
 
 	</script>
 

@@ -1,5 +1,3 @@
-import './libraries/clamp';
-
 import './welcomePage';
 import sneakInImages from './sneakInImages';
 import renderWebcam from './renderWebcam';
@@ -11,6 +9,7 @@ import {
 	turnOnModal,
 	turnOffModal,
 	handleTransitionToFeelings,
+	handleTransitionToWebcam,
 } from './clickHandlers';
 import {
 	scrollToNextPage,
@@ -18,7 +17,6 @@ import {
 	cycleQuestions,
 	play,
 	deleteAllPages,
-	transitionToWebcam as handleTransitionToWebcam,
 	applyBackgroundMotion,
 	displayQuizPage,
 	startOver,
@@ -36,7 +34,7 @@ const webcamCanvasTwo = document.querySelector('.webcam-canvas--two');
 const backgroundImageOne = document.querySelector('.shape-1')
 const backgroundImageTwo = document.querySelector('.shape-2')
 const horizontalScroll = document.querySelector('.horizontal-scroll');
-const clampedText = document.querySelector('.clamp')
+const swapButtons = document.querySelectorAll('.bttn--swap');
 
 const pages = document.querySelectorAll('.page');
 const modals = document.querySelectorAll('.modal')
@@ -113,14 +111,19 @@ async function filterClick(e) {
 pages.forEach(page => page.addEventListener('click', filterClick))
 modals.forEach(modal => modal.addEventListener('click', filterClick))
 
-// window.addEventListener('load', () => applyBackgroundMotion(backgroundImageOne, backgroundImageTwo))
+window.addEventListener('load', () => applyBackgroundMotion(backgroundImageOne, backgroundImageTwo))
 document.querySelectorAll('.modal').forEach(modal => modal.isModal = true);
 setTimeout(() => sneakInImages(149), 4000);
 quizLinks.forEach(linkNode => insertQuizImage(linkNode));
 document.addEventListener('keyup', startOver)
+swapButtons.forEach(button => button.addEventListener('mouseover', () => swapButtons.forEach(button => button.classList.add('swap'))))
+swapButtons.forEach(button => button.addEventListener('mouseleave', () => swapButtons.forEach(button => button.classList.remove('swap'))))
 
-startOver(true);
+// start from beginning always
+window.addEventListener('load', () => startOver(true))
+
 // where to scroll on default
 setTimeout(() => {
+	startOver(true)
 	// scrollToNextPage('#this-seems-impractical');
-}, 300)
+}, 200)

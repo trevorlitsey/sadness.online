@@ -46,6 +46,28 @@ export function handleTransitionToFeelings(finalPage) {
 	})
 }
 
+export function handleTransitionToWebcam() {
+
+	const nextToLastPage = document.querySelector('.feelings-are-never-an-abstraction');
+	const webcamPage = document.getElementById('webcam-page');
+
+	window.requestAnimationFrame(() => {
+		document.body.style.background = 'black';
+		nextToLastPage.style.opacity = 0;
+	});
+
+	// wait 8 second
+	setTimeout(() => {
+		scrollToNextPage('#webcam-page');
+		setTimeout(() => {
+			window.requestAnimationFrame(() => {
+				webcamPage.classList.remove('off');
+				webcamPage.classList.add('on');
+			});
+		}, 400)
+	}, 8000)
+}
+
 // ------------
 function fadeNodes(query) {
 	document.querySelectorAll(query).forEach(node => {
