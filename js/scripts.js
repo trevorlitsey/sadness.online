@@ -35,6 +35,7 @@ const webcamCanvasOne = document.querySelector('.webcam-canvas--one');
 const webcamCanvasTwo = document.querySelector('.webcam-canvas--two');
 const backgroundImageOne = document.querySelector('.shape-1')
 const backgroundImageTwo = document.querySelector('.shape-2')
+const horizontalScroll = document.querySelector('.horizontal-scroll');
 const clampedText = document.querySelector('.clamp')
 
 const pages = document.querySelectorAll('.page');
@@ -43,7 +44,7 @@ const modals = document.querySelectorAll('.modal')
 async function filterClick(e) {
 	e.preventDefault();
 
-	const { popupPattern, jumbleTarget, questionsTrigger, modalTarget, quizTarget, normalTarget, isModal, transitionToFeelings, transitionToWebcam } = this.dataset;
+	const { popupPattern, jumbleTarget, scroll, scrollRight, questionsTrigger, modalTarget, quizTarget, normalTarget, isModal, transitionToFeelings, transitionToWebcam } = this.dataset;
 	const { boop } = e.target.dataset;
 	const { nodeName } = e.target;
 
@@ -55,30 +56,37 @@ async function filterClick(e) {
 	if (boop) {
 		play(boopSound);
 	}
+
 	// popup click
 	if (popupPattern) {
 		await printPopups(this, popupPattern);
 	}
+
 	// jumble click
 	if (jumbleTarget) {
 		handleJumble(jumbleTarget);
 	}
+
 	// quiz click (fade in next page)
 	if (quizTarget) {
 		const page = document.querySelector(clickTargetHash);
 		displayQuizPage(page, 250);
 	}
+
 	// questions click (cycler)
 	if (questionsTrigger) {
 		handleQuestionsClick();
 	}
+
 	if (isModal) {
 		turnOffModal(this);
 	}
+
 	// modal click
 	if (modalTarget) {
 		turnOnModal(modalTarget);
 	}
+
 	// transition to webcam
 	if (transitionToWebcam) {
 		renderWebcam(webcamCanvasOne, webcamCanvasTwo);
@@ -90,23 +98,28 @@ async function filterClick(e) {
 		await handleTransitionToFeelings(this);
 	}
 
-	// just a normal click
-	if (clickTargetHash) {
-		scrollToNextPage(clickTargetHash);
+	// horizontal scroll
+	if (scrollRight) {
+		horizontalScroll.style.marginLeft = `-${scrollRight}vw`
+	}
+
+	// just a normal scroll
+	if (scroll) {
+		document.body.style.marginTop = `-${scroll}vh`
 	}
 
 }
 
 pages.forEach(page => page.addEventListener('click', filterClick))
 modals.forEach(modal => modal.addEventListener('click', filterClick))
-// deletePagesTrigger.addEventListener('click', deleteAllPages);
 
-window.addEventListener('load', () => applyBackgroundMotion(backgroundImageOne, backgroundImageTwo))
+// window.addEventListener('load', () => applyBackgroundMotion(backgroundImageOne, backgroundImageTwo))
 document.querySelectorAll('.modal').forEach(modal => modal.isModal = true);
 setTimeout(() => sneakInImages(149), 4000);
 quizLinks.forEach(linkNode => insertQuizImage(linkNode));
 document.addEventListener('keyup', startOver)
 
+startOver(true);
 // where to scroll on default
 setTimeout(() => {
 	// scrollToNextPage('#this-seems-impractical');

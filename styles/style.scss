@@ -25,7 +25,7 @@ $white: #eee;
 }
 
 html {
-	font-size: calc(1.8vh + 1.8vw);
+	font-size: calc(1.8vw + 1.8vh);
 	margin: 0;
 }
 
@@ -34,24 +34,27 @@ body {
 	font-family: 'Crimson Text', serif;
 	color: var(--text-color);
 	display: block;
-	scroll-behavior: smooth;
 	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+	transition: margin .72s;
 }
 
 .page {
 	position: relative;
-	height: 100%;
-	width: 100%;
+	height: 100vh;
+	width: 100vw;
 	padding: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+	border: 1px solid black;
 }
 
 .wrapper {
-	margin: 4%;
-	padding: 5%;
+	margin: 40px;
+	padding: 20px;
 	width: 100%;
 	background: rgba(255,255,255,.5);
 }
@@ -78,7 +81,7 @@ a {
 h1 {
 	text-align: center;
 	align-self: end;
-	margin: 0 0 5%;
+	margin: 0 0 10px;
 	font-size: 2rem;
 	transition: transform .2s;
 }
@@ -90,7 +93,7 @@ h1:hover {
 
 h1.slot-machine {
 	text-align: left;
-	margin: 0 7% 5%;
+	margin: 0 20px 10px;
 	max-height: 5rem;
 	overflow: hidden;
 }
@@ -353,7 +356,7 @@ a.quiz-link:hover {
 /* ======= pages ======= */
 
 /* ------ welcome ------ */
-#sadnessDotOnline, #questions, #webcam-page {
+#sadnessDotOnline, #webcam-page {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr;
@@ -403,19 +406,12 @@ a.welcome {
 }
 
 .horizontal-scroll {
-	display: block;
-  width: 100vh;
-	height: 100vw;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transform: rotate(-90deg) translateY(-100vh);
-  transform-origin: right top;
-  & > .page {
-		margin: 0;
-		width: 100vh;
-		height: 100vw;
-    transform: rotate(90deg);
-	}
+	display: grid;
+	grid-auto-flow: column;
+
+	border: 10px solid pink;
+	overflow: visible;
+	transition: margin .72s;
 	&::-webkit-scrollbar { 
     display: none;  // Safari and Chrome
 	}
@@ -426,7 +422,6 @@ a.welcome {
 	display: block;
 	& div {
 		overflow: visible;
-		min-width: 40rem;
 	}
 }
 

@@ -25,9 +25,9 @@
 	<div class="background-image shape-2"></div>
 	<div class="background-image shape-3"></div>
 
-	<div id="sadnessDotOnline" class="page sadnessDotOnline center-center" data-normal-target="#hello-are-you-looking-for-sadness"
+	<div data-scroll="100" id="sadnessDotOnline" class="page sadnessDotOnline center-center" data-normal-target="#hello-are-you-looking-for-sadness"
 	 data-jumble-target="#hello-are-you-looking-for-sadness">
-		<a href="#hello-are-you-looking-for-sadness" class="welcome blur">
+		<a class="welcome blur">
 			<span>S</span>
 			<span>a</span>
 			<span>d</span>
@@ -45,17 +45,17 @@
 		</a>
 	</div>
 
-	<div id="hello-are-you-looking-for-sadness" class="page trigger--jumble" data-jumble-target="#how-are-you-feeling">
+	<div data-scroll="200" id="hello-are-you-looking-for-sadness" class="page trigger--jumble" data-jumble-target="#how-are-you-feeling">
 		<div class="wrapper">
 			<h1 class="slot-machine">Hello. Are you looking for sadness.online?</h1>
 			<div class="buttons">
 				<a href="#how-are-you-feeling" class="bttn">Yes</a>
-				<a href="#sadnessDotOnline" class="bttn">No</a>
+				<a href="#sadnessDotOnline" class="bttn" data-cancel="true">No</a>
 			</div>
 		</div>
 	</div>
 
-	<div id="how-are-you-feeling" class="page trigger--jumble" data-jumble-target="#sorry-that-happiness-was-unavailable">
+	<div data-scroll="300" id="how-are-you-feeling" class="page trigger--jumble" data-jumble-target="#sorry-that-happiness-was-unavailable">
 		<div class="wrapper">
 			<h1 class="slot-machine">How are you feeling?</h1>
 			<div class="buttons">
@@ -66,7 +66,7 @@
 		</div>
 	</div>
 
-	<div id="sorry-that-happiness-was-unavailable" class="page sorry-that-happiness-was-unavailable" data-normal-target="true">
+	<div data-scroll="400" id="sorry-that-happiness-was-unavailable" class="page sorry-that-happiness-was-unavailable" data-normal-target="true">
 		<div class="wrapper">
 			<h1 class="slot-machine clamp">Sorry that happiness.online was unavailable</h1>
 			<div>
@@ -76,20 +76,20 @@
 		</div>
 	</div>
 
-	<div id="shall-we-begin" class="page" data-quiz-target="true">
+	<div data-scroll="500" id="shall-we-begin" class="page" data-quiz-target="true">
 		<div class="wrapper">
 			<h1>Shall we begin?</h1>
 			<div>
 				<a href="#continue" class="bttn">Ok</a>
-				<a href="#sadnessDotOnline" class="bttn">Cancel</a>
+				<a href="#sadnessDotOnline" class="bttn" data-cancel="true">Cancel</a>
 			</div>
 		</div>
 	</div>
 
 	<!-- //////////// begin horizontal scroll ////////////// -->
-	<section class="horizontal-scroll questions" data-delete="true">
+	<section id="horizontal-scroll" class="horizontal-scroll questions" data-delete="true">
 
-		<div id="continue" class="page" data-quiz-target="true">
+		<div data-scroll-right="100" id="continue" class="page" data-quiz-target="true">
 			<div class="wrapper">
 				<div class="wrapper--text">
 					<h1 class="quiz-text make-transparent">You receive a phone call from a number you don’t recognize.</h1>
@@ -103,7 +103,7 @@
 			</div>
 		</div>
 
-		<div id="its-your-pets-birthday" class="page" data-quiz-target="true">
+		<div data-scroll-right="200" id="its-your-pets-birthday" class="page" data-quiz-target="true">
 			<div class="wrapper">
 				<div class="wrapper--text">
 					<h1 class="quiz-text make-transparent">It’s your pet’s birthday!!!</h1>
@@ -117,7 +117,7 @@
 			</div>
 		</div>
 
-		<div id="difficult-to-introduce-yourself" class="page" data-quiz-target="true">
+		<div data-scroll-right="300" id="difficult-to-introduce-yourself" class="page" data-quiz-target="true">
 			<div class="wrapper">
 				<div class="wrapper--text">
 					<h1 class="quiz-text make-transparent">You find it difficult to introduce yourself to other people.</h1>
@@ -131,7 +131,7 @@
 			</div>
 		</div>
 
-		<div id="looking-for-answers-find-yourself-on-wikipedia" class="page" data-quiz-target="true">
+		<div data-scroll-right="400" id="looking-for-answers-find-yourself-on-wikipedia" class="page" data-quiz-target="true">
 			<div class="wrapper">
 				<div class="wrapper--text">
 					<h1 class="quiz-text make-transparent">You’re looking for “answers” and you end up on Wikipedia.</h1>
@@ -145,7 +145,7 @@
 			</div>
 		</div>
 
-		<div id="you-are-at-play" class="page" data-quiz-target="true">
+		<div data-scroll-right="500" id="you-are-at-play" class="page" data-quiz-target="true">
 			<div class="wrapper">
 				<div class="wrapper--text">
 					<h1 class="quiz-text make-transparent">You are at a play. You see something you don’t understand. </h1>
@@ -159,7 +159,7 @@
 			</div>
 		</div>
 
-		<div id="looking-for-answers-find-yourself-on-the-internet" class="page" data-quiz-target="true">
+		<div data-scroll-right="600" id="looking-for-answers-find-yourself-on-the-internet" class="page" data-quiz-target="true">
 			<div class="wrapper">
 				<div class="wrapper--text">
 					<h1 class="quiz-text make-transparent">You’re looking for “answers” and you end up on the Internet. </h1>
@@ -173,7 +173,7 @@
 			</div>
 		</div>
 
-		<div id="you-wake-up-in-the-morning" class="page" data-quiz-target="true">
+		<div data-scroll-right="700" id="you-wake-up-in-the-morning" class="page" data-quiz-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text make-transparent">You wake up in the morning, but keep your eyes closed?</h1>
 				<div class="container--quiz-links">
@@ -184,7 +184,7 @@
 			</div>
 		</div>
 
-		<div id="it-is-night-time" class="page" data-quiz-target="true">
+		<div data-scroll-right="800" id="it-is-night-time" class="page" data-quiz-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text make-transparent">It is night time.</h1>
 				<div class="container--quiz-links">
@@ -195,7 +195,7 @@
 			</div>
 		</div>
 
-		<div id="smilies" class="page" data-quiz-target="true">
+		<div data-scroll-right="900" id="smilies" class="page" data-quiz-target="true">
 			<div class="wrapper">
 				<h1 class="quiz-text smiles make-transparent">
 					<span>:)</span>
@@ -213,7 +213,7 @@
 			</div>
 		</div>
 
-		<div id="this-seems-impractical" class="page" data-questions-trigger="true">
+		<div data-scroll-right="1000" id="this-seems-impractical" class="page" data-questions-trigger="true">
 			<div class="wrapper">
 				<h1 class="quiz-text make-transparent">This seems impractical</h1>
 				<div class="buttons">

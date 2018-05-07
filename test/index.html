@@ -12,41 +12,47 @@
 
 <body>
 
-	<div class="container">
-
-		<div id="hello-are-you-looking-for-sadness" class="page trigger--jumble" data-jumble-target="#how-are-you-feeling">
-			<div class="wrapper">
-				<h1 class="slot-machine">Hello. Are you looking for sadness.online?</h1>
-				<div class="buttons">
-					<a href="#how-are-you-feeling" class="bttn">Yes</a>
-					<a href="#sadnessDotOnline" class="bttn">No</a>
-				</div>
+	<div id="hello-are-you-looking-for-sadness" class="page trigger--jumble" data-jumble-target="#how-are-you-feeling">
+		<div class="wrapper">
+			<h1 class="slot-machine">Hello. Are you looking for sadness.online?</h1>
+			<div class="buttons">
+				<a class="bttn one">Yes</a>
+				<a class="bttn">No</a>
 			</div>
 		</div>
+	</div>
 
-		<div id="how-are-you-feeling" class="page trigger--jumble" data-jumble-target="#sorry-that-happiness-was-unavailable">
-			<div class="wrapper">
-				<h1 class="slot-machine">How are you feeling?</h1>
-				<div class="buttons">
-					<a href="#sorry-that-happiness-was-unavailable" class="smiley">:)</a>
-					<a href="#sorry-that-happiness-was-unavailable" class="smiley">:|</a>
-					<a href="#sorry-that-happiness-was-unavailable" class="smiley">:(</a>
-				</div>
+	<div id="how-are-you-feeling" class="page trigger--jumble" data-jumble-target="#sorry-that-happiness-was-unavailable">
+		<div class="wrapper">
+			<h1 class="slot-machine">How are you feeling?</h1>
+			<div class="buttons">
+				<a href="#sorry-that-happiness-was-unavailable" class="smiley">:)</a>
+				<a href="#sorry-that-happiness-was-unavailable" class="smiley">:|</a>
+				<a href="#sorry-that-happiness-was-unavailable" class="smiley">:(</a>
 			</div>
 		</div>
+	</div>
 
-		<div id="sorry-that-happiness-was-unavailable" class="page sorry-that-happiness-was-unavailable" data-normal-target="true">
-			<div class="wrapper">
-				<h1 class="slot-machine clamp">Sorry that happiness.online was unavailable</h1>
-				<div>
-					<a href="#shall-we-begin" class="bttn">same.</a>
-					<a href="#sadnessDotOnline" class="bttn">ugh.</a>
-				</div>
+	<div id="sorry-that-happiness-was-unavailable" class="page sorry-that-happiness-was-unavailable" data-normal-target="true">
+		<div class="wrapper">
+			<h1 class="slot-machine clamp">Sorry that happiness.online was unavailable</h1>
+			<div>
+				<a href="#shall-we-begin" class="bttn">same.</a>
+				<a href="#sadnessDotOnline" class="bttn">ugh.</a>
 			</div>
 		</div>
 	</div>
 
 	<script>
+
+		const container = document.querySelector('.container');
+		const button = document.querySelector('.one');
+
+		button.addEventListener('click', () => {
+			document.body.style.marginTop = '-100vh';
+			console.log(container.scrollTop);
+
+		})
 
 	</script>
 

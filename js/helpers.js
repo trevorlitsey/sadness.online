@@ -21,7 +21,7 @@ export function scrollToNextPage(scrollTargetHash, userOptions = {}) {
 }
 
 export function startOver(e) {
-	if (e.keyCode === 66) {
+	if (e === true || e.keyCode === 66) {
 		scrollToNextPage('#sadnessDotOnline', { behavior: 'instant' });
 	}
 }
