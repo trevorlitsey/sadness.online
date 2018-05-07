@@ -12,106 +12,41 @@
 
 <body>
 
-	<canvas resize></canvas>
+	<div class="container">
 
-	<style>
-		canvas {
-			width: 100vw;
-			height: 100vh;
-		}
-	</style>
+		<div id="hello-are-you-looking-for-sadness" class="page trigger--jumble" data-jumble-target="#how-are-you-feeling">
+			<div class="wrapper">
+				<h1 class="slot-machine">Hello. Are you looking for sadness.online?</h1>
+				<div class="buttons">
+					<a href="#how-are-you-feeling" class="bttn">Yes</a>
+					<a href="#sadnessDotOnline" class="bttn">No</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="how-are-you-feeling" class="page trigger--jumble" data-jumble-target="#sorry-that-happiness-was-unavailable">
+			<div class="wrapper">
+				<h1 class="slot-machine">How are you feeling?</h1>
+				<div class="buttons">
+					<a href="#sorry-that-happiness-was-unavailable" class="smiley">:)</a>
+					<a href="#sorry-that-happiness-was-unavailable" class="smiley">:|</a>
+					<a href="#sorry-that-happiness-was-unavailable" class="smiley">:(</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="sorry-that-happiness-was-unavailable" class="page sorry-that-happiness-was-unavailable" data-normal-target="true">
+			<div class="wrapper">
+				<h1 class="slot-machine clamp">Sorry that happiness.online was unavailable</h1>
+				<div>
+					<a href="#shall-we-begin" class="bttn">same.</a>
+					<a href="#sadnessDotOnline" class="bttn">ugh.</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script>
-
-		const p = paper;
-		const canvas = document.querySelector('canvas');
-		p.setup(canvas);
-
-		const gray1 = 'HSLA(220, 8%, 92%, 1.00)'
-		const gray2 = 'HSLA(220, 10%, 72%, 1.00)'
-		const gray3 = 'HSLA(220, 10%, 52%, 1.00)'
-
-
-		const shape1 = makeShape(gray1);
-		const shape2 = makeShape(gray2);
-		const shape3 = makeShape(gray3);
-
-		// let center = [window.innerWidth / 2, window.innerHeight / 2];
-		// shape1.onFrame = (e) => {
-		// 	shape1.position = new p.Point(center[0], center[1])
-		// 	console.log(center);
-		// 	center[1] += .2;
-		// }
-
-		// let otherCenter = [window.innerWidth / 2, window.innerHeight / 2];
-		// shape2.onFrame = (e) => {
-		// 	shape2.position = new p.Point(otherCenter[0], otherCenter[1])
-		// 	otherCenter[1] -= .2;
-		// }
-
-		// ------
-
-		function makeShape(color) {
-			const shape = new p.Group();
-
-			for (let i = 0; i < window.innerHeight; i += 20) {
-				const path = drawHorizontalLine(i);
-				shape.addChild(path)
-			}
-
-			for (let i = 0; i < window.innerWidth; i += 20) {
-				const path = drawVerticalLine(i);
-				shape.addChild(path)
-			}
-
-			shape.strokeColor = color;
-
-			return shape;
-		}
-
-		function drawHorizontalLine(y) {
-			const segments = getHorizontalLineSegments(y);
-			const path = new p.Path(segments);
-			path.smooth({ type: 'continuous' });
-			path.strokeWidth = 10;
-			return path;
-
-			// --------
-			function getHorizontalLineSegments(y) {
-				let wonkyY = y
-				const segments = [];
-				const width = window.innerWidth;
-				for (let i = 0; i < 4; i++) {
-					const x = i * (width / 3)
-					wonkyY += Math.random() * 4 - 2;
-					segments.push(new p.Point(x, wonkyY));
-				}
-				return segments;
-			}
-		}
-
-
-
-		function drawVerticalLine(x) {
-			const segments = getVerticalLineSegments(x);
-			const path = new p.Path(segments);
-			path.smooth({ type: 'continuous' });
-			path.strokeWidth = 10;
-			return path;
-		}
-
-		function getVerticalLineSegments(x) {
-			let wonkyX = x;
-			const segments = [];
-			const height = window.innerHeight;
-			for (let i = 0; i < 4; i++) {
-				const y = i * (height / 3)
-				wonkyX += Math.random() * 4 - 2;
-				segments.push(new p.Point(wonkyX, y));
-			}
-			return segments;
-		}
-
 
 	</script>
 

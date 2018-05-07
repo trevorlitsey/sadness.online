@@ -35,8 +35,10 @@ function rouletteRandomLetters(span, int) {
 function jumbler(tag) {
 	if (isRunning) return;
 	isRunning = true;
+	const origText = tag.innerHTML;
 	tag.innerHTML = sparanwrap(tag);
 	const spans = tag.querySelectorAll('span');
+	spans.forEach((span, index) => rouletteRandomLetters(span, index))
 }
 
 export default jumbler;

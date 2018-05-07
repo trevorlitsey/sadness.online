@@ -11,9 +11,19 @@ export function isScrolledIntoView(el) {
 	return isVisible;
 }
 
-export function scrollToNextPage(scrollTargetHash) {
+export function scrollToNextPage(scrollTargetHash, userOptions = {}) {
+	const options = {
+		behavior: 'smooth',
+		...userOptions,
+	}
 	const node = document.querySelector(scrollTargetHash);
-	return node.scrollIntoView({ behavior: 'smooth' });
+	return node.scrollIntoView(options);
+}
+
+export function startOver(e) {
+	if (e.keyCode === 66) {
+		scrollToNextPage('#sadnessDotOnline', { behavior: 'instant' });
+	}
 }
 
 export function transitionToWebcam() {

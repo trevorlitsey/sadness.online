@@ -20,7 +20,8 @@ import {
 	deleteAllPages,
 	transitionToWebcam as handleTransitionToWebcam,
 	applyBackgroundMotion,
-	displayQuizPage
+	displayQuizPage,
+	startOver,
 } from './helpers';
 
 import '../styles/style.scss'
@@ -104,6 +105,7 @@ window.addEventListener('load', () => applyBackgroundMotion(backgroundImageOne, 
 document.querySelectorAll('.modal').forEach(modal => modal.isModal = true);
 setTimeout(() => sneakInImages(149), 4000);
 quizLinks.forEach(linkNode => insertQuizImage(linkNode));
+document.addEventListener('keyup', startOver)
 
 // where to scroll on default
 setTimeout(() => {
