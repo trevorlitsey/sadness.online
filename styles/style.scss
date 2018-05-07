@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,600');
 
 @font-face {
-	font-family: BebasNeue;
+	font-family: 'BebasNeue';
 	src: url('./bebas-neue/TTF/BebasNeue_Regular.ttf') format('ttf');
 }
 
 @font-face {
-	font-family: Bebas;
+	font-family: 'Bebas';
 	src: url('./bebas-neue/TTF/Bebas.ttf') format('ttf');
 }
 
@@ -192,7 +192,7 @@ a.smiley:hover {
 /* modal */
 
 .modal {
-	font-family: BebasNeue sans-serif;
+	font-family: 'Bebas', 'BebasNeue', -apple-system, sans-serif;
 	color: #eff;
 	padding: 40px;
 	transform: scale(.1);

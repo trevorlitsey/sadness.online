@@ -61,6 +61,7 @@ export function cycleQuestions(h1Node, questions, speedUp) {
 
 		let i = 0;
 		let count = 0;
+
 		const interval = setInterval(() => {
 			let { isStarted, isRunning } = h1Node;
 			if (isStarted && !isScrolledIntoView(h1Node)) {
@@ -76,13 +77,7 @@ export function cycleQuestions(h1Node, questions, speedUp) {
 			requestAnimationFrame(() => {
 				h1Node.innerHTML = questions[i];
 				i === questions.length - 1 ? i = 0 : i++;
-
 				if (speedUp && count === 3 && speed > 5) {
-					// TODO
-					// if (scale <= 3) {
-					// 	wrapper.style.transform = `scale(${scale})`;
-					// 	scale += .2;
-					// }
 					clearInterval(interval);
 					const newSpeed = speed < 20 ? 5 : speed - 20;
 					h1Node.innerHTML = questions[i];

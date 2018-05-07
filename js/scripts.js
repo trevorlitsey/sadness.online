@@ -124,6 +124,6 @@ window.addEventListener('load', () => startOver(true))
 
 // where to scroll on default
 setTimeout(() => {
-	startOver(true)
+	// startOver(true)
 	// scrollToNextPage('#this-seems-impractical');
 }, 200)
