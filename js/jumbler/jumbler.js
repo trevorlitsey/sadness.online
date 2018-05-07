@@ -42,9 +42,9 @@ function jumbler(node) {
 	if (isRunning) return;
 	isRunning = true;
 	const minHeight = node.getBoundingClientRect().height;
+	const origText = node.innerHTML;
 	node.style.height = `${minHeight}px`;
 	node.style.wordBreak = 'break-all';
-	const origText = node.innerHTML;
 	node.innerHTML = sparanwrap(node);
 	const spans = node.querySelectorAll('span');
 	spans.forEach(async (span, index) => {
@@ -53,8 +53,7 @@ function jumbler(node) {
 			await rouletteRandomLetters(span, index, true)
 			node.style.height = `auto`;
 			node.style.wordBreak = 'normal';
-			console.log('done');
-
+			node.innerHTML = origText;
 		} else {
 			rouletteRandomLetters(span, index)
 		}
