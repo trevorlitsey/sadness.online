@@ -530,11 +530,6 @@ a.quiz-link:hover {
 	background: #000;
 	z-index: 10000;
 	opacity: 0;
-
-	& > canvas {
-		filter: brightness(50%);
-	}
-
 }
 
 .page--webcam.on {
@@ -543,6 +538,7 @@ a.quiz-link:hover {
 }
 
 .wrapper--webcam {
+	filter: brightness(60%);
 	position: relative;
 	width: 100%;
 	max-width: 133.3333vh;
