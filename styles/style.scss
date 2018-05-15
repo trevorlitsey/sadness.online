@@ -121,7 +121,6 @@ h1.blur:hover {
 
 a.blur:hover {
 	filter: blur(3px);
-	transform: scale(1);
 }
 
 span {
@@ -326,6 +325,10 @@ a.welcome {
 	transition: all .2s;
 	color: rgba(0,0,0,0);
 	transition: font-color .4s; /* these transitions have to live in two different places i do not know why */
+}
+
+a.welcome:hover {
+	filter: blur(3px);
 }
 
 .welcome span {
