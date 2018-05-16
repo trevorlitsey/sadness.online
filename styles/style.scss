@@ -194,26 +194,26 @@ a.smiley:hover {
 	font-family: 'Bebas', 'BebasNeue', -apple-system, sans-serif;
 	color: #eff;
 	padding: 40px;
-	transform: scale(.1);
-	opacity: 0;
 	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
-	transition: all .4s;
 	
-	&.black {
-		background: rgba(24, 24, 24, 1);
+	&.prep {
+		opacity: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		transform: scale(.1);
 	}
 	
 	&.on {
 		display: flex;
 		transform: scale(1);
 		opacity: 1;
+		transition: transform, opacity, .4s, .4s;
 	}
 	
 	// final transition
@@ -400,12 +400,36 @@ a.welcome:hover {
 
 .container--quiz-links {
 	display: flex;
+
+	& > .bttn {
+		transition: transform, opacity .2s, .5s;
+	}
+
+	&.vertical {
+		flex-direction: column;
+		& > a {
+			font-size: calc(1vw + 1vh + 40px);
+			margin-bottom: 10px;
+			transition: transform, opacity .2s, .5s;
+		}
+		& > a:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	& > * {
+		transition: transform, opacity .2s, .5s;
+	}
+
+	& > *:hover {
+		transform: scale(1.1);
+	}
+	
 }
 
 a.quiz-link {
 	background-size: cover;
 	background-position: center;
-	display: inline-block;
 	height: 25vw;
 	max-height: 33vh;
 	width: 25vw;
@@ -414,11 +438,10 @@ a.quiz-link {
 	border: 6px solid #eee;
 	border-radius: 2px;
 	box-shadow: 0px 0px 8px #bbb;
-	transition: transform, opacity .2s, .5s;
 }
 
-a.quiz-link:hover {
-	transform: scale(1.1);
+h1.quiz-text {
+	transition: transform, opacity .2s, .5s;
 }
 
 .quiz-text.smiles {
@@ -434,6 +457,12 @@ a.quiz-link:hover {
 .quiz-text.smiles span:hover {
 	cursor: pointer;
 	transform: scale(1.4);
+}
+
+.blank {
+	display: inline-block;
+	width: calc(10vh + 100px);
+	border-bottom: 4px solid black;
 }
 
 /* --- questions --- */

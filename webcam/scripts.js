@@ -27,7 +27,10 @@ function renderWebcam(canvasOne, canvasTwo, delay = 3000) {
 			ctxOne.drawImage(video, 0, 0, width, height);
 			// take the pixels out
 			let pixels = ctxOne.getImageData(0, 0, width, height);
+			// mess with them
+			pixels = rgb(pixels);
 
+			ctxOne.globalAlpha = 1;
 
 			// put them back
 			ctxOne.putImageData(pixels, 0, 0);
@@ -39,13 +42,17 @@ function renderWebcam(canvasOne, canvasTwo, delay = 3000) {
 		}, 16);
 	}
 
+	function rgb(pixels) {
+		for (let i = 0; i < pixels.data.length; i += 4) {
+			pixels.data[i + 0] = pixels.data[i + 0] + 70; // RED
+			pixels.data[i + 1] = pixels.data[i + 1] + 70; // GREEN
+			pixels.data[i + 2] = pixels.data[i + 2] + 70; // Blue
+		}
+		return pixels;
+	}
+
 	getVideo();
 
 	video.addEventListener('canplay', paintToCanvas);
 
 }
-
-const canvasOne = document.querySelector('.webcam-canvas--one');
-const canvasTwo = document.querySelector('.webcam-canvas--two');
-
-renderWebcam(canvasOne, canvasTwo, 1000);

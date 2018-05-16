@@ -5,6 +5,7 @@ function getFullPop() {
 		top: '0',
 		left: '0',
 		right: 'auto',
+		src: 'dist/images/125.gif',
 	}
 }
 

@@ -8,7 +8,7 @@ import {
 	handleQuestionsClick,
 	turnOnModal,
 	turnOffModal,
-	handleTransitionToFeelings,
+	fadeModalsAndDeleteEverythingButWebcam,
 	handleTransitionToWebcam,
 } from './clickHandlers';
 import {
@@ -87,13 +87,9 @@ async function filterClick(e) {
 
 	// transition to webcam
 	if (transitionToWebcam) {
+		await fadeModalsAndDeleteEverythingButWebcam();
 		renderWebcam(webcamCanvasOne, webcamCanvasTwo);
-		return handleTransitionToWebcam()
-	}
-
-	// transition to feelings
-	if (transitionToFeelings) {
-		await handleTransitionToFeelings(this);
+		return handleTransitionToWebcam();
 	}
 
 	// horizontal scroll
@@ -125,5 +121,6 @@ window.addEventListener('load', () => startOver(true))
 // where to scroll on default
 setTimeout(() => {
 	// startOver(true)
-	// scrollToNextPage('#this-seems-impractical');
+	// scrollToNextPage('#shall-we-begin');
+	// document.body.style.marginTop = '-400vh';
 }, 200)

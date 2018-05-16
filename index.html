@@ -45,9 +45,9 @@
 		</a>
 	</div>
 
-	<div data-scroll="200" id="hello-are-you-looking-for-sadness" class="page trigger--jumble" data-jumble-target="#how-are-you-feeling">
+	<div data-scroll="200" id="hello-are-you-looking-for-sadness" class="page" data-jumble-target="#sorry-that-happiness-was-unavailable">
 		<div class="wrapper">
-			<h1 class="slot-machine clamp">Hello. Are you looking for sadness.online?</h1>
+			<h1 class="slot-machine">Were you looking for sadness.online?</h1>
 			<div class="buttons">
 				<a href="#how-are-you-feeling" class="bttn">Yes</a>
 				<a href="#sadnessDotOnline" class="bttn" data-cancel="true">No</a>
@@ -55,7 +55,17 @@
 		</div>
 	</div>
 
-	<div data-scroll="300" id="how-are-you-feeling" class="page trigger--jumble" data-jumble-target="#sorry-that-happiness-was-unavailable">
+	<div data-scroll="300" id="sorry-that-happiness-was-unavailable" class="page sorry-that-happiness-was-unavailable" data-jumble-target="#how-are-you-feeling">
+		<div class="wrapper">
+			<h1 class="slot-machine">Sorry that happiness.com was unavailable</h1>
+			<div>
+				<a href="#shall-we-begin" class="bttn">Yes</a>
+				<a href="#sadnessDotOnline" class="bttn">Yes</a>
+			</div>
+		</div>
+	</div>
+
+	<div data-scroll="400" id="how-are-you-feeling" class="page">
 		<div class="wrapper">
 			<h1 class="slot-machine">How are you feeling?</h1>
 			<div class="buttons">
@@ -66,39 +76,27 @@
 		</div>
 	</div>
 
-	<div data-scroll="400" id="sorry-that-happiness-was-unavailable" class="page sorry-that-happiness-was-unavailable" data-normal-target="true">
-		<div class="wrapper">
-			<h1 class="slot-machine clamp">Sorry that happiness.online was unavailable</h1>
-			<div>
-				<a href="#shall-we-begin" class="bttn">same.</a>
-				<a href="#sadnessDotOnline" class="bttn">ugh.</a>
-			</div>
-		</div>
-	</div>
-
 	<div data-scroll="500" id="shall-we-begin" class="page" data-quiz-target="true">
 		<div class="wrapper">
 			<h1>Shall we begin?</h1>
 			<div>
-				<a href="#continue" class="bttn">Ok</a>
-				<a href="#sadnessDotOnline" class="bttn" data-cancel="true">Cancel</a>
+				<a href="#what-is-reality" class="bttn">Ok</a>
+				<a href="#what-is-reality" class="bttn">Cancel</a>
 			</div>
 		</div>
 	</div>
 
 	<!-- //////////// begin horizontal scroll ////////////// -->
-	<section id="horizontal-scroll" class="horizontal-scroll questions" data-delete="true">
+	<section class="horizontal-scroll questions" data-delete="true">
 
-		<div data-scroll-right="100" id="continue" class="page" data-quiz-target="true">
+		<div data-scroll-right="100" id="what-is-reality" class="page" data-quiz-target="true">
 			<div class="wrapper--quiz">
 				<div class="wrapper--text">
-					<h1 class="quiz-text make-transparent">You receive a phone call from a number you don’t recognize.</h1>
-					<h1 class="quiz-text make-transparent">Which option best describes your thought process?</h1>
+					<h1 class="quiz-text make-transparent">What is reality?</h1>
 				</div>
 				<div class="container--quiz-links">
-					<a href="#its-your-pets-birthday" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#its-your-pets-birthday" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#its-your-pets-birthday" class="quiz-link make-transparent" data-boop="true"></a>
+					<a href="#its-your-pets-birthday" class="bttn make-transparent" data-boop="true">True</a>
+					<a href="#its-your-pets-birthday" class="bttn make-transparent" data-boop="true">False</a>
 				</div>
 			</div>
 		</div>
@@ -110,101 +108,64 @@
 					<h1 class="quiz-text make-transparent">Which option best describes how you feel?</h1>
 				</div>
 				<div class="container--quiz-links">
-					<a href="#difficult-to-introduce-yourself" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#difficult-to-introduce-yourself" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#difficult-to-introduce-yourself" class="quiz-link make-transparent" data-boop="true"></a>
+					<a href="#what-is-reality-if-not" class="quiz-link make-transparent" data-boop="true"></a>
+					<a href="#what-is-reality-if-not" class="quiz-link make-transparent" data-boop="true"></a>
+					<a href="#what-is-reality-if-not" class="quiz-link make-transparent" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div data-scroll-right="300" id="difficult-to-introduce-yourself" class="page" data-quiz-target="true">
+		<div data-scroll-right="300" id="what-is-reality-if-not" class="page" data-quiz-target="true">
 			<div class="wrapper--quiz">
 				<div class="wrapper--text">
-					<h1 class="quiz-text make-transparent">You find it difficult to introduce yourself to other people.</h1>
-					<h1 class="quiz-text make-transparent">Agree or disagree?</h1>
+					<h1 class="quiz-text make-transparent">What is reality</h1>
+					<h1 class="quiz-text make-transparent">if not what we see, hear, feel, touch, and taste?</h1>
 				</div>
 				<div class="container--quiz-links">
-					<a href="#looking-for-answers-find-yourself-on-wikipedia" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#looking-for-answers-find-yourself-on-wikipedia" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#looking-for-answers-find-yourself-on-wikipedia" class="quiz-link make-transparent" data-boop="true"></a>
+					<a href="#feelings-are-never-an" class="quiz-link make-transparent" data-boop="true"></a>
+					<a href="#feelings-are-never-an" class="quiz-link make-transparent" data-boop="true"></a>
+					<a href="#feelings-are-never-an" class="quiz-link make-transparent" data-boop="true"></a>
 				</div>
 			</div>
 		</div>
 
-		<div data-scroll-right="400" id="looking-for-answers-find-yourself-on-wikipedia" class="page" data-quiz-target="true">
+		<div data-scroll-right="400" id="feelings-are-never-an" class="page" data-quiz-target="true">
 			<div class="wrapper--quiz">
 				<div class="wrapper--text">
-					<h1 class="quiz-text make-transparent">You’re looking for ''answers'' and you end up on Wikipedia.</h1>
-					<h1 class="quiz-text make-transparent">What next?</h1>
+					<h1 class="quiz-text make-transparent">
+						Feelings are never a(n)
+						<div class="blank"></div>
+					</h1>
 				</div>
-				<div class="container--quiz-links">
-					<a href="#you-are-at-play" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#you-are-at-play" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#you-are-at-play" class="quiz-link make-transparent" data-boop="true"></a>
+				<div class="container--quiz-links vertical">
+					<a href="#what-is-happening" class="make-transparent" data-boop="true">a) Parrot</a>
+					<a href="#what-is-happening" class="make-transparent" data-boop="true">b) Cat</a>
+					<a href="#what-is-happening" class="make-transparent" data-boop="true">c) Abstraction</a>
 				</div>
 			</div>
 		</div>
 
-		<div data-scroll-right="500" id="you-are-at-play" class="page" data-quiz-target="true">
+		<div data-scroll-right="500" id="what-is-happening" class="page" data-quiz-target="true">
 			<div class="wrapper--quiz">
 				<div class="wrapper--text">
-					<h1 class="quiz-text make-transparent">You are at a play. You see something you don’t understand. </h1>
-					<h1 class="quiz-text make-transparent">Do you:</h1>
+					<h1 class="quiz-text make-transparent">WHAT IS HAPPENING</h1>
 				</div>
-				<div class="container--quiz-links">
-					<a href="#looking-for-answers-find-yourself-on-the-internet" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#looking-for-answers-find-yourself-on-the-internet" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#looking-for-answers-find-yourself-on-the-internet" class="quiz-link make-transparent" data-boop="true"></a>
+				<div class="container--quiz-links vertical">
+					<a href="#thoughts-without-sadness" class="make-transparent" data-boop="true">a) Moment</a>
+					<a href="#thoughts-without-sadness" class="make-transparent" data-boop="true">b) Present</a>
+					<a href="#thoughts-without-sadness" class="make-transparent" data-boop="true">c) This</a>
 				</div>
 			</div>
 		</div>
 
-		<div data-scroll-right="600" id="looking-for-answers-find-yourself-on-the-internet" class="page" data-quiz-target="true">
+		<div data-scroll-right="600" id="thoughts-without-sadness" class="page" data-quiz-target="true">
 			<div class="wrapper--quiz">
 				<div class="wrapper--text">
-					<h1 class="quiz-text make-transparent">You’re looking for ''answers'' and you end up on the Internet. </h1>
-					<h1 class="quiz-text make-transparent">What next?</h1>
+					<h1 class="quiz-text make-transparent">
+						Thoughts without sadness =
+						<div class="blank"></div>
+					</h1>
 				</div>
-				<div class="container--quiz-links">
-					<a href="#you-wake-up-in-the-morning" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#you-wake-up-in-the-morning" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#you-wake-up-in-the-morning" class="quiz-link make-transparent" data-boop="true"></a>
-				</div>
-			</div>
-		</div>
-
-		<div data-scroll-right="700" id="you-wake-up-in-the-morning" class="page" data-quiz-target="true">
-			<div class="wrapper--quiz">
-				<h1 class="quiz-text make-transparent">You wake up in the morning, but keep your eyes closed?</h1>
-				<div class="container--quiz-links">
-					<a href="#it-is-night-time" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#it-is-night-time" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#it-is-night-time" class="quiz-link make-transparent" data-boop="true"></a>
-				</div>
-			</div>
-		</div>
-
-		<div data-scroll-right="800" id="it-is-night-time" class="page" data-quiz-target="true">
-			<div class="wrapper--quiz">
-				<h1 class="quiz-text make-transparent">It is night time.</h1>
-				<div class="container--quiz-links">
-					<a href="#smilies" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#smilies" class="quiz-link make-transparent" data-boop="true"></a>
-					<a href="#smilies" class="quiz-link make-transparent" data-boop="true"></a>
-				</div>
-			</div>
-		</div>
-
-		<div data-scroll-right="900" id="smilies" class="page" data-quiz-target="true">
-			<div class="wrapper--quiz">
-				<h1 class="quiz-text smiles make-transparent">
-					<span>:)</span>
-					<span>:|</span>
-					<span>:(</span>
-				</h1>
-				<h1 class="quiz-text smiles make-transparent">
-					<span>?</span>
-				</h1>
 				<div class="container--quiz-links">
 					<a href="#this-seems-impractical" class="quiz-link make-transparent" data-boop="true"></a>
 					<a href="#this-seems-impractical" class="quiz-link make-transparent" data-boop="true"></a>
@@ -213,7 +174,7 @@
 			</div>
 		</div>
 
-		<div data-scroll-right="1000" id="this-seems-impractical" class="page" data-questions-trigger="true">
+		<div data-scroll-right="700" id="this-seems-impractical" class="page" data-questions-trigger="true">
 			<div class="wrapper--quiz">
 				<h1 class="quiz-text make-transparent">This seems impractical</h1>
 				<div class="buttons">
@@ -224,7 +185,7 @@
 			</div>
 		</div>
 
-		<div id="questions" class="page" data-popup-pattern="circle-frame" data-modal-target="error-busy">
+		<div id="questions" class="page" data-popup-pattern="circle-frame" data-modal-target="error-vague">
 			<div class="wrapper--questions">
 				<h1 class="text-center no-line-break">Noise becomes signal.</h1>
 				<div>
@@ -238,55 +199,40 @@
 
 	<!-- /////////// begin modals //////////// -->
 
-	<div id="error-busy" class="modal" data-popup-pattern="x-frame" data-modal-target="no-oh">
+	<div id="error-vague" class="modal" data-popup-pattern="x-frame" data-modal-target="error-abstract">
 		<div class="card error">
 			<span class="modal-close">X</span>
-			<h1>ERROR_BUSY</h1>
+			<h1>ERROR_VAGUE</h1>
 			<div class="buttons">
-				<button class="no" data-trigger="true" data-boop="true" data-delete-all-pages="true">Really?</button>
+				<button class="no" data-trigger="true" data-boop="true" data-delete-all-pages="true">real</button>
+				<button class="no" data-trigger="true" data-boop="true" data-delete-all-pages="true">unreal</button>
 			</div>
 		</div>
 	</div>
 
-	<div id="no-oh" class="modal" data-popup-pattern="squiggle" data-modal-target="error-lacking-substance" data-offset='10'>
+	<div id="error-abstract" class="modal" data-popup-pattern="squiggle" data-modal-target="massively-false" data-offset='10'>
 		<div class="card error">
 			<span class="modal-close">X</span>
-			<h1>no</h1>
+			<h1>ERROR_ABSTRACT</h1>
 			<div class="buttons">
-				<button class="no" data-boop="true" data-trigger="true">oh.</button>
+				<button class="no" data-boop="true" data-trigger="true">happy</button>
+				<button class="no" data-boop="true" data-trigger="true">sad</button>
 			</div>
 		</div>
 	</div>
 
-	<div id="error-lacking-substance" class="modal" data-popup-pattern="full-cover" data-transition-to-feelings="true">
+	<div id="massively-false" class="modal" data-popup-pattern="full-cover" data-transition-to-webcam="true">
 		<div class="card error">
 			<span class="modal-close">X</span>
-			<h1>
-				<span>ERROR_</span>
-				<span>LACKING_</span>
-				<span>SUBSTANCE</span>
-			</h1>
+			<h1>MASSIVELY_FALSE</h1>
 			<div class="buttons">
-				<button class="no" data-boop="true" name="trigger">Oh</button>
+				<button class="no" data-boop="true">self</button>
+				<button class="no" data-boop="true">bias</button>
 			</div>
 		</div>
 	</div>
 
 	<!-- ////////////// end modals //////////// -->
-
-	<!-- //// Feelings Are Never An Abstraction -->
-
-	<div id="feelings-are-never-an-abstraction" class="page feelings-are-never-an-abstraction" data-transition-to-webcam="true">
-		<div class="text">
-			<h1 class="make-transparent">Feelings</h1>
-			<h1 class="make-transparent">are never</h1>
-			<h1 class="make-transparent">an abstraction</h1>
-		</div>
-		<div class="bttns make-transparent">
-			<a href="#webcam-page" class="bttn bttn--swap bttn1" data-boop="true" name="trigger"></a>
-			<a href="#webcam-page" class="bttn bttn--swap bttn2" data-boop="true" name="trigger"></a>
-		</div>
-	</div>
 
 	<!-- ////////////// webcam //////////////// -->
 

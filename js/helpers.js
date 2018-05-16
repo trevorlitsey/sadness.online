@@ -43,55 +43,6 @@ export function insertQuizImage(linkNode) {
 	linkNode.style.backgroundImage = `url('${getImgSrc(num)}')`;
 }
 
-export function cycleQuestions(h1Node, questions, speedUp) {
-
-	const wrapper = document.querySelector('.wrapper--questions');
-	let scale = 1.2;
-
-	if (h1Node.isRunning) return;
-	h1Node.isStarted = false;
-	h1Node.isRunning = true;
-
-	function reset(isRunning, interval) {
-		isRunning = false;
-		return clearInterval(interval);
-	}
-
-	function cycle(speed = 250) {
-
-		let i = 0;
-		let count = 0;
-
-		const interval = setInterval(() => {
-			let { isStarted, isRunning } = h1Node;
-			if (isStarted && !isScrolledIntoView(h1Node)) {
-				// stop!
-				return reset(isRunning, interval);
-			}
-			// we have started
-			if (!isStarted && isScrolledIntoView(h1Node)) {
-				isStarted = true;
-			}
-
-			if (!isStarted) return;
-			requestAnimationFrame(() => {
-				h1Node.innerHTML = questions[i];
-				i === questions.length - 1 ? i = 0 : i++;
-				if (speedUp && count === 3 && speed > 5) {
-					clearInterval(interval);
-					const newSpeed = speed < 20 ? 5 : speed - 20;
-					h1Node.innerHTML = questions[i];
-					return cycle(newSpeed);
-				}
-
-				count++
-			})
-		}, speed);
-	}
-
-	setTimeout(cycle, 300);
-}
-
 // https://davidwalsh.name/javascript-debounce-function
 export function debounce(func, wait, immediate) {
 	var timeout;
@@ -134,16 +85,6 @@ export async function displayQuizPage(node, firstInterval) {
 	await unHideNode(quizLinks[0], 1500)
 	await unHideNode(quizLinks[1], 500)
 	await unHideNode(quizLinks[2], 500)
-}
-
-export async function displayFeelings() {
-	const feelings = document.querySelector('#feelings-are-never-an-abstraction');
-	const h1s = feelings.querySelectorAll('h1');
-	const buttons = feelings.querySelector('.bttns');
-	await unHideNode(h1s[0], 500)
-	await unHideNode(h1s[1], 500)
-	await unHideNode(h1s[2], 700)
-	await unHideNode(buttons, 800)
 }
 
 // ==================

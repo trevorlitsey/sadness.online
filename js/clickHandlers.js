@@ -1,4 +1,4 @@
-import { scrollToNextPage, cycleQuestions, displayFeelings } from './helpers';
+import { scrollToNextPage, isScrolledIntoView } from './helpers';
 
 export function handleNormalClick(e) {
 	e.preventDefault();
@@ -13,15 +13,18 @@ export function handleQuestionsClick() {
 	const questions = [
 		'Noise becomes signal.',
 		'Signal becomes story.',
-		'Stories become decisions.',
+		'Stories become actions.',
 	]
 	cycleQuestions(h1Node, questions, true);
 }
 
 export function turnOnModal(modalTargetID) {
 	const modal = document.getElementById(modalTargetID);
-	modal.classList.remove('off'); // just to be sure..
-	modal.classList.add('on');
+	requestAnimationFrame(() => modal.classList.remove('off')) // just to be sure..
+	requestAnimationFrame(() => modal.classList.add('prep'))
+	setTimeout(() => {
+		requestAnimationFrame(() => modal.classList.add('on'))
+	}, 100)
 }
 
 export function turnOffModal(modalNode) {
@@ -32,31 +35,22 @@ export function turnOffModal(modalNode) {
 	})
 }
 
-export function handleTransitionToFeelings(finalPage) {
+export function fadeModalsAndDeleteEverythingButWebcam(finalPage) {
 	document.body.style.background = 'black';
-	return new Promise((resolve, reject) => {
+	return new Promise(async (resolve, reject) => {
 		deleteNodes(document.querySelectorAll('.background-image'));
 		fadeNodes('.modal');
-		fadeNodes('.questions');
-		finalPage.addEventListener('transitionend', () => {
-			displayFeelings();
-			deleteEverythingButWebcam();
-			resolve(true);
-		})
+		await fadeNodes('.questions');
+		deleteEverythingButWebcam();
+		resolve(true);
 	})
 }
 
 export function handleTransitionToWebcam() {
 
-	const nextToLastPage = document.querySelector('.feelings-are-never-an-abstraction');
 	const webcamPage = document.getElementById('webcam-page');
 
-	window.requestAnimationFrame(() => {
-		document.body.style.background = 'black';
-		nextToLastPage.style.opacity = 0;
-	});
-
-	// wait 8 second
+	// wait 8 seconds
 	setTimeout(() => {
 		scrollToNextPage('#webcam-page');
 		setTimeout(() => {
@@ -65,13 +59,18 @@ export function handleTransitionToWebcam() {
 				webcamPage.classList.add('on');
 			});
 		}, 400)
-	}, 8000)
+	}, 4000)
 }
 
 // ------------
 function fadeNodes(query) {
-	document.querySelectorAll(query).forEach(node => {
-		node.classList.add('final-off');
+	return new Promise((res, rej) => {
+		document.querySelectorAll(query).forEach(node => {
+			node.classList.add('final-off');
+			node.addEventListener('transitionend', () => {
+				res(true);
+			})
+		})
 	})
 }
 
@@ -84,4 +83,53 @@ function deleteNodes(nodes) {
 function deleteEverythingButWebcam() {
 	deleteNodes(document.querySelectorAll('[data-delete="true"]'));
 	deleteNodes(document.querySelectorAll('.modal'));
+}
+
+function cycleQuestions(h1Node, questions, speedUp) {
+
+	const wrapper = document.querySelector('.wrapper--questions');
+	let scale = 1.2;
+
+	if (h1Node.isRunning) return;
+	h1Node.isStarted = false;
+	h1Node.isRunning = true;
+
+	function reset(isRunning, interval) {
+		isRunning = false;
+		return clearInterval(interval);
+	}
+
+	function cycle(speed = 250) {
+
+		let i = 0;
+		let count = 0;
+
+		const interval = setInterval(() => {
+			let { isStarted, isRunning } = h1Node;
+			if (isStarted && !isScrolledIntoView(h1Node)) {
+				// stop!
+				return reset(isRunning, interval);
+			}
+			// we have started
+			if (!isStarted && isScrolledIntoView(h1Node)) {
+				isStarted = true;
+			}
+
+			if (!isStarted) return;
+			requestAnimationFrame(() => {
+				h1Node.innerHTML = questions[i];
+				i === questions.length - 1 ? i = 0 : i++;
+				if (speedUp && count === 3 && speed > 5) {
+					clearInterval(interval);
+					const newSpeed = speed < 20 ? 5 : speed - 20;
+					h1Node.innerHTML = questions[i];
+					return cycle(newSpeed);
+				}
+
+				count++
+			})
+		}, speed);
+	}
+
+	setTimeout(cycle, 300);
 }

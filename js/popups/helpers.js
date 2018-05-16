@@ -31,12 +31,13 @@ export function insertPlacedPopup(node, popOptions) {
 		bottom: 'auto',
 		left: 'auto',
 		right: 'auto',
+		src: getImgSrc(),
 		...popOptions,
 	}
 
-	const { width, height, top, bottom, left, right } = options;
+	const { width, height, top, bottom, left, right, src } = options;
 
-	const img = `<img src="${getImgSrc()}" style="position: absolute; left: ${left}; right: ${right}; top: ${top}; bottom: ${bottom}; width: ${width}; height: ${height}"></img>`;
+	const img = `<img src="${src}" style="position: absolute; left: ${left}; right: ${right}; top: ${top}; bottom: ${bottom}; width: ${width}; height: ${height}"></img>`;
 
 	window.requestAnimationFrame(() => {
 		node.innerHTML += img;
