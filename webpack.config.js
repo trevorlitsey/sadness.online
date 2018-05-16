@@ -1,6 +1,8 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const path = require('path');
 
@@ -24,7 +26,7 @@ const extractCssPlugin = ExtractTextPlugin.extract({
 module.exports = {
 	entry: './js/scripts.js',
 	output: {
-		filename: 'bundle.js',
+		filename: '[hash].bundle.js',
 		path: path.resolve(__dirname),
 	},
 	mode: process.env.NODE_ENV || 'development',
@@ -43,11 +45,16 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin('bundle.css'),
+		new ExtractTextPlugin('[hash].bundle.css'),
 		new UglifyJsPlugin(
 			{
 				test: /\.js($|\?)/i
 			}
 		),
+		new CleanWebpackPlugin(['*.html', '*.bundle.js', '*.css', '*.png', '*.jpg', '*.ttf']),
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+			template: 'templates/index.html'
+		})
 	],
 };
