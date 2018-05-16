@@ -28,7 +28,7 @@ function renderWebcam(canvasOne, canvasTwo, delay = 3000) {
 			// take the pixels out
 			let pixels = ctxOne.getImageData(0, 0, width, height);
 			// mess with them
-			pixels = rgb(pixels);
+			// pixels = rgb(pixels, 70);
 
 			ctxOne.globalAlpha = 1;
 
@@ -42,11 +42,11 @@ function renderWebcam(canvasOne, canvasTwo, delay = 3000) {
 		}, 16);
 	}
 
-	function rgb(pixels) {
+	function rgb(pixels, amount) {
 		for (let i = 0; i < pixels.data.length; i += 4) {
-			pixels.data[i + 0] = pixels.data[i + 0] + 70; // RED
-			pixels.data[i + 1] = pixels.data[i + 1] + 70; // GREEN
-			pixels.data[i + 2] = pixels.data[i + 2] + 70; // Blue
+			pixels.data[i + 0] = pixels.data[i + 0] + amount; // RED
+			pixels.data[i + 1] = pixels.data[i + 1] + amount; // GREEN
+			pixels.data[i + 2] = pixels.data[i + 2] + amount; // Blue
 		}
 		return pixels;
 	}
