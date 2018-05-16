@@ -122,6 +122,6 @@ window.addEventListener('load', () => startOver(true))
 setTimeout(() => {
 	// startOver(true)
 	// scrollToNextPage('#shall-we-begin');
-	document.body.style.marginTop = '-500vh';
-	horizontalScroll.style.marginLeft = '-600vw';
+	// document.body.style.marginTop = '-500vh';
+	// horizontalScroll.style.marginLeft = '-600vw';
 }, 200)
