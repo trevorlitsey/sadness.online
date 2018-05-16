@@ -15,7 +15,7 @@ export function handleQuestionsClick() {
 		'Signal becomes story.',
 		'Stories become actions.',
 	]
-	cycleQuestions(h1Node, questions, true);
+	cycleQuestions(h1Node, questions);
 }
 
 export function turnOnModal(modalTargetID) {
@@ -85,51 +85,73 @@ function deleteEverythingButWebcam() {
 	deleteNodes(document.querySelectorAll('.modal'));
 }
 
-function cycleQuestions(h1Node, questions, speedUp) {
+function cycleQuestions(h1Node, questions) {
 
-	const wrapper = document.querySelector('.wrapper--questions');
 	let scale = 1.2;
+	let cycles = 0;
 
 	if (h1Node.isRunning) return;
+
 	h1Node.isStarted = false;
 	h1Node.isRunning = true;
 
-	function reset(isRunning, interval) {
-		isRunning = false;
+	// go
+	setTimeout(cycle, 300);
+
+	// -----------
+	function reset(h1Node, interval) {
+		h1Node.isStarted = false;
+		h1Node.isRunning = false;
 		return clearInterval(interval);
 	}
 
-	function cycle(speed = 250) {
+	function cycle(speed = 250, cycleInterval = 3) {
+
+		const wrapper = document.querySelector('.wrapper--questions');
 
 		let i = 0;
 		let count = 0;
 
 		const interval = setInterval(() => {
-			let { isStarted, isRunning } = h1Node;
+
+			const { isStarted, isRunning } = h1Node;
+
+			// stop!
 			if (isStarted && !isScrolledIntoView(h1Node)) {
-				// stop!
-				return reset(isRunning, interval);
-			}
-			// we have started
-			if (!isStarted && isScrolledIntoView(h1Node)) {
-				isStarted = true;
+				return reset(h1Node, interval);
 			}
 
+			// we have started
+			if (!isStarted && isScrolledIntoView(h1Node)) {
+				h1Node.isStarted = true;
+			}
+
+			// wait till element is in view to start
 			if (!isStarted) return;
+
 			requestAnimationFrame(() => {
+
 				h1Node.innerHTML = questions[i];
+
 				i === questions.length - 1 ? i = 0 : i++;
-				if (speedUp && count === 3 && speed > 5) {
+
+				if (cycles > 4) {
+					scale += .01;
+					wrapper.style.transform = `scale(${scale})`
+				}
+
+				if (count === cycleInterval && speed > 5) {
 					clearInterval(interval);
-					const newSpeed = speed < 20 ? 5 : speed - 20;
 					h1Node.innerHTML = questions[i];
+					const newSpeed = speed < 20 ? 5 : speed - 20;
+					cycles++;
 					return cycle(newSpeed);
 				}
 
-				count++
+				count++;
+
 			})
 		}, speed);
 	}
 
-	setTimeout(cycle, 300);
 }
