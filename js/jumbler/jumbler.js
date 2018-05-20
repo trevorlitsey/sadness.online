@@ -4,7 +4,7 @@ let isRunning = false;
 function sparanwrap(node) {
 	const isSpanned = node.innerHTML[0] === '<';
 	if (!isSpanned) {
-		return node.innerHTML
+		return node.textContent
 			.split('')
 			.map(letter => `<span>${letter}</span>`)
 			.join('');

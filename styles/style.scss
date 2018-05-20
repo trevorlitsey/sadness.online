@@ -103,6 +103,11 @@ h1.slot-machine {
 	overflow: hidden;
 }
 
+h1.slot-machine > a {
+	text-decoration: underline;
+	color: #004AFF;
+}
+
 h2 {
 	font-size: 1.2rem;
 }
@@ -274,15 +279,16 @@ a.smiley:hover {
 				margin: 10px;
 				cursor: pointer;
 				transition: .2s;
+				font-weight: bold;
 				
 				// no bttn
-				&.no {
+				&.yes {
 					background: $black;
 					border: 2px solid lighten($black, 10%);
 					color: white;
 				}
 
-				&.yes {
+				&.no {
 					border: 2px solid darken(white, 10%);
 					background: white;
 					color: $black;
@@ -317,7 +323,7 @@ a.smiley:hover {
 
 a.welcome {
 	font-weight: bold;
-	font-size: 2.6rem;
+	font-size: 4rem;
 	line-height: 3rem;
 	display: flex;
 	align-content: flex-end;
@@ -366,6 +372,10 @@ a.welcome:hover {
 	&::-webkit-scrollbar { 
     display: none;  // Safari and Chrome
 	}
+}
+
+.horizontal-scroll > .page > .wrapper--quiz {
+	border: 12px solid rgba(255,255,255,.8);
 }
 
 /* ~~~quiz~~~ */
@@ -475,8 +485,7 @@ h1.quiz-text {
 	justify-items: center;
 	min-height: 70%;
 	margin: 20px;
-	width: 100%;
-	background: rgba(255,255,255,.5);
+	padding: 2%;
 
 	& > h1 {
 		align-self: end;
@@ -504,7 +513,7 @@ h1.quiz-text {
 }
 
 .wrapper--webcam {
-	filter: brightness(60%);
+	filter: brightness(125%);
 	position: relative;
 	width: 100%;
 	max-width: 133.3333vh;

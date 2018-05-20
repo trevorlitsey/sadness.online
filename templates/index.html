@@ -37,7 +37,9 @@
 
 	<div data-scroll="200" id="hello-are-you-looking-for-sadness" class="page" data-jumble-target="#sorry-that-happiness-was-unavailable">
 		<div class="wrapper">
-			<h1 class="slot-machine">Were you looking for sadness.online?</h1>
+			<h1 class="slot-machine">Were you looking for
+				<a href="#">sadness.online</a>?
+			</h1>
 			<div class="buttons">
 				<a href="#how-are-you-feeling" class="bttn">Yes</a>
 				<a href="#sadnessDotOnline" class="bttn" data-cancel="true">No</a>
@@ -47,7 +49,8 @@
 
 	<div data-scroll="300" id="sorry-that-happiness-was-unavailable" class="page sorry-that-happiness-was-unavailable" data-jumble-target="#how-are-you-feeling">
 		<div class="wrapper">
-			<h1 class="slot-machine">Sorry that happiness.com was unavailable</h1>
+			<h1 class="slot-machine">Sorry that
+				<a href="#">happiness.com</a> was unavailable.</h1>
 			<div>
 				<a href="#shall-we-begin" class="bttn">Yes</a>
 				<a href="#sadnessDotOnline" class="bttn">Yes</a>
@@ -175,8 +178,8 @@
 			</div>
 		</div>
 
-		<div id="questions" class="page" data-popup-pattern="circle-frame" data-modal-target="error-vague">
-			<div class="wrapper--questions">
+		<div id="questions" class="page" data-popup-pattern="circle-frame" data-modal-target="error-vague" data-can-click-anywhere="true">
+			<div class="wrapper--quiz wrapper--questions">
 				<h1 class="text-center no-line-break">Noise becomes signal.</h1>
 				<div>
 					<a class="bttn" data-trigger="true" data-boop="true">Cancel</a>
@@ -189,13 +192,13 @@
 
 	<!-- /////////// begin modals //////////// -->
 
-	<div id="error-vague" class="modal" data-popup-pattern="x-frame" data-modal-target="error-abstract">
+	<div id="error-vague" class="modal" data-popup-pattern="x-frame" data-modal-target="error-abstract" data-delete-background="true">
 		<div class="card error">
 			<span class="modal-close">X</span>
 			<h1>ERROR_VAGUE</h1>
 			<div class="buttons">
-				<button class="no" data-trigger="true" data-boop="true" data-delete-all-pages="true">real</button>
-				<button class="no" data-trigger="true" data-boop="true" data-delete-all-pages="true">unreal</button>
+				<button class="yes" data-trigger="true" data-boop="true" data-delete-all-pages="true">REAL</button>
+				<button class="no" data-trigger="true" data-boop="true" data-delete-all-pages="true">UNREAL</button>
 			</div>
 		</div>
 	</div>
@@ -205,8 +208,8 @@
 			<span class="modal-close">X</span>
 			<h1>ERROR_ABSTRACT</h1>
 			<div class="buttons">
-				<button class="no" data-boop="true" data-trigger="true">happy</button>
-				<button class="no" data-boop="true" data-trigger="true">sad</button>
+				<button class="yes" data-boop="true" data-trigger="true">HAPPY</button>
+				<button class="no" data-boop="true" data-trigger="true">SAD</button>
 			</div>
 		</div>
 	</div>
@@ -216,8 +219,8 @@
 			<span class="modal-close">X</span>
 			<h1>MASSIVELY_FALSE</h1>
 			<div class="buttons">
-				<button class="no" data-boop="true">self</button>
-				<button class="no" data-boop="true">bias</button>
+				<button class="yes" data-boop="true">SELF</button>
+				<button class="no" data-boop="true">BIAS</button>
 			</div>
 		</div>
 	</div>

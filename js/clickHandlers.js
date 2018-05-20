@@ -1,3 +1,4 @@
+import { webcamWrapper } from './domNodes';
 import { scrollToNextPage, isScrolledIntoView } from './helpers';
 
 export function handleNormalClick(e) {
@@ -62,6 +63,26 @@ export function handleTransitionToWebcam() {
 	}, 4000)
 }
 
+export function handleDeleteBackground() {
+	deleteNodes(document.querySelectorAll('.background-image'));
+}
+
+export function handleKeyUp(e) {
+
+	const currentBrightness = Number(window.getComputedStyle(webcamWrapper).filter.match(/\d+\.\d+|\d+/)[0])
+
+	// up
+	if (e.keyCode === 38) {
+		webcamWrapper.style.filter = `brightness(${currentBrightness + .05})`
+		console.log('brightness is now ' + currentBrightness + .05);
+	}
+	// down
+	else if (e.keyCode === 40) {
+		webcamWrapper.style.filter = `brightness(${currentBrightness - .05})`
+		console.log('brightness is now ' + currentBrightness - .05);
+	}
+}
+
 // ------------
 function fadeNodes(query) {
 	return new Promise((res, rej) => {
@@ -83,6 +104,8 @@ function deleteNodes(nodes) {
 function deleteEverythingButWebcam() {
 	deleteNodes(document.querySelectorAll('[data-delete="true"]'));
 	deleteNodes(document.querySelectorAll('.modal'));
+	deleteNodes(document.querySelectorAll('horizontal-scroll'));
+	deleteNodes(document.querySelectorAll('.page'));
 }
 
 function cycleQuestions(h1Node, questions) {

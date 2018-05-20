@@ -1,58 +1,8 @@
-function renderWebcam(canvasOne, canvasTwo, delay = 3000) {
+import renderWebcam from '../js/renderWebcam';
 
-	const video = document.createElement('video');
-	const ctxOne = canvasOne.getContext('2d');
-	const ctxTwo = canvasTwo.getContext('2d');
+import '../styles/style.scss';
 
-	function getVideo() {
-		navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-			.then(localMediaStream => {
-				video.srcObject = localMediaStream;
-				video.play();
-			})
-			.catch(err => {
-				console.error(`cannot get user video!`, err);
-			});
-	}
+const canvasOne = document.querySelector('.webcam-canvas--one');
+const canvasTwo = document.querySelector('.webcam-canvas--two');
 
-	function paintToCanvas() {
-		const width = video.videoWidth;
-		const height = video.videoHeight;
-		canvasOne.width = width;
-		canvasOne.height = height;
-		canvasTwo.width = width;
-		canvasTwo.height = height;
-
-		return setInterval(() => {
-			ctxOne.drawImage(video, 0, 0, width, height);
-			// take the pixels out
-			let pixels = ctxOne.getImageData(0, 0, width, height);
-			// mess with them
-			// pixels = rgb(pixels, 70);
-
-			ctxOne.globalAlpha = 1;
-
-			// put them back
-			ctxOne.putImageData(pixels, 0, 0);
-			setTimeout(() => {
-				requestAnimationFrame(() => {
-					ctxTwo.putImageData(pixels, 0, 0);
-				})
-			}, delay)
-		}, 16);
-	}
-
-	function rgb(pixels, amount) {
-		for (let i = 0; i < pixels.data.length; i += 4) {
-			pixels.data[i + 0] = pixels.data[i + 0] + amount; // RED
-			pixels.data[i + 1] = pixels.data[i + 1] + amount; // GREEN
-			pixels.data[i + 2] = pixels.data[i + 2] + amount; // Blue
-		}
-		return pixels;
-	}
-
-	getVideo();
-
-	video.addEventListener('canplay', paintToCanvas);
-
-}
+renderWebcam(canvasOne, canvasTwo);

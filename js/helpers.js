@@ -20,12 +20,6 @@ export function scrollToNextPage(scrollTargetHash, userOptions = {}) {
 	return node.scrollIntoView(options);
 }
 
-export function startOver(e) {
-	if (e === true || e.keyCode === 66) {
-		scrollToNextPage('#sadnessDotOnline', { behavior: 'instant' });
-	}
-}
-
 export function getImgSrc(num) {
 	if (num >= 99 && num <= 145) {
 		return `dist/images/${num}.gif`;

@@ -10,6 +10,8 @@ import {
 	turnOffModal,
 	fadeModalsAndDeleteEverythingButWebcam,
 	handleTransitionToWebcam,
+	handleDeleteBackground,
+	handleKeyUp,
 } from './clickHandlers';
 import {
 	scrollToNextPage,
@@ -19,7 +21,6 @@ import {
 	deleteAllPages,
 	applyBackgroundMotion,
 	displayQuizPage,
-	startOver,
 } from './helpers';
 
 import '../styles/style.scss'
@@ -42,13 +43,27 @@ const modals = document.querySelectorAll('.modal')
 async function filterClick(e) {
 	e.preventDefault();
 
-	const { popupPattern, jumbleTarget, scroll, scrollRight, questionsTrigger, modalTarget, quizTarget, normalTarget, isModal, transitionToFeelings, transitionToWebcam } = this.dataset;
+	const {
+		popupPattern,
+		jumbleTarget,
+		scroll,
+		scrollRight,
+		questionsTrigger,
+		modalTarget,
+		quizTarget,
+		normalTarget,
+		isModal,
+		transitionToFeelings,
+		transitionToWebcam,
+		deleteBackground,
+		canClickAnywhere,
+	} = this.dataset;
 	const { boop } = e.target.dataset;
 	const { nodeName } = e.target;
 
 	const clickTargetHash = e.target.hash || normalTarget;
 
-	if (!['A', 'SPAN', 'BUTTON'].includes(nodeName)) return; // no go if not a link (span is for welcome page)
+	if (!canClickAnywhere && !['A', 'SPAN', 'BUTTON'].includes(nodeName)) return; // no go if not a link (span is for welcome page)
 
 	// boop it
 	if (boop) {
@@ -85,10 +100,15 @@ async function filterClick(e) {
 		turnOnModal(modalTarget);
 	}
 
+	if (deleteBackground) {
+		handleDeleteBackground();
+	}
+
 	// transition to webcam
 	if (transitionToWebcam) {
 		await fadeModalsAndDeleteEverythingButWebcam();
 		renderWebcam(webcamCanvasOne, webcamCanvasTwo);
+		document.body.style.marginTop = '0';
 		return handleTransitionToWebcam();
 	}
 
@@ -111,12 +131,9 @@ window.addEventListener('load', () => applyBackgroundMotion(backgroundImageOne, 
 document.querySelectorAll('.modal').forEach(modal => modal.isModal = true);
 setTimeout(() => sneakInImages(149), 4000);
 quizLinks.forEach(linkNode => insertQuizImage(linkNode));
-document.addEventListener('keyup', startOver)
+document.addEventListener('keyup', handleKeyUp)
 swapButtons.forEach(button => button.addEventListener('mouseover', () => swapButtons.forEach(button => button.classList.add('swap'))))
 swapButtons.forEach(button => button.addEventListener('mouseleave', () => swapButtons.forEach(button => button.classList.remove('swap'))))
-
-// start from beginning always
-window.addEventListener('load', () => startOver(true))
 
 // where to scroll on default
 setTimeout(() => {
