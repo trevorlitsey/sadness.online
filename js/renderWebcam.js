@@ -1,3 +1,10 @@
+let increment = 70;
+
+export function alterIncrement(num) {
+	increment += num;
+	return increment;
+}
+
 function renderWebcam(canvasOne, canvasTwo, delay = 3000) {
 
 	const video = document.createElement('video');
@@ -44,9 +51,9 @@ function renderWebcam(canvasOne, canvasTwo, delay = 3000) {
 
 	function rgb(pixels) {
 		for (let i = 0; i < pixels.data.length; i += 4) {
-			pixels.data[i + 0] = pixels.data[i + 0] + 70; // RED
-			pixels.data[i + 1] = pixels.data[i + 1] + 70; // GREEN
-			pixels.data[i + 2] = pixels.data[i + 2] + 70; // Blue
+			pixels.data[i + 0] = pixels.data[i + 0] + increment; // RED
+			pixels.data[i + 1] = pixels.data[i + 1] + increment; // GREEN
+			pixels.data[i + 2] = pixels.data[i + 2] + increment; // Blue
 		}
 		return pixels;
 	}

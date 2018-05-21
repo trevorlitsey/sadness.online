@@ -1,4 +1,5 @@
 import { webcamWrapper } from './domNodes';
+import { alterIncrement } from './renderWebcam';
 import { scrollToNextPage, isScrolledIntoView } from './helpers';
 
 export function handleNormalClick(e) {
@@ -69,18 +70,31 @@ export function handleDeleteBackground() {
 
 export function handleKeyUp(e) {
 
-	const currentBrightness = Number(window.getComputedStyle(webcamWrapper).filter.match(/\d+\.\d+|\d+/)[0])
+	const currentBrightness = Number(window.getComputedStyle(webcamWrapper).filter.match(/\d+\.\d+|\d+/)[0]);
 
 	// up
 	if (e.keyCode === 38) {
-		webcamWrapper.style.filter = `brightness(${currentBrightness + .05})`
-		console.log('brightness is now ' + currentBrightness + .05);
+		const newBrightness = `brightness(${(currentBrightness + .05).toFixed(2)})`
+		webcamWrapper.style.filter = newBrightness
+		console.log(`brightness is now ${newBrightness}`);
 	}
 	// down
 	else if (e.keyCode === 40) {
-		webcamWrapper.style.filter = `brightness(${currentBrightness - .05})`
-		console.log('brightness is now ' + currentBrightness - .05);
+		const newBrightness = `brightness(${(currentBrightness - .05).toFixed(2)})`
+		webcamWrapper.style.filter = newBrightness
+		console.log(`brightness is now ${newBrightness}`);
 	}
+	// left
+	else if (e.keyCode === 37) {
+		const newIncrement = alterIncrement(-5);
+		console.log('increment is now ' + newIncrement);
+	}
+	// right
+	else if (e.keyCode === 39) {
+		const newIncrement = alterIncrement(+5);
+		console.log('increment is now ' + newIncrement);
+	}
+
 }
 
 // ------------
