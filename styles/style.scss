@@ -267,6 +267,11 @@ a.smiley:hover {
 			height: 10px;
 			margin: 10px;
 			cursor: pointer;
+			transition: transform, .2s;
+
+			&:hover {
+				transform: scale(1.1);
+			}
 		}
 
 		// y/n buttons
