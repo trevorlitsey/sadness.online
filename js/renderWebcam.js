@@ -1,4 +1,4 @@
-let increment = 70;
+let increment = -30;
 
 export function alterIncrement(num) {
 	increment += num;
