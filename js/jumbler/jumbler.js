@@ -1,63 +1,68 @@
-const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-let isRunning = false;
-
-function sparanwrap(node) {
-	const isSpanned = node.innerHTML[0] === '<';
-	if (!isSpanned) {
-		return node.textContent
-			.split('')
-			.map(letter => `<span>${letter}</span>`)
-			.join('');
-	} else {
-		return node.innerHTML;
-	}
-}
-
-function rouletteRandomLetters(span, int, waitForResolve) {
-	return new Promise((res, rej) => {
-		const origLetter = span.innerHTML;
-		if (origLetter === ' ') return;
-
-		if (!waitForResolve) res(true)
-
-		setTimeout(() => {
-			let i = 0
-			const interval = setInterval(() => {
-				window.requestAnimationFrame(() => {
-					span.innerHTML = letters[Math.floor(Math.random() * letters.length)];
-					i++;
-					if (i > 75 + int * 5) {
-						span.innerHTML = origLetter;
-						clearInterval(interval);
-						isRunning = false;
-						return res(true);
-					}
-				}, 40);
-			})
-		}, 0 * int)
-	})
+const config = {
+	fadeOutStart: 900,
+	fadeOutSpeed: 54,
 }
 
 function jumbler(node) {
-	if (isRunning) return;
-	isRunning = true;
+
+	if (node.isRunning) return;
+
+	const origHTML = node.innerHTML;
+	const origText = node.innerText;
+	setNodeStyles(node);
+
+	const animationStart = Date.now();
+	requestAnimationFrame(cycle);
+
+	let currentAnimationFrame;
+
+	function cycle() {
+
+		const now = Date.now();
+		if (now > animationStart + config.fadeOutStart + origText.length * config.fadeOutSpeed) {
+			// stop
+			cancelAnimationFrame(currentAnimationFrame) // just in case
+			return resetNodeStyles(node, origHTML);
+		} else if (now > animationStart + config.fadeOutStart) {
+			// jumble appropriate amount of letters
+			const index = Math.floor(((now - (animationStart + config.fadeOutStart)) / (origText.length * config.fadeOutSpeed)) * origText.length);
+			node.innerHTML = origText.slice(0, index) + jumbleString(origText.slice(index));
+		} else {
+			// jumble all letters
+			node.innerHTML = jumbleString(origText);
+		}
+		currentAnimationFrame = requestAnimationFrame(cycle);
+	}
+}
+
+function setNodeStyles(node) {
+	node.isRunning = true;
 	const minHeight = node.getBoundingClientRect().height;
-	const origText = node.innerHTML;
 	node.style.height = `${minHeight}px`;
 	node.style.wordBreak = 'break-all';
-	node.innerHTML = sparanwrap(node);
-	const spans = node.querySelectorAll('span');
-	spans.forEach(async (span, index) => {
-		if (index === spans.length - 1) {
-			// last one
-			await rouletteRandomLetters(span, index, true)
-			node.style.height = `auto`;
-			node.style.wordBreak = 'normal';
-			node.innerHTML = origText;
-		} else {
-			rouletteRandomLetters(span, index)
-		}
-	})
+}
+
+function resetNodeStyles(node, resetText) {
+	node.style.height = `auto`;
+	node.style.wordBreak = 'normal';
+	node.innerHTML = resetText;
+	node.isRunning = false;
+}
+
+export function jumbleString(str) {
+	return str
+		.trim()
+		.split(' ')
+		.map(jumbleWord)
+		.join(' ');
+}
+
+export function jumbleWord(word) {
+	return Array.from({ length: word.length }, getRandomLetter).join('')
+}
+
+export function getRandomLetter(letters = 'abcdefghijklmnopqrstuvwxyz') {
+	return letters.split('')[Math.floor(Math.random() * letters.length)];
 }
 
 export default jumbler;
