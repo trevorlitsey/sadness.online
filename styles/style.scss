@@ -335,11 +335,12 @@ a.welcome {
 	cursor: pointer;
 	transition: all .2s;
 	color: rgba(0,0,0,0);
-	transition: font-color .4s; /* these transitions have to live in two different places i do not know why */
+	transition: font-color, transform, .4s, .4s; /* these transitions have to live in two different places i do not know why */
 }
 
 a.welcome:hover {
-	filter: blur(3px);
+	transform: scale(1.03);
+	// filter: blur(3px);
 }
 
 .welcome span {
