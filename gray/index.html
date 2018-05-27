@@ -9,89 +9,115 @@
 
 <body>
   <div class="wrapper">
-    <canvas id="draw" width="100%" height="100%"></canvas>
-
+    <canvas resize></canvas>
   </div>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    canvas {
+      height: 100vh;
+      width: 100vw;
+    }
+  </style>
 
 
   <script>
 
-    const canvas = document.querySelector('#draw');
+    const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    ctx.strokeStyle = '#BADA55';
-    ctx.lineWidth = 10;
 
-    let fromX = 0;
-    let toX = 0;
-    let fromY = 0;
-    let toY = 100;
-    let hue = 0;
-    let stop = false;
-    let direction = true;
-    const hueIncrement = (90 / window.innerWidth) * 2.1;
-    let currentPicture = []
+    window.addEventListener('load', () =>
+      requestAnimationFrame(() =>
+        draw(ctx, {
+          hueIncrement: .1,
+          lineWidth: 10,
+          fromX: 0,
+          fromY: 0,
+          hue: 1,
+          direction: true,
+        })
+      )
+    )
+
+    // -----
 
     function handleResize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      ctx.strokeStyle = '#BADA55';
       ctx.lineWidth = 10;
     }
 
+    function draw(ctx, config) {
 
-    function draw() {
-
-      if (fromX >= canvas.width) {
-        fromX = 0;
-        toX = 0;
-        fromY += 100;
-        toY += 100;
-      }
-
-      if (fromY >= canvas.height || fromY >= window.innerHeight) {
-        fromX = 0;
-        toX = 0;
-        fromY = 0;
-        toY = 100;
-      }
+      const {
+        hueIncrement,
+        lineWidth,
+        fromX,
+        fromY,
+        hue,
+        direction,
+      } = config;
 
       ctx.strokeStyle = `hsl(0, 0%, ${hue}%)`;
+      ctx.lineWidth = lineWidth;
 
       ctx.beginPath();
       // start from
       ctx.moveTo(fromX, fromY);
       // go to
-      ctx.lineTo(toX, toY);
+      ctx.lineTo(fromX, fromY + 100);
       ctx.stroke();
 
-      direction ? hue += hueIncrement : hue -= hueIncrement;
+      requestAnimationFrame(() =>
+        draw(ctx, stepConfig({ ...config }))
+      );
+    }
 
-      if (hue >= 90 || hue <= 0) {
-        direction = !direction;
+    function stepConfig({ hueIncrement, lineWidth, fromX, fromY, hue, direction }) {
+
+      const newCoords = getCoords(fromX, fromY)
+      const newDirection = getDirection(hue, direction);
+      const newHue = getHue(newDirection, hueIncrement, hue);
+
+      return {
+        hueIncrement,
+        lineWidth,
+        fromX: newCoords.fromX,
+        fromY: newCoords.fromY,
+        direction: newDirection,
+        hue: newHue,
+      }
+    }
+
+    function getCoords(fromX, fromY) {
+
+      if (fromY >= canvas.height || fromY >= window.innerHeight) {
+        fromX = 0;
+        fromY = 0;
+      } else if (fromX >= canvas.width) {
+        fromX = 0;
+        fromY += 100;
+      } else {
+        fromX += 10
       }
 
-      fromX += 2;
-      toX += 2;
-
+      return { fromX, fromY };
     }
 
-    function beginDraw() {
-      const interval = setInterval(function () {
-        if (stop) { clearInterval(interval) }
-        draw();
-      }, .5)
+    function getHue(direction, hueIncrement, hue) {
+      return direction ? hue + hueIncrement : hue - hueIncrement;
     }
 
-    function stopDraw() {
-      stop = !stop;
-      if (!stop) { beginDraw(); }
+    function getDirection(hue, direction) {
+      return hue >= 90 || hue <= 0 ? !direction : direction;
     }
 
-    window.addEventListener('load', beginDraw);
-    window.addEventListener('click', stopDraw);
-    window.addEventListener('resize', handleResize);
 
   </script>
 
