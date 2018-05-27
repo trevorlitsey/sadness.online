@@ -32,6 +32,7 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
+    // go
     window.addEventListener('load', () =>
       requestAnimationFrame(() =>
         draw(ctx, {
@@ -45,23 +46,20 @@
       )
     )
 
-    // -----
+    // -------------
 
     function handleResize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      ctx.lineWidth = 10;
     }
 
     function draw(ctx, config) {
 
       const {
-        hueIncrement,
         lineWidth,
         fromX,
         fromY,
         hue,
-        direction,
       } = config;
 
       ctx.strokeStyle = `hsl(0, 0%, ${hue}%)`;
