@@ -15,68 +15,91 @@ const extractCssPlugin = ExtractTextPlugin.extract({
 			options: {
 				importLoaders: 1,
 				minimize: true,
-			}
+			},
 		},
 		{
-			loader: 'sass-loader'
-		}
-	]
-})
+			loader: 'sass-loader',
+		},
+	],
+});
 
-const baseConfig = (name) => ({
+const baseConfig = name => ({
 	mode: process.env.NODE_ENV || 'development',
 	devServer: {
-		contentBase: path.join(__dirname),
+		contentBase: path.resolve(__dirname, 'dist'),
 		compress: true,
-		port: 8080
+		port: 8080,
 	},
 	module: {
 		rules: [
 			{
 				test: /\.scss$/,
-				use: process.env.NODE_ENV === 'production' ? extractCssPlugin : ['style-loader', 'css-loader', 'sass-loader'],
+				use:
+					process.env.NODE_ENV === 'production'
+						? extractCssPlugin
+						: ['style-loader', 'css-loader', 'sass-loader'],
 			},
-			{ test: /\.(png|jpg|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
-		]
+			{
+				test: /\.(mp3)$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: '[name].[ext]',
+							outputPath: 'media/',
+							limit: 8192,
+						},
+					},
+				],
+			},
+			{
+				test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)$/,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							name: '[name].[ext]',
+							outputPath: 'media/',
+							limit: 8192,
+						},
+					},
+				],
+			},
+		],
 	},
 	plugins: [
 		new ExtractTextPlugin('[hash].bundle.css'),
-		new UglifyJsPlugin(
-			{
-				test: /\.js($|\?)/i
-			}
-		),
-		new CleanWebpackPlugin((['./', './webcam', 'webcam/*.css'], ['*.html', '*.bundle.js', '*.css', '*.png', '*.jpg', '*.ttf'])),
+		new UglifyJsPlugin({
+			test: /\.js($|\?)/i,
+		}),
+		new CleanWebpackPlugin(['./dist/*']),
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
-			template: `templates/${name}.html`
-		})
+			template: `src/${name}.html`,
+		}),
 	],
-})
+});
 
 const mainConfig = {
 	entry: {
-		index: './js/scripts.js',
+		index: './src/js/index.js',
 	},
 	output: {
 		filename: '[hash].bundle.js',
-		path: path.resolve(__dirname),
+		path: path.resolve(__dirname, 'dist'),
 	},
 	...baseConfig('index'),
-}
+};
 
 const webcamConfig = {
 	entry: {
-		webcam: './webcam/scripts.js',
+		webcam: './src/webcam.js',
 	},
 	output: {
 		filename: '[hash].bundle.js',
-		path: path.resolve(__dirname, 'webcam'),
+		path: path.resolve(__dirname, 'dist', 'webcam'),
 	},
 	...baseConfig('webcam'),
-}
+};
 
-module.exports = [
-	mainConfig,
-	webcamConfig,
-]
+module.exports = [mainConfig, webcamConfig];
