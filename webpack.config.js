@@ -102,15 +102,4 @@ const webcamConfig = {
 	...baseConfig('webcam'),
 };
 
-const testConfig = {
-	entry: {
-		webcam: './src/test.js',
-	},
-	output: {
-		filename: '[hash].bundle.js',
-		path: path.resolve(__dirname, 'dist', 'test'),
-	},
-	...baseConfig('test'),
-};
-
-module.exports = [mainConfig, webcamConfig, testConfig];
+module.exports = [mainConfig, webcamConfig];
