@@ -20,18 +20,17 @@ export function scrollToNextPage(scrollTargetHash, userOptions = {}) {
 	return node.scrollIntoView(options);
 }
 
-export function getImgSrc(num = Math.floor(Math.random() * 149 + 1)) {
-	if (num <= 91) {
-		return require(`../assets/images/${num}.jpg`);
+export function getImgSrc(num = Math.floor(Math.random() * 149)) {
+	if (num <= 90) {
+		return require(`../assets/images/${num}_.jpg`);
 	} else {
-		return require(`../assets/images/${num}.gif`);
+		return require(`../assets/images/${num}_.gif`);
 	}
 }
 
 const picked = [];
 export function insertQuizImage(linkNode) {
 	const quizImages = [
-		0,
 		1,
 		2,
 		5,

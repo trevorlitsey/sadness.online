@@ -5,7 +5,7 @@ function getFullPop() {
 		top: '0',
 		left: '0',
 		right: 'auto',
-		src: require('../../../assets/images/125.gif'),
+		src: require('../../../assets/images/104_.gif'),
 	};
 }
 

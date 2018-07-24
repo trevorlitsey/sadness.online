@@ -16,17 +16,17 @@ export function handleQuestionsClick() {
 		'Noise becomes signal.',
 		'Signal becomes story.',
 		'Stories become actions.',
-	]
+	];
 	cycleQuestions(h1Node, questions);
 }
 
 export function turnOnModal(modalTargetID) {
 	const modal = document.getElementById(modalTargetID);
-	requestAnimationFrame(() => modal.classList.remove('off')) // just to be sure..
-	requestAnimationFrame(() => modal.classList.add('prep'))
+	requestAnimationFrame(() => modal.classList.remove('off')); // just to be sure..
+	requestAnimationFrame(() => modal.classList.add('prep'));
 	setTimeout(() => {
-		requestAnimationFrame(() => modal.classList.add('on'))
-	}, 100)
+		requestAnimationFrame(() => modal.classList.add('on'));
+	}, 100);
 }
 
 export function turnOffModal(modalNode) {
@@ -34,34 +34,41 @@ export function turnOffModal(modalNode) {
 	modalNode.classList.add('off');
 	modalNode.addEventListener('transitionend', () => {
 		modalNode.style.display = 'none';
-	})
+	});
 }
 
-export function fadeModalsAndDeleteEverythingButWebcam(finalPage) {
-	document.body.style.background = 'black';
+export function fadeModalsAndDeleteEverythingButFractalAndWebcam() {
+	document.body.style.background = 'white';
 	return new Promise(async (resolve, reject) => {
 		deleteNodes(document.querySelectorAll('.background-image'));
 		fadeNodes('.modal');
 		await fadeNodes('.questions');
-		deleteEverythingButWebcam();
+		deleteEverythingButFractalAndWebcam();
 		resolve(true);
-	})
+	});
 }
 
-export function handleTransitionToWebcam() {
+let started = false;
+export async function handleTransitionToWebcam() {
+	if (started) return;
+	started = true;
+	document.body.style.background = 'black';
+	await fadeNodes('.modal--fractal');
+	deleteNodes(document.querySelectorAll('.modal--fractal'));
 
 	const webcamPage = document.getElementById('webcam-page');
 
 	// wait 8 seconds
 	setTimeout(() => {
+		document.body.style.marginTop = 0;
 		scrollToNextPage('#webcam-page');
 		setTimeout(() => {
 			window.requestAnimationFrame(() => {
 				webcamPage.classList.remove('off');
 				webcamPage.classList.add('on');
 			});
-		}, 400)
-	}, 4000)
+		}, 400);
+	}, 4000);
 }
 
 export function handleDeleteBackground() {
@@ -69,19 +76,24 @@ export function handleDeleteBackground() {
 }
 
 export function handleKeyUp(e) {
-
-	const currentBrightness = Number(window.getComputedStyle(webcamWrapper).filter.match(/\d+\.\d+|\d+/)[0]);
+	const currentBrightness = Number(
+		window.getComputedStyle(webcamWrapper).filter.match(/\d+\.\d+|\d+/)[0]
+	);
 
 	// up
 	if (e.keyCode === 38) {
-		const newBrightness = `brightness(${(currentBrightness + .05).toFixed(2)})`
-		webcamWrapper.style.filter = newBrightness
+		const newBrightness = `brightness(${(currentBrightness + 0.05).toFixed(
+			2
+		)})`;
+		webcamWrapper.style.filter = newBrightness;
 		console.log(`brightness is now ${newBrightness}`);
 	}
 	// down
 	else if (e.keyCode === 40) {
-		const newBrightness = `brightness(${(currentBrightness - .05).toFixed(2)})`
-		webcamWrapper.style.filter = newBrightness
+		const newBrightness = `brightness(${(currentBrightness - 0.05).toFixed(
+			2
+		)})`;
+		webcamWrapper.style.filter = newBrightness;
 		console.log(`brightness is now ${newBrightness}`);
 	}
 	// left
@@ -94,7 +106,6 @@ export function handleKeyUp(e) {
 		const newIncrement = alterIncrement(+5);
 		console.log('increment is now ' + newIncrement);
 	}
-
 }
 
 // ------------
@@ -104,18 +115,18 @@ function fadeNodes(query) {
 			node.classList.add('final-off');
 			node.addEventListener('transitionend', () => {
 				res(true);
-			})
-		})
-	})
+			});
+		});
+	});
 }
 
 function deleteNodes(nodes) {
 	nodes.forEach(node => {
-		node.remove()
+		node.remove();
 	});
 }
 
-function deleteEverythingButWebcam() {
+function deleteEverythingButFractalAndWebcam() {
 	deleteNodes(document.querySelectorAll('[data-delete="true"]'));
 	deleteNodes(document.querySelectorAll('.modal'));
 	deleteNodes(document.querySelectorAll('horizontal-scroll'));
@@ -123,7 +134,6 @@ function deleteEverythingButWebcam() {
 }
 
 function cycleQuestions(h1Node, questions) {
-
 	let scale = 1.2;
 	let cycles = 0;
 
@@ -143,14 +153,12 @@ function cycleQuestions(h1Node, questions) {
 	}
 
 	function cycle(speed = 250, cycleInterval = 3) {
-
 		const wrapper = document.querySelector('.wrapper--questions');
 
 		let i = 0;
 		let count = 0;
 
 		const interval = setInterval(() => {
-
 			const { isStarted, isRunning } = h1Node;
 
 			// stop!
@@ -167,14 +175,13 @@ function cycleQuestions(h1Node, questions) {
 			if (!isStarted) return;
 
 			requestAnimationFrame(() => {
-
 				h1Node.innerHTML = questions[i];
 
-				i === questions.length - 1 ? i = 0 : i++;
+				i === questions.length - 1 ? (i = 0) : i++;
 
 				if (cycles > 4) {
-					scale += .01;
-					wrapper.style.transform = `scale(${scale})`
+					scale += 0.01;
+					wrapper.style.transform = `scale(${scale})`;
 				}
 
 				if (count === cycleInterval && speed > 5) {
@@ -186,9 +193,7 @@ function cycleQuestions(h1Node, questions) {
 				}
 
 				count++;
-
-			})
+			});
 		}, speed);
 	}
-
 }

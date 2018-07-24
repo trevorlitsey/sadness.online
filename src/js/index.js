@@ -8,7 +8,7 @@ import {
 	handleQuestionsClick,
 	turnOnModal,
 	turnOffModal,
-	fadeModalsAndDeleteEverythingButWebcam,
+	fadeModalsAndDeleteEverythingButFractalAndWebcam,
 	handleTransitionToWebcam,
 	handleDeleteBackground,
 	handleKeyUp,
@@ -23,6 +23,7 @@ import {
 	displayQuizPage,
 } from './helpers';
 
+import './fractal';
 import './audio';
 import '../styles/style.scss';
 
@@ -57,6 +58,7 @@ async function filterClick(e) {
 		normalTarget,
 		isModal,
 		transitionToFeelings,
+		transitionToFractal,
 		transitionToWebcam,
 		deleteBackground,
 		canClickAnywhere,
@@ -107,11 +109,14 @@ async function filterClick(e) {
 		handleDeleteBackground();
 	}
 
+	// transition to fractal
+	if (transitionToFractal) {
+		await fadeModalsAndDeleteEverythingButFractalAndWebcam();
+	}
+
 	// transition to webcam
 	if (transitionToWebcam) {
-		await fadeModalsAndDeleteEverythingButWebcam();
 		renderWebcam(webcamCanvasOne, webcamCanvasTwo);
-		document.body.style.marginTop = '0';
 		return handleTransitionToWebcam();
 	}
 
@@ -149,7 +154,7 @@ swapButtons.forEach(button =>
 
 // where to scroll on default
 setTimeout(() => {
-	// startOver(true)
+	// startOver(true);
 	// scrollToNextPage('#shall-we-begin');
 	// document.body.style.marginTop = '-500vh';
 	// horizontalScroll.style.marginLeft = '-600vw';

@@ -10,8 +10,10 @@
 	src: url('./bebas-neue/TTF/Bebas.ttf') format('ttf');
 }
 
-*, *:before, *:after {
-  box-sizing: border-box;
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
 }
 
 $black: #111;
@@ -19,7 +21,7 @@ $danger: rgb(255, 59, 59);
 $white: #eee;
 
 :root {
-	--transition: .2s;
+	--transition: 0.2s;
 	--danger: $danger;
 	--text-color: #111;
 }
@@ -38,7 +40,7 @@ body {
 	overflow: hidden;
 	height: 100vh;
 	width: 100vw;
-	transition: margin .72s;
+	transition: margin 0.72s;
 }
 
 .page {
@@ -60,7 +62,7 @@ body {
 	padding: 20px;
 	margin: 2%;
 	width: 100%;
-	background: rgba(255,255,255,.5);
+	background: rgba(255, 255, 255, 0.5);
 }
 
 .wrapper div {
@@ -88,7 +90,7 @@ h1 {
 	align-self: center;
 	margin: 0 0 10px;
 	font-size: 2rem;
-	transition: transform .2s;
+	transition: transform 0.2s;
 }
 
 h1:hover {
@@ -104,7 +106,7 @@ h1.slot-machine {
 
 h1.slot-machine > a {
 	text-decoration: underline;
-	color: #004AFF;
+	color: #004aff;
 }
 
 h2 {
@@ -116,7 +118,7 @@ h2 {
 }
 
 h1.blur {
-	transition: filter .2s;
+	transition: filter 0.2s;
 }
 
 h1.blur:hover {
@@ -142,7 +144,7 @@ a.bttn {
 	border-radius: 12px;
 	padding: 2px 12px;
 	margin: 5px;
-	transition: transform .2s;
+	transition: transform 0.2s;
 }
 
 a.bttn.danger {
@@ -159,7 +161,7 @@ a.bttn:hover {
 	display: inline-block;
 	font-size: 4rem;
 	margin: 0 20px;
-	transition: transform, opacity .2s,  .75s;
+	transition: transform, opacity 0.2s, 0.75s;
 }
 
 a.smiley:hover {
@@ -178,18 +180,18 @@ a.smiley:hover {
 .shape-1 {
 	filter: brightness(220%);
 	background: url('../assets/shapes/bottom.jpg') no-repeat;
-	background-size:cover;
+	background-size: cover;
 }
 
 .shape-2 {
 	filter: brightness(140%);
 	background: url('../assets/shapes/middle.png') no-repeat;
-	background-size:cover;
+	background-size: cover;
 }
 
 .shape-3 {
 	background: url('../assets/shapes/top.png') no-repeat;
-	background-size:cover;
+	background-size: cover;
 }
 
 /* modal */
@@ -202,7 +204,7 @@ a.smiley:hover {
 	display: none;
 	justify-content: center;
 	align-items: center;
-	
+
 	&.prep {
 		opacity: 0;
 		top: 0;
@@ -210,29 +212,29 @@ a.smiley:hover {
 		bottom: 0;
 		left: 0;
 		display: flex;
-		transform: scale(.1);
+		transform: scale(0.1);
 	}
-	
+
 	&.on {
 		display: flex;
 		transform: scale(1);
 		opacity: 1;
-		transition: transform, opacity, .4s, .4s;
+		transition: transform, opacity, 0.4s, 0.4s;
 	}
-	
+
 	// final transition
 	&.on.final-off {
 		transition: all 6s;
 		opacity: 0;
 	}
-	
+
 	&.off {
 		display: none;
 		opacity: 0;
 		transform: scale(2);
-		transition: all .4s;
+		transition: all 0.4s;
 	}
-	
+
 	// card
 	& > .card {
 		box-shadow: 0 0 87px black;
@@ -244,12 +246,12 @@ a.smiley:hover {
 		display: grid;
 		grid-template-rows: 50% 50%;
 		background: #a7a7a7;
-		
+
 		// error-lacking-substance
 		& h1 > span {
 			display: inline-block;
 		}
-		
+
 		&.error {
 			color: black;
 			background: #a7a7a7;
@@ -261,12 +263,12 @@ a.smiley:hover {
 			top: 0px;
 			left: 0px;
 			font-weight: 900;
-			font-size: .8rem;
+			font-size: 0.8rem;
 			width: 10px;
 			height: 10px;
 			margin: 10px;
 			cursor: pointer;
-			transition: transform, .2s;
+			transition: transform, 0.2s;
 
 			&:hover {
 				transform: scale(1.1);
@@ -275,16 +277,15 @@ a.smiley:hover {
 
 		// y/n buttons
 		& > .buttons {
-
 			& > button {
-				font-size: .8rem;
+				font-size: 0.8rem;
 				padding: 16px 22px;
 				border: none;
 				margin: 10px;
 				cursor: pointer;
-				transition: .2s;
+				transition: 0.2s;
 				font-weight: bold;
-				
+
 				// no bttn
 				&.yes {
 					background: $black;
@@ -297,23 +298,20 @@ a.smiley:hover {
 					background: white;
 					color: $black;
 				}
-				
+
 				&:hover {
 					transform: scale(1.04);
 				}
-
 			}
-
 		}
-
 	} // end card
-
 }
 
 /* ======= pages ======= */
 
 /* ------ welcome ------ */
-#sadnessDotOnline, #webcam-page {
+#sadnessDotOnline,
+#webcam-page {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr;
@@ -322,7 +320,7 @@ a.smiley:hover {
 }
 
 .sadnessDotOnline {
-	background: linear-gradient(rgba(133,133,133,1), rgba(255,255,255,0));
+	background: linear-gradient(rgba(133, 133, 133, 1), rgba(255, 255, 255, 0));
 }
 
 a.welcome {
@@ -332,9 +330,9 @@ a.welcome {
 	display: flex;
 	align-content: flex-end;
 	cursor: pointer;
-	transition: all .2s;
-	color: rgba(0,0,0,0);
-	transition: font-color, transform, .4s, .4s; /* these transitions have to live in two different places i do not know why */
+	transition: all 0.2s;
+	color: rgba(0, 0, 0, 0);
+	transition: font-color, transform, 0.4s, 0.4s; /* these transitions have to live in two different places i do not know why */
 }
 
 a.welcome:hover {
@@ -344,7 +342,7 @@ a.welcome:hover {
 
 .welcome span {
 	margin: 1px;
-	transition: transform .4s; /* these transitions have to live in two different places i do not know why */
+	transition: transform 0.4s; /* these transitions have to live in two different places i do not know why */
 }
 
 .welcome span.on {
@@ -353,12 +351,11 @@ a.welcome:hover {
 
 .welcome span.up {
 	transform: translateY(-5px);
-	opacity: .7;
+	opacity: 0.7;
 }
 
 /* ----- sorry-that-happiness-was-unavailable ----- */
 .sorry-that-happiness-was-unavailable > h1 {
-
 }
 
 /* ---- questions ---- */
@@ -373,14 +370,14 @@ a.welcome:hover {
 	padding: 0;
 	display: grid;
 	grid-auto-flow: column;
-	transition: margin .72s;
-	&::-webkit-scrollbar { 
-    display: none;  // Safari and Chrome
+	transition: margin 0.72s;
+	&::-webkit-scrollbar {
+		display: none; // Safari and Chrome
 	}
 }
 
 .horizontal-scroll > .page > .wrapper--quiz {
-	border: 12px solid rgba(255,255,255,.8);
+	border: 12px solid rgba(255, 255, 255, 0.8);
 }
 
 /* ~~~quiz~~~ */
@@ -395,7 +392,7 @@ a.welcome:hover {
 	min-width: 70%;
 	margin: 3%;
 	padding: 3%;
-	background: rgba(255,255,255,.5);
+	background: rgba(255, 255, 255, 0.5);
 }
 
 .wrapper--quiz > .wrapper--text {
@@ -404,20 +401,19 @@ a.welcome:hover {
 	& > h1:first-child {
 		margin: 0;
 	}
-
 }
 
 .quiz-text {
 	text-align: center;
 	font-size: 1.6rem;
-	transition: opacity .75s;
+	transition: opacity 0.75s;
 }
 
 .container--quiz-links {
 	display: flex;
 
 	& > .bttn {
-		transition: transform, opacity .2s, .5s;
+		transition: transform, opacity 0.2s, 0.5s;
 	}
 
 	&.vertical {
@@ -425,7 +421,7 @@ a.welcome:hover {
 		& > a {
 			font-size: calc(1vw + 1vh + 40px);
 			margin-bottom: 10px;
-			transition: transform, opacity .2s, .5s;
+			transition: transform, opacity 0.2s, 0.5s;
 		}
 		& > a:hover {
 			transform: scale(1.1);
@@ -433,13 +429,12 @@ a.welcome:hover {
 	}
 
 	& > * {
-		transition: transform, opacity .2s, .5s;
+		transition: transform, opacity 0.2s, 0.5s;
 	}
 
 	& > *:hover {
 		transform: scale(1.1);
 	}
-	
 }
 
 a.quiz-link {
@@ -456,7 +451,7 @@ a.quiz-link {
 }
 
 h1.quiz-text {
-	transition: transform, opacity .2s, .5s;
+	transition: transform, opacity 0.2s, 0.5s;
 }
 
 .quiz-text.smiles {
@@ -466,7 +461,7 @@ h1.quiz-text {
 }
 
 .quiz-text.smiles span {
-	transition: transform .2s;
+	transition: transform 0.2s;
 }
 
 .quiz-text.smiles span:hover {
@@ -499,6 +494,62 @@ h1.quiz-text {
 	& div {
 		overflow: visible;
 	}
+}
+
+/* fractal */
+
+.modal--fractal {
+	z-index: -1;
+	font-family: 'Bebas', 'BebasNeue', -apple-system, sans-serif;
+	color: #eff;
+	padding: 0;
+	position: fixed;
+	display: none;
+	justify-content: center;
+	align-items: center;
+
+	&.prep {
+		opacity: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		transform: scale(0.1);
+	}
+
+	&.on {
+		display: flex;
+		transform: scale(1);
+		opacity: 1;
+		transition: transform, opacity, 0.4s, 0.4s;
+	}
+
+	// final transition
+	&.on.final-off {
+		transition: all 6s;
+		opacity: 0;
+	}
+}
+
+.wrapper--fractal-image {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100%;
+}
+
+.wrapper--fractal-image.break {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template: 1fr 1fr;
+	width: 100%;
+	height: 100%;
+}
+
+.wrapper--fractal-image > img {
+	width: 100%;
+	height: 100%;
 }
 
 /* ------ webcam ------ */
@@ -537,7 +588,7 @@ h1.quiz-text {
 	position: absolute;
 	left: 0;
 	top: 0;
-	opacity: .5;
+	opacity: 0.5;
 }
 
 /* ===== helpers ===== */
