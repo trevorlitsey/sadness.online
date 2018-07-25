@@ -35,9 +35,9 @@ export function insertPlacedPopup(node, popOptions) {
 	const img = `<img src="${src}" style="position: absolute; left: ${left}; right: ${right}; top: ${top}; bottom: ${bottom}; width: ${width}; height: ${height}"></img>`;
 
 	window.requestAnimationFrame(() => {
-		bottleSound.currentTime = 0;
-		bottleSound.playbackRate = (Math.random() * 2 + 7) / 10;
-		bottleSound.play();
+		// bottleSound.currentTime = 0;
+		// bottleSound.playbackRate = (Math.random() * 2 + 7) / 10;
+		// bottleSound.play();
 		node.innerHTML += img;
 	});
 }
