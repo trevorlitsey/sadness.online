@@ -2,6 +2,7 @@ import imgUrl from '../assets/fractal/fractal.gif';
 import { handleTransitionToWebcam } from './clickHandlers';
 import renderWebcam from './renderWebcam';
 
+const bassoSound = document.getElementById('basso');
 const webcamCanvasOne = document.querySelector('.webcam-canvas--one');
 const webcamCanvasTwo = document.querySelector('.webcam-canvas--two');
 
@@ -23,6 +24,7 @@ function initFractals(imgUrl) {
 	document.querySelectorAll('.wrapper--fractal-image').forEach(wrapper => {
 		wrapper.addEventListener('click', function(e) {
 			e.stopPropagation();
+			playSound(bassoSound);
 			this.classList.add('break');
 			this.innerHTML = `
 			<div class="wrapper--fractal-image">
@@ -41,4 +43,11 @@ function initFractals(imgUrl) {
 			initFractals(imgUrl);
 		});
 	});
+}
+
+function playSound(node) {
+	node.currentTime = 0;
+	const rate = (Math.random() * 2 + 7) / 10;
+	node.playbackRate = rate;
+	node.play();
 }

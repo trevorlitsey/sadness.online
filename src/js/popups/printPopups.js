@@ -5,7 +5,6 @@ let lastPattern;
 
 async function printPopups(container, pattern) {
 	return new Promise(async (resolve, reject) => {
-
 		if (lastPattern === pattern) {
 			return; // no way
 		} else {

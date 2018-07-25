@@ -30,39 +30,7 @@ export function getImgSrc(num = Math.floor(Math.random() * 149)) {
 
 const picked = [];
 export function insertQuizImage(linkNode) {
-	const quizImages = [
-		1,
-		2,
-		5,
-		8,
-		9,
-		10,
-		11,
-		12,
-		17,
-		18,
-		19,
-		21,
-		23,
-		24,
-		26,
-		27,
-		29,
-		30,
-		32,
-		33,
-		35,
-		40,
-		42,
-		43,
-		44,
-		45,
-		46,
-		48,
-		50,
-		53,
-	];
-	const num = quizImages[Math.floor(Math.random() * quizImages.length)];
+	const num = Math.floor(Math.random() * 149);
 	if (picked.indexOf(num) > -1) return insertQuizImage(linkNode);
 	picked.push(num);
 	linkNode.style.backgroundImage = `url('${getImgSrc(num)}')`;

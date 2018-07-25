@@ -39,7 +39,6 @@ const webcamCanvasTwo = document.querySelector('.webcam-canvas--two');
 const backgroundImageOne = document.querySelector('.shape-1');
 const backgroundImageTwo = document.querySelector('.shape-2');
 const horizontalScroll = document.querySelector('.horizontal-scroll');
-const swapButtons = document.querySelectorAll('.bttn--swap');
 
 const pages = document.querySelectorAll('.page');
 const modals = document.querySelectorAll('.modal');
@@ -141,21 +140,11 @@ document.querySelectorAll('.modal').forEach(modal => (modal.isModal = true));
 setTimeout(() => sneakInImages(149), 4000);
 quizLinks.forEach(linkNode => insertQuizImage(linkNode));
 document.addEventListener('keyup', handleKeyUp);
-swapButtons.forEach(button =>
-	button.addEventListener('mouseover', () =>
-		swapButtons.forEach(button => button.classList.add('swap'))
-	)
-);
-swapButtons.forEach(button =>
-	button.addEventListener('mouseleave', () =>
-		swapButtons.forEach(button => button.classList.remove('swap'))
-	)
-);
 
 // where to scroll on default
 setTimeout(() => {
 	// startOver(true);
 	// scrollToNextPage('#shall-we-begin');
-	// document.body.style.marginTop = '-500vh';
-	// horizontalScroll.style.marginLeft = '-600vw';
+	document.body.style.marginTop = '-500vh';
+	horizontalScroll.style.marginLeft = '-600vw';
 }, 200);

@@ -40,7 +40,7 @@ const baseConfig = name => ({
 						: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 			{
-				test: /\.(mp3)$/,
+				test: /\.(mp3|aiff)$/,
 				use: [
 					{
 						loader: 'file-loader',
@@ -81,20 +81,16 @@ const baseConfig = name => ({
 });
 
 const mainConfig = {
-	entry: {
-		index: './src/js/index.js',
-	},
+	entry: './src/js/index.js',
 	output: {
-		filename: '[hash].bundle.js',
+		filename: '[hash].index.js',
 		path: path.resolve(__dirname, 'dist'),
 	},
 	...baseConfig('index'),
 };
 
 const webcamConfig = {
-	entry: {
-		webcam: './src/webcam.js',
-	},
+	entry: './src/webcam.js',
 	output: {
 		filename: '[hash].bundle.js',
 		path: path.resolve(__dirname, 'dist', 'webcam'),
