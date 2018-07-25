@@ -18,7 +18,7 @@ function initFractals(imgUrl) {
 	});
 	const images = document.querySelectorAll('img.fractal').forEach(img => {
 		if (!img.src) {
-			img.src = imgUrl + '?id=' + Math.floor(Math.random() * 100);
+			img.src = imgUrl + '?id=' + Math.floor(Math.random() * 6);
 		}
 	});
 	document.querySelectorAll('.wrapper--fractal-image').forEach(wrapper => {
